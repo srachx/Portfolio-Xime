@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'AvenirNextLTPro-Heavy';
   src: url('fonts/AvenirNextLTPro-Heavy.woff2') format('woff2'),
@@ -663,7 +662,6 @@ body {
 }
 
 @media (max-width: 500px) {
-
   /* NAVBAR */
   .nav-container,
   .navbar {
@@ -706,6 +704,8 @@ body {
   .about-overlay-text {
     font-size: 1rem;
     max-width: 150px;
+    z-index: 2;
+    position: absolute;
   }
 
   .about-overlay-text.design {
@@ -718,7 +718,7 @@ body {
     right: -25%;
   }
 
-  /* RULETA: nombre, país, fecha, descripción */
+  /* RULETA */
   .ruleta-container {
     display: flex;
     flex-direction: column;
@@ -737,17 +737,13 @@ body {
     text-align: center;
   }
 
-  /* BOTONES ROSAS */
-  /* Para celular */
-@media (max-width: 500px) {
-
-  /* Oculta ilustración y botones en móvil */
+  /* BOTONES ROSAS E ILUSTRACIÓN: Ocultos */
   .about-illustration,
   .about-buttons {
     display: none;
   }
 
-  /* Carrusel automático */
+  /* CARRUSEL AUTOMÁTICO */
   .mobile-carousel {
     position: relative;
     width: 100%;
@@ -774,13 +770,6 @@ body {
     z-index: 1;
   }
 
-  /* Asegura que los textos estén sobre el carrusel */
-.about-overlay-text.design{
-    z-index: 2;
-    position: absolute;
-  }
-}
-
   /* FOOTER */
   .site-footer {
     text-align: center;
@@ -788,5 +777,72 @@ body {
     padding: 10px 20px;
     margin-top: 10px;
   }
+}
 
+@media (max-width: 500px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar a,
+  .category-bar-buttons button,
+  .lang-toggle {
+    font-size: 0.6rem;
+    padding: 3px 6px;
+  }
+
+  .wheel-container .wheel-item {
+    font-size: 0.8rem;
+  }
+
+  .wheel-content-group {
+    font-size: 0.8rem;
+  }
+
+  .about-buttons {
+    display: none;
+  }
+
+  .about-illustration-wrapper {
+    display: none;
+  }
+
+  .mobile-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .carousel-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .carousel-img.active {
+    opacity: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-footer {
+    font-size: 0.7rem;
+    margin-top: 40px;
+    padding: 10px 15px;
+  }
 }
