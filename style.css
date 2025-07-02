@@ -664,53 +664,99 @@ body {
 
 @media (max-width: 500px) {
 
+  /* NAVBAR */
+  .nav-container,
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar a,
+  .category-bar-buttons button,
+  .lang-toggle {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin: 3px;
+  }
+
+  /* HERO TEXT */
+  .hero-text {
+    text-align: center;
+    padding: 10px;
+  }
+
   .hero-text h1 {
-    font-size: 2rem;
-    padding: 5px;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
   }
 
   .hero-text .description {
-    font-size: 0.9rem;
-    padding: 5px;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    padding: 0 10px;
   }
 
+  /* SOBREPOSICIONES */
   .about-illustration {
-    max-height: 400px;
+    max-height: 300px;
     width: 100%;
     object-fit: contain;
   }
 
   .about-overlay-text {
-    font-size: 1.2rem;
-    max-width: 180px;
+    font-size: 1rem;
+    max-width: 150px;
   }
 
   .about-overlay-text.design {
     top: 5%;
-    left: -30%;
+    left: -25%;
   }
 
   .about-overlay-text.experiences {
     bottom: 5%;
-    right: -30%;
+    right: -25%;
   }
 
-  .category-bar-buttons button {
-    font-size: 0.75rem;
-    padding: 5px 10px;
+  /* RULETA: nombre, país, fecha, descripción */
+  .ruleta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
   }
 
-  .lang-toggle {
-    font-size: 0.75rem;
+  .ruleta-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
   }
 
+  .ruleta-container p {
+    font-size: 0.9rem;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  /* BOTONES ROSAS */
   .about-buttons {
-    margin-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
   }
 
+  .about-buttons button {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* FOOTER */
   .site-footer {
+    text-align: center;
     font-size: 0.75rem;
-    padding: 8px 10px;
+    padding: 10px 20px;
+    margin-top: 10px;
   }
 
 }
