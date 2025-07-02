@@ -775,7 +775,7 @@ body {
   }
 
   /* Asegura que los textos estén sobre el carrusel */
-  .about-overlay-text {
+.about-overlay-text.design{
     z-index: 2;
     position: absolute;
   }
