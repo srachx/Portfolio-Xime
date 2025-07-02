@@ -1,0 +1,663 @@
+
+@font-face {
+  font-family: 'AvenirNextLTPro-Heavy';
+  src: url('fonts/AvenirNextLTPro-Heavy.woff2') format('woff2'),
+       url('fonts/AvenirNextLTPro-Heavy.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirLTPro-Book';
+  src: url('fonts/AvenirLTPro-Book.woff2') format('woff2'),
+       url('fonts/AvenirLTPro-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirLTPro-Light';
+  src: url('fonts/AvenirLTPro-Light.woff2') format('woff2'),
+       url('fonts/AvenirLTPro-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirLTPro-Roman';
+  src: url('fonts/AvenirLTPro-Roman.woff2') format('woff2'),
+       url('fonts/AvenirLTPro-Roman.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F6F6F6;
+  color: #434343;
+  padding: 20px;
+}
+
+/* Barra de navegación */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.category-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-bar .label {
+  font-size: 0.8rem;
+  color: #434343;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+.category-bar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-bar button {
+  border: 1px solid #434343;
+  background: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  outline: none;
+}
+
+.category-bar button.active,
+.category-bar button:hover {
+  background: #e6612c;
+  color: white;
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 6px;
+  font-size: 0.9rem;
+  align-items: baseline;
+}
+
+.lang-toggle span {
+  color: #333;
+  cursor: pointer;
+}
+
+.lang-toggle .active {
+  color: 434343;
+  font-weight: bold;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  min-height: 90vh;
+  background-image: url(images/IMG_1566.png);
+  background-size: cover;         /* Para que cubra todo el section */
+  background-position: center;    /* Centra la imagen */
+  background-repeat: no-repeat;   /* Evita que se repita */
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+  padding-left: 40px;
+}
+
+.hero-text h1 {
+  font-family: 'AvenirNextLTPro-Heavy';
+  font-size: 4rem;
+  margin: auto;
+  text-align: center;
+  max-width: 600px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.hero-text .description {
+  font-family: 'AvenirLTPro-Book';
+  text-align: center;
+  margin: auto;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #434343;
+}
+
+.intro {
+  font-family: 'AvenirLTPro-Book';
+  font-size: 1rem;
+  color: #434343;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  animation: bounce 2s infinite;
+}
+
+.arrow img {
+  width: 50px;
+  height: auto;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* About Section */
+.about-cv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 80px 40px 0;
+  background: #f4f4f4;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.about-left {
+  flex: 0 0 40%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-right {
+  flex: 1;
+  min-width: 280px;
+  max-width: 70%;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .about-cv {
+    flex-direction: column;
+  }
+
+  .about-left,
+  .about-right {
+    max-width: 100%;
+  }
+
+  .about-visual {
+    justify-content: center;
+  }
+}
+
+.about-left h2 {
+  font-family: 'AvenirNextLTPro-Heavy';
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.about-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+    margin-bottom: -200px; /* 👈 esto compensa el translateY visual */
+}
+
+.about-visual-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.about-illustration-wrapper {
+  position: relative;
+  display: block;
+}
+
+.about-illustration {
+  display: block;
+  max-height: 860px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 0;
+  transform: translateY(-200px);
+}
+
+.about-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+  margin-top: -40px;
+  margin-right: 0;      /* 👈 quita separación con el borde */
+  margin-left: -60px;   /* 👈 acerca los botones a la ilustración */
+}
+
+.about-btn {
+  width: 90px;
+  height: 90px;
+  background-color: #E58C94;
+  border-radius: 6px;
+}
+
+.about-overlay-text {
+  position: absolute;
+  z-index: 2;
+  color: #434343;
+  font-size: 2rem;
+  line-height: 1.5;
+  max-width: 300px;
+  pointer-events: none;
+}
+
+.about-overlay-text.design {
+  font-family: 'AvenirLTPro-Light';
+  top: 3%;
+  left: -15%;
+  text-align: right;
+}
+
+.about-overlay-text.experiences {
+  font-family: 'AvenirLTPro-Light';
+  bottom: 32%;
+  right: -5%;
+  text-align: left;
+}
+
+.about-overlay-text strong {
+  font-family: 'AvenirNextLTPro-Heavy';
+  font-weight: 800;
+}
+
+/* BLOQUE RUEDA + CONTENIDO */
+.wheel-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px; /* espacio entre la ruleta y el texto */
+  margin-top: 200px;
+}
+
+/* RUEDA */
+.wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.wheel-item {
+  font-family: 'AvenirLTPro-Book';
+  font-size: 1rem;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  user-select: none;
+}
+
+.wheel-item.active {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #F05B30;
+  opacity: 1;
+}
+
+/* CONTENIDO A LA DERECHA */
+.wheel-content-group {
+  max-width: 500px; /* 🎯 ajusta este valor según lo ancho que quieras el texto */
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.wheel-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-family: 'AvenirLTPro-Book';
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.degree-title {
+  color: #F05B30; /* o cualquier color que desees */
+  font-weight: bold;
+}
+
+#wheel-content #education-content p {
+  font-size: 1rem;         /* Tamaño de letra */
+  font-weight: 400;        /* Peso de la fuente */
+  color: #444;             /* Color del texto */
+  line-height: 1.6;        /* Altura de línea */
+  margin: 0;               /* Elimina márgenes si es necesario */
+}
+
+.wheel-content.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* RESPONSIVO */
+@media (max-width: 700px) {
+.wheel-block {
+    flex-direction: row; /* 👈 mantiene el orden horizontal */
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px; /* 🔺 Ajusta aquí */
+  }
+
+  .wheel-container {
+    min-width: 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .wheel-content-group {
+    flex: 1;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-cv {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-left,
+  .about-right {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .about-right {
+    margin-top: 60px; /* 🔽 baja el bloque para no estorbar */
+    transform: scale(0.9); /* 🔍 reduce ligeramente el tamaño */
+    transform-origin: top center;
+    order: 2;              /* fuerza que se muestre después */
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+    .about-left {
+    order: 1;
+    max-width: 100%;
+  }
+
+  .about-visual {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+  .about-visual-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-overlay-text {
+    font-size: 1.5rem; /* 🔠 reduce tamaño del texto sobre la imagen */
+    max-width: 250px;
+  }
+
+  .about-illustration {
+    transform: translateY(0px); /* 🧭 remueve el -200px si lo tenías en desktop */
+    max-height: 600px; /* 🔧 ajusta según la pantalla */
+    width: 100%;
+  }
+
+  .about-illustration-wrapper {
+    max-width: 90%;
+    transform: none; /* 🔄 Quita el desplazamiento si lo tenías */
+  }
+
+  .about-overlay-text.design {
+    top: 10%;
+    left: -25%;
+    text-align: right;
+    transform: translate(0, 0);
+  }
+
+  .about-overlay-text.experiences {
+    bottom: 5%;
+    right: -20%;
+    text-align: left;
+    transform: translate(0, 0);
+  }
+
+  .about-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;      /* ✅ Centra horizontalmente */
+  margin: 40px auto 20px;       /* ✅ Espacio arriba y abajo */
+  gap: 12px;                    /* ✅ Separación entre botones */
+  max-width: 90%;               /* ✅ Opcional: evita que se estiren demasiado */
+  margin-bottom: 100px;
+}
+
+  .about-btn {
+    width: 80px;
+    height: 80px;
+  }
+
+  .site-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  margin: 30px auto 20px;       /* ✅ Más espacio superior */
+  padding: 10px 20px;
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  max-width: 90%;
+  line-height: 1.5;
+  }
+
+}
+
+
+.language-stat {
+  margin-bottom: 20px;
+}
+
+.language-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.percentage {
+  color: #888;
+  font-size: 0.8rem;
+    transform: translateX(-100px); /* también lo mueve sin romper layout */
+}
+
+.progress-bar {
+  width: 80%;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #F05B30;
+  border-radius: 3px;
+  transition: width 0.4s ease-in-out;
+}
+
+.software-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.software-icons img {
+  width: 55px;  /* ajusta el tamaño según necesites */
+  height: 55px;
+  object-fit: contain;
+}
+
+.experience-entry {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 16px;
+}
+
+.experience-date {
+  border: 2px solid #333;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: #333;
+  white-space: nowrap;
+  min-width: 180px; /* 🔸 Fuerza ancho fijo igual para todas las fechas */
+  text-align: center; 
+}
+
+.experience-entry.highlighted .experience-date {
+  border-color: #ea5b22;
+  color: #ea5b22;
+}
+
+.experience-details h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  text-align: left; /* 🔹 Alinea todo el texto a la izquierda */
+
+}
+
+.experience-details p {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: #666;
+  text-align: left; /* 🔹 Alinea todo el texto a la izquierda */
+
+}
+
+.experience-details h4,
+.experience-details p {
+  margin: 0;         /* elimina margen vertical */
+  padding: 0;
+}
+
+.site-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 60px;
+  padding: 20px 0;
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  width: 100%;
+}
+
+.about-info {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.availability {
+  display: inline-block;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border: 1.5px solid #ec5c27;
+  border-radius: 20px;
+  color: #ec5c27;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.icon-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.icon-info img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.tag {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.tag.orange {
+  background-color: #F05B30;
+  color: white;
+  border: none;
+}
+
+.tag.outline {
+  background-color: transparent;
+  color: #222;
+  border: 1.5px solid #222;
+}

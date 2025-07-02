@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Ximena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de categorías -->
+<header class="navbar">
+  <div class="navbar-section logo">
+    <img src="images/loguito.png" alt="Inicio">
+  </div>
+
+  <div class="navbar-section category-bar">
+    <span class="label lang-text" data-en="Portfolio" data-es="Portafolio">Portfolio</span>
+    <div class="category-bar-buttons">
+      <button onclick="location.href='illustration.html'" class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</button>
+      <button onclick="location.href='uxui.html'" class="lang-text" data-en="UX/UI" data-es="UX/UI">UX/UI</button>
+      <button onclick="location.href='graphic.html'" class="lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</button>
+      <button onclick="location.href='other.html'" class="lang-text" data-en="Other" data-es="Otros">Other</button>
+    </div>
+  </div>
+
+  <div class="navbar-section lang-toggle">
+    <span class="lang-btn" data-lang="es">ES</span>
+  <span class="lang-btn" data-lang="en" style="font-weight: bold;">EN</span>
+  </div>
+</header>
+
+
+  <!-- Hero principal -->
+  <section class="hero">
+    <div class="hero-text">
+    <p class="intro lang-text" data-en="Hi!, I’m Ximena an" data-es="¡Hola!, Soy Ximena ">Hi!, <strong>I’m Ximena</strong> an</p>
+    <h1><strong class="lang-text" data-en="Interactive Designer" data-es="Diseñadora Interactiva">Interactive<br>Designer</strong></h1>
+    <p class="description lang-text" data-en="Through Illustration, UX/UI design, and graphic design, I aim to build stories that connect, move and stay with the audiences. For me, solving through design means understanding emotions, needs, and context. It’s about impact, expression and building something that truly matters." data-es="A través de la ilustración, diseño UX/UI y diseño gráfico, busco construir historias que conecten, conmuevan y perduren. Para mí, resolver a través del diseño significa entender emociones, necesidades y contexto. Se trata de impacto, expresión y crear algo que realmente importe.">
+        Through Illustration, UX/UI design, and graphic design, I aim to build stories that connect, move and stay with the audiences. 
+        For me, solving through design means understanding emotions, needs, and context.
+        It’s about impact, expression and building something that truly matters.
+      </p>
+      <div class="arrow">
+        <img src="images/arrow.png">
+      </div>
+    </div>
+  </section>
+
+
+  <section class="about-cv" id="about">
+  <div class="about-left">
+    <h2>Ximena Poot</h2>
+    <div class="about-info">
+      <span class="availability lang-text" data-en="Available" data-es="Disponible">Available</span>
+
+      <div class="icon-info">
+        <img src="images/ubi.png" alt="Location icon">
+        <span class="lang-text" data-en="MEXICO" data-es="MÉXICO">MEXICO</span>
+      </div>
+
+      <div class="icon-info">
+        <img src="images/cake.png" alt="Birthday icon">
+        <span>2003</span>
+      </div>
+    </div>
+
+
+    <div class="wheel-block">
+  <!-- Columna izquierda -->
+  <div class="wheel-container">
+    <div class="wheel-item active lang-text" data-target="about-content" data-en="About" data-es="Sobre mí">About</div>
+    <div class="wheel-item lang-text" data-target="education-content" data-en="Education" data-es="Educación">Education</div>
+    <div class="wheel-item lang-text" data-target="languages-content" data-en="Languages" data-es="Idiomas">Languages</div>
+    <div class="wheel-item lang-text" data-target="experience-content" data-en="Experience" data-es="Experiencia">Experience</div>
+    <div class="wheel-item lang-text" data-target="skills-content" data-en="Skills" data-es="Habilidades">Skills</div>
+    <div class="wheel-item lang-text" data-target="software-content" data-en="Software" data-es="Programas">Software</div>
+  </div>
+
+  <!-- Columna derecha -->
+  <div class="wheel-content-group">
+    <div class="wheel-content visible" id="about-content">
+      <p class="lang-text" data-en="Stories shape us, and for me, few things have impacted me as deeply as the movies that moved me to tears and the games that let me live a thousand lives. Those experiences taught me that design can be more than just visuals. It can be emotional, immersive, and transformative. They’re the reason I create: to build experiences that feel personal, that resonate, and that leave something behind in the people who interact with them." data-es="Las historias nos forman, y para mí, pocas cosas me han impactado tan profundamente como las películas que me hicieron llorar y los videojuegos que me permitieron vivir mil vidas. Esas experiencias me enseñaron que el diseño puede ser más que solo imágenes. Puede ser emocional, inmersivo y transformador. Son la razón por la que creo: para construir experiencias que se sientan personales, que resuenen y que dejen algo en las personas que interactúan con ellas.">
+Stories shape us, and for me, few things have impacted me as deeply as the movies that moved me to tears and the games that let me live a thousand lives. Those experiences taught me that design can be more than just visuals. It can be emotional, immersive, and transformative. They’re the reason I create: to build experiences that feel personal, that resonate, and that leave something behind in the people who interact with them.</p>
+    </div>
+
+    <div class="wheel-content" id="education-content">
+      <p><span class="degree-title lang-text" data-en="Interactive Design Degree" data-es="Licenciatura en Diseño Interactivo"><strong>Interactive Design Degree</strong></span><br>Universidad Modelo – Mérida, Yucatán<br>2021–2025</p>
+    </div>
+
+    <div class="wheel-content" id="languages-content">
+          <div class="language-stat">
+            <div class="language-label">
+              <span class= "lang-text" data-en="Spanish" data-es="Español">Spanish</span>
+              <span class="percentage">100%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+
+          <div class="language-stat">
+            <div class="language-label">
+              <span class= "lang-text" data-en="English" data-es="Inglés (Cambridge B2)">English (Cambridge B2)</span>
+              <span class="percentage">80%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+        </div>
+
+    <div class="wheel-content" id="experience-content">
+  <div class="experience-entry highlighted">
+    <div class="experience-date" data-en="AUG 2024 – DEC 2024" data-es="AGO 2024 – DIC 2024">AUG 2024 – DEC 2024</div>
+    <div class="experience-details">
+      <h4 class="lang-text" data-en="Graphic Designer" data-es="Diseñadora Gráfica">Graphic Designer</h4>
+      <p>Universidad Modelo</p>
+    </div>
+  </div>
+
+  <div class="experience-entry">
+    <div class="experience-date" data-en="JUL 2024, DEC 2024" data-es="JUL 2024, DIC 2024">JUL 2024, DEC 2024</div>
+    <div class="experience-details">
+      <h4 class="lang-text" data-en="Administrative Executive" data-es="Administradora Ejecutiva">Administrative Executive</h4>
+      <p>Grupo López Rosa</p>
+    </div>
+  </div>
+
+  <div class="experience-entry">
+    <div class="experience-date" data-en="JUL 2022, JUL 2023" data-es="JJUL 2022, JUL 2023">JUL 2022, JUL 2023</div>
+    <div class="experience-details">
+      <h4 class="lang-text" data-en="Administrative Assistant" data-es="Administradora Auxiliar">Administrative Assistant</h4>
+      <p>Grupo López Rosa</p>
+    </div>
+  </div>
+
+  <div class="experience-entry">
+    <div class="experience-date" data-en="AUG 2020 – DEC 2022" data-es="AGO 2020 – DIC 2022">AUG 2020 – DEC 2022</div>
+    <div class="experience-details">
+      <h4 class="lang-text" data-en="Operations Assistant" data-es="Asistente Operativa">Operations Assistant</h4>
+      <p>Sergio’s Tours</p>
+    </div>
+  </div>
+</div>
+
+    <div class="wheel-content" id="skills-content">
+      <div class="skills-tags">
+    <!-- NARANJA -->
+    <span class="tag orange lang-text" data-en="Illustration" data-es="Ilustración">Illustration</span>
+    <span class="tag orange lang-text" data-en="Creative Thinking" data-es="Pensamiento Creativo">Creative Thinking</span>
+    <span class="tag orange lang-text" data-en="Empathic Communication" data-es="Comunicación Empática">Empathic Communication</span>
+    <span class="tag orange lang-text" data-en="Teamwork" data-es="Trabajo Colaborativo">Teamwork</span>
+    <span class="tag orange lang-text" data-en="Adaptability" data-es="Adaptabilidad">Adaptability</span>
+
+    <!-- BLANCO CON BORDE -->
+    <span class="tag outline lang-text" data-en="Interactive Prototyping" data-es="Prototipado Interactivo">Interactive Prototyping</span>
+    <span class="tag outline lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</span>
+    <span class="tag outline lang-text" data-en="Light Animation" data-es="Animación Ligera">Light Animation</span>
+    <span class="tag outline lang-text" data-en="Storytelling" data-es="Narrativa">Storytelling</span>
+    <span class="tag outline lang-text" data-en="Problem-Solving" data-es="Resolución de Problemas">Problem-Solving</span>
+  </div>
+    </div>
+
+
+    <div class="wheel-content" id="software-content">
+        <div class="software-icons color">
+          <img src="images/AI.png" alt="Adobe Illustrator">
+          <img src="images/FIGMA.png" alt="Figma">
+          <img src="images/PROCREATE.png" alt="Procreate">
+          <img src="images/AFTEREFFECTS.png" alt="After Effects">
+        </div>
+        <div class="software-icons grey">
+          <img src="images/PHOTO.png" alt="Photoshop">
+          <img src="images/INDE.png" alt="InDesign">
+          <img src="images/KRITA.png" alt="KRITA">
+        </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+<div class="about-right">
+  <div class="about-visual">
+    <!-- Agrupador horizontal -->
+    <div class="about-visual-content">
+      <!-- Imagen e ilustración -->
+      <div class="about-illustration-wrapper">
+        <div class="about-overlay-text design">
+          <p class="lang-text"
+            data-en='<strong>Design</strong><br>is more than<br>solving problems,'
+            data-es='<strong>Diseñar</strong><br>es más que<br>resolver problemas,'>
+            <strong>Design</strong><br>is more than<br>solving problems,
+          </p>
+        </div>
+
+        <div class="about-overlay-text experiences">
+          <p class="lang-text"
+            data-en='it’s creating<br>meaningful<br><strong>experiences</strong>'
+            data-es='es crear<br><strong>experiencias</strong><br>significativas'>
+            it’s creating<br>meaningful<br><strong>experiences</strong>
+          </p>
+        </div>
+
+
+        <img src="images/Mask.png" alt="Character illustration" class="about-illustration">
+      </div>
+
+      <!-- Botones rosas -->
+      <div class="about-buttons">
+        <div class="about-btn"></div>
+        <div class="about-btn"></div>
+        <div class="about-btn"></div>
+        <div class="about-btn"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</section>
+
+<script src="accordion.js"></script>
+
+<footer class="site-footer">
+      <p class="lang-text" data-en="Designed, illustrated and developed by Ximena Poot © 2025" data-es="Diseñado, ilustrado y desarrollado por Ximena Poot © 2025">
+Designed, illustrated and developed by Ximena Poot © 2025</p>
+</footer>
+
+</body>
+</html>

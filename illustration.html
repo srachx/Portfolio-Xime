@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Illustration - Ximena Poot</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="lang-toggle.js"></script> <!-- si tienes un script para cambiar idioma -->
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="images/logo.svg" alt="Logo"></div>
+
+    <div class="category-bar">
+      <span class="label">Portfolio</span>
+      <div class="category-bar-buttons">
+      <button onclick="location.href='illustration.html'" class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</button>
+      <button onclick="location.href='uxui.html'" class="lang-text" data-en="UX/UI" data-es="UX/UI">UX/UI</button>
+      <button onclick="location.href='graphic.html'" class="lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</button>
+      <button onclick="location.href='other.html'" class="lang-text" data-en="Other" data-es="Otros">Other</button>
+      </div>
+    </div>
+
+    <div class="lang-toggle">
+      <span class="lang-btn" data-lang="es">ES</span>
+      <span class="lang-btn active" data-lang="en">EN</span>
+    </div>
+  </nav>
+
+  <!-- Hero personalizado -->
+  <section class="hero hero-illustration">
+    <div class="hero-text">
+      <h1 data-en="Illustration Projects" data-es="Proyectos de Ilustración">Illustration Projects</h1>
+      <p class="description" data-en="A collection of my visual storytelling work." data-es="Una colección de mis trabajos de narrativa visual.">
+        A collection of my visual storytelling work.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contenido específico -->
+  <section class="portfolio-section">
+    <!-- Aquí van tus proyectos -->
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="lang-text" data-en="Designed, illustrated and developed by Ximena Poot © 2025" data-es="Diseñado, ilustrado y desarrollado por Ximena Poot © 2025">Designed, illustrated and developed by Ximena Poot © 2025 </p>
+  </footer>
+
+<script src="accordion.js"></script>
+
+</body>
+</html>
