@@ -738,18 +738,33 @@ body {
   }
 
   /* BOTONES ROSAS */
-  .about-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
+  @media (max-width: 500px) {
+
+    /* Oculta botones e ilustración original */
+  .about-buttons,
+  .about-illustration,
+  .about-overlay-text {
+    display: none;
   }
 
-  .about-buttons button {
-    width: 120px;
-    height: 120px;
+  /* Carrusel horizontal */
+  .mobile-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    scroll-snap-type: x mandatory;
   }
+
+  .mobile-carousel img {
+    flex: 0 0 90%;
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    scroll-snap-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+}
 
   /* FOOTER */
   .site-footer {
