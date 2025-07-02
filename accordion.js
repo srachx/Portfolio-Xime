@@ -44,3 +44,21 @@ wheelItems.forEach(item => {
 
   // (Opcional) Detecta idioma por navegador
   const userLang = navigator.language.startsWith('es') ? 'es' : 'en';
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll('.carousel-img');
+    let index = 0;
+
+    function showSlide(i) {
+      images.forEach((img, idx) => {
+        img.classList.toggle('active', idx === i);
+      });
+    }
+
+    showSlide(index); // Mostrar la primera al inicio
+
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      showSlide(index);
+    }, 4000); // Cambia cada 4 segundos
+  });

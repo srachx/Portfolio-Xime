@@ -738,32 +738,47 @@ body {
   }
 
   /* BOTONES ROSAS */
-  @media (max-width: 500px) {
+  /* Para celular */
+@media (max-width: 500px) {
 
-    /* Oculta botones e ilustración original */
-  .about-buttons,
+  /* Oculta ilustración y botones en móvil */
   .about-illustration,
-  .about-overlay-text {
+  .about-buttons {
     display: none;
   }
 
-  /* Carrusel horizontal */
+  /* Carrusel automático */
   .mobile-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: auto;
     display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 10px;
-    scroll-snap-type: x mandatory;
+    justify-content: center;
   }
 
-  .mobile-carousel img {
-    flex: 0 0 90%;
-    max-width: 90%;
+  .carousel-img {
+    width: 100%;
+    max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    scroll-snap-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+    object-fit: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .carousel-img.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  /* Asegura que los textos estén sobre el carrusel */
+  .about-overlay-text {
+    z-index: 2;
+    position: absolute;
+  }
 }
 
   /* FOOTER */
