@@ -751,6 +751,7 @@ body {
     height: auto;
     display: flex;
     justify-content: center;
+    display: block;
   }
 
   .carousel-img {
@@ -844,5 +845,11 @@ body {
     font-size: 0.7rem;
     margin-top: 40px;
     padding: 10px 15px;
+  }
+}
+
+@media (min-width: 501px) {
+  .mobile-carousel {
+    display: none !important;
   }
 }
