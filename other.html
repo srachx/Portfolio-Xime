@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Ximena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @media (max-width: 700px) {
+      .hero-text {
+        margin-top: -40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-section logo">
+    <img src="images/loguito.png" alt="Inicio">
+  </div>
+  <div class="navbar-section category-bar">
+    <span class="label lang-text" data-en="Portfolio" data-es="Portafolio">Portfolio</span>
+    <div class="category-bar-buttons">
+      <button onclick="location.href='illustration.html'" class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</button>
+      <button onclick="location.href='uxui.html'" class="lang-text" data-en="UX/UI" data-es="UX/UI">UX/UI</button>
+      <button onclick="location.href='graphic.html'" class="lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</button>
+      <button onclick="location.href='other.html'" class="lang-text" data-en="Other" data-es="Otros">Other</button>
+    </div>
+  </div>
+  <div class="navbar-section lang-toggle">
+    <span class="lang-btn" data-lang="es">ES</span>
+    <span class="lang-btn" data-lang="en" style="font-weight: bold;">EN</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="intro lang-text" data-en="¡Hola!, <strong>I’m Ximena</strong> an" data-es="¡Hola!, <strong> Soy Ximena </strong>">¡Hola!, <strong>I’m Ximena</strong> an</p>
+    <h1><strong class="lang-text" data-en="Interactive Designer" data-es="Diseñadora Interactiva">Interactive<br>Designer</strong></h1>
+    <div class="arrow">
+      <img src="images/arrow.png" alt="Scroll down">
+    </div>
+  </div>
+</section>
+
+<section class="custom-section">
+  <!-- AQUÍ VA EL CONTENIDO DE CADA SECCIÓN NUEVA COMO illustration.html, uxui.html, etc. -->
+</section>
+
+<footer class="site-footer">
+  <p class="lang-text" data-en="Designed, illustrated and developed by Ximena Poot © 2025" data-es="Diseñado, ilustrado y desarrollado por Ximena Poot © 2025">
+    Designed, illustrated and developed by Ximena Poot © 2025
+  </p>
+</footer>
+
+<script src="accordion.js"></script>
+</body>
+</html>

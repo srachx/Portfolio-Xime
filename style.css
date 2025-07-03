@@ -1004,3 +1004,202 @@ body {
   }
 }
 
+@media (max-width: 1000px) and (min-width: 701px) {
+  .about-cv {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 30px;
+    gap: 30px;
+  }
+
+  .about-left {
+    text-align: center;
+  }
+
+  .about-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -40px;
+  }
+
+  .about-illustration {
+    max-height: 500px;
+    width: auto;
+  }
+
+  .about-overlay-text {
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+
+  .about-overlay-text.design {
+    top: 60px;
+    left: 5%;
+    transform: translateX(0);
+  }
+
+  .about-overlay-text.experiences {
+    bottom: 50px;
+    right: 5%;
+    transform: translateX(0);
+  }
+
+  .about-buttons {
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    right: 0;
+    top: 10%;
+    transform: translateY(-50%);
+    scale: 0.8;
+  }
+
+  .wheel-block {
+    max-width: 90%;
+    margin-top: 40px;
+  }
+
+  .wheel-content-group {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .wheel-content p,
+  .experience-entry p,
+  .experience-entry h4 {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .experience-entry {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .experience-date {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    min-width: auto;
+    margin-bottom: 8px;
+  }
+
+  .skills-tags .tag {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+}
+
+
+
+/*ILLUSTRATION.HTML CSS----------------------------------------->*/
+
+ .project-section {
+      display: flex;
+      gap: 40px;
+      padding: 60px 40px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .project-left {
+      flex: 1;
+      min-width: 280px;
+      max-width: 45%;
+    }
+
+    .project-right {
+      flex: 1;
+      min-width: 280px;
+      max-width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project-title {
+      color: #eb6ca7;
+      font-family: 'AvenirNextLTPro-Heavy';
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .project-description {
+      font-family: 'AvenirLTPro-Light';
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .project-images.references,
+    .project-final-characters,
+    .project-drafts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .project-images img,
+    .project-final-characters img,
+    .project-drafts img {
+      width: 100px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .project-technique {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .tech-label {
+      border: 1px solid #444; /* Contorno negro */
+      color: #444;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-family: 'AvenirLTPro-Roman';
+      text-transform: uppercase;
+    }
+
+    .icon-tech {
+    width: 80px;
+    height: auto; /* o por ejemplo: height: 36px; */
+    }
+
+
+    /* Responsive hasta 700px */
+    @media (max-width: 700px) {
+      .project-section {
+        flex-direction: column;
+        padding: 40px 20px;
+        align-items: center;
+      }
+
+      .project-left, .project-right {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .project-title {
+        font-size: 1.3rem;
+      }
+
+      .project-description {
+        font-size: 0.95rem;
+      }
+
+      .project-images img,
+      .project-final-characters img,
+      .project-drafts img {
+        width: 80px;
+      }
+    }
