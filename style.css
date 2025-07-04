@@ -135,7 +135,8 @@ body {
   padding: 0;
   margin: 0;
 
-  background-image: url("images/IMG_1507.png");
+  background-image: url("/Potfolio-Xime/images/IMG_1507.png");
+
   background-size: cover;         /* Para que cubra todo el section */
   background-position: center;    /* Centra la imagen */
   background-repeat: no-repeat;   /* Evita que se repita */
