@@ -188,7 +188,7 @@ function scrollToHero() {
   }
 }
 
-// Carrusel de Itara 3D automático con rotación
+// --- Carrusel de Itara 3D automático con rotación
 let itaraImages = document.querySelectorAll('.itara-carousel .itara-img');
 let itaraCurrentIndex = 0;
 
@@ -213,3 +213,4 @@ if (itaraImages.length > 0) {
   updateItaraCarousel(); // Estado inicial
   setInterval(updateItaraCarousel, 3000); // Cambio cada 3 segundos
 }
+
