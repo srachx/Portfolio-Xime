@@ -130,62 +130,52 @@ document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
 });
 
 // --- SUBSECCIONES INTERACTIVAS ---
+// --- SUBSECCIONES INTERACTIVAS PERSONALIZADAS ---
 document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   subBtn.addEventListener('click', () => {
     const sectionId = subBtn.getAttribute('data-section');
     const parentSubmenu = subBtn.closest('.submenu');
     const parentProject = parentSubmenu.getAttribute('data-project');
 
+    const allProjects = document.querySelectorAll('.menu-item.project');
+    const allSubmenus = document.querySelectorAll('.submenu');
     const allSubs = document.querySelectorAll('.menu-item.subsection');
     const allSections = document.querySelectorAll('.content-section');
 
     const sectionToShow = document.getElementById(sectionId);
     const generalSection = document.getElementById(parentProject);
+    const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
 
-    const isActive = subBtn.classList.contains('active-sub');
+    // Limpiar todos los activos
+    allProjects.forEach(btn => btn.classList.remove('active-project'));
+    allSubmenus.forEach(menu => menu.classList.remove('active'));
+    allSubs.forEach(btn => btn.classList.remove('active-sub'));
+    allSections.forEach(section => section.classList.remove('active'));
 
-    if (isActive) {
-      subBtn.classList.remove('active-sub');
-      sectionToShow?.classList.remove('active');
+    // Activar proyecto y submenu
+    projectBtn?.classList.add('active-project');
+    submenu?.classList.add('active');
+    generalSection?.classList.add('active');
 
-      // Mostrar solo sección general
-      allSubs.forEach(btn => btn.classList.remove('active-sub'))
-      if (generalSection) {
-        generalSection.classList.add('active');
-        generalSection.scrollIntoView({ behavior: 'smooth' });
+    // Activar sección seleccionada
+    subBtn.classList.add('active-sub');
+    sectionToShow?.classList.add('active');
+
+    // Si se hizo clic en Illustration, mostrar también Character Design si está activo
+    if (sectionId === "altair-illustration") {
+      const characterDesignBtn = document.querySelector('.menu-item.subsection[data-section="altair-character"]');
+      const characterDesignSection = document.getElementById("altair-character");
+      if (characterDesignBtn && characterDesignBtn.classList.contains("active-sub")) {
+        characterDesignSection?.classList.add("active");
       }
-
-    } else {
-      // Desactivar otros
-      allSubs.forEach(btn => btn.classList.remove('active-sub'));
-      allSections.forEach(section => section.classList.remove('active'));
-
-      // Activar este subtítulo
-      subBtn.classList.add('active-sub');
-      sectionToShow?.classList.add('active');
-
-      // También mostrar sección general del proyecto
-      const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
-      const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
-
-      document.querySelectorAll('.menu-item.project').forEach(btn => btn.classList.remove('active-project'));
-      document.querySelectorAll('.submenu').forEach(menu => menu.classList.remove('active'));
-
-      projectBtn?.classList.add('active-project');
-      submenu?.classList.add('active');
-      generalSection?.classList.add('active');
-
-      const charaBtn = document.querySelector('menu-item.subsection[data-section="altair-character"]');
-      const charaSection = document.getElementById("altair-character");
-
-      if (charaBtn && charaBtn.classList.contains("active=sub")) {
-        charaSection?.classList.add("active");
-      }
-
-      sectionToShow?.scrollIntoView({ behavior: 'smooth' });
     }
+
+    // Scroll hacia la sección seleccionada
+    sectionToShow?.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
 
 // --- FUNCIÓN SCROLL HERO ---
 function scrollToHero() {
