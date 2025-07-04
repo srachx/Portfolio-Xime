@@ -149,7 +149,7 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
       sectionToShow?.classList.remove('active');
 
       // Mostrar solo sección general
-      document.querySelectorAll('.menu-item.subsection').forEach(btn => btn.classList.remove('active-sub'));
+      allSubs.forEach(btn => btn.classList.remove('active-sub'))
       if (generalSection) {
         generalSection.classList.add('active');
         generalSection.scrollIntoView({ behavior: 'smooth' });
@@ -174,6 +174,13 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
       projectBtn?.classList.add('active-project');
       submenu?.classList.add('active');
       generalSection?.classList.add('active');
+
+      const charaBtn = document.querySelector('menu-item.subsection[data-section="altair-character"]');
+      const charaSection = document.getElementById("altair-character");
+
+      if (charaBtn && charaBtn.classList.contains("active=sub")) {
+        charaSection?.classList.add("active");
+      }
 
       sectionToShow?.scrollIntoView({ behavior: 'smooth' });
     }
