@@ -187,3 +187,29 @@ function scrollToHero() {
     hero.scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+// Carrusel de Itara 3D automático con rotación
+let itaraImages = document.querySelectorAll('.itara-carousel .itara-img');
+let itaraCurrentIndex = 0;
+
+function updateItaraCarousel() {
+  itaraImages.forEach((img, index) => {
+    img.classList.remove('active', 'left', 'right');
+
+    if (index === itaraCurrentIndex) {
+      img.classList.add('active');
+    } else if (index === (itaraCurrentIndex + 1) % itaraImages.length) {
+      img.classList.add('right');
+    } else if (index === (itaraCurrentIndex - 1 + itaraImages.length) % itaraImages.length) {
+      img.classList.add('left');
+    }
+  });
+
+  itaraCurrentIndex = (itaraCurrentIndex + 1) % itaraImages.length;
+}
+
+// Solo iniciar si hay imágenes
+if (itaraImages.length > 0) {
+  updateItaraCarousel(); // Estado inicial
+  setInterval(updateItaraCarousel, 3000); // Cambio cada 3 segundos
+}
