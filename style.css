@@ -1308,3 +1308,171 @@ body {
 .content-section.active {
   display: block;
 }
+
+
+/* Fondo general */
+#altair-character {
+  background-color: whitesmoke;
+  position: relative;
+  padding: 3rem 1rem;
+  overflow: hidden;
+}
+
+/* Imágenes de fondo */
+.itara-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.itara-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.06;
+}
+
+/* Contenedor principal */
+.itara-carousel-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Texto */
+.itara-text {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.itara-text h3 {
+  color: #e3639e;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.itara-text h2 {
+  color: #e3639e;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.itara-text p {
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Carrusel */
+.itara-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.itara-img {
+  max-height: 320px;
+  opacity: 0.3;
+  transform: scale(0.85);
+  transition: all 0.6s ease;
+  z-index: 1;
+}
+
+.itara-img.active {
+  opacity: 1;
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+
+/* FONDO PARA SECCIÓN ITARA */
+#altair-character {
+  background-color: whitesmoke;
+  position: relative;
+  padding: 3rem 1rem;
+  overflow: hidden;
+}
+
+/* Fondo decorativo */
+.itara-bg-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.itara-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.06;
+}
+
+/* CONTENIDO */
+.itara-carousel-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.itara-text {
+  text-align: center;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+.itara-text h3 {
+  color: #e3639e;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.itara-text h2 {
+  color: #e3639e;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.itara-text p {
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* CARRUSEL */
+.itara-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.itara-img {
+  max-height: 320px;
+  opacity: 0.3;
+  transform: scale(0.85);
+  transition: all 0.6s ease;
+  z-index: 1;
+}
+
+.itara-img.active {
+  opacity: 1;
+  transform: scale(1.1);
+  z-index: 2;
+}
