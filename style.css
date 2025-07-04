@@ -47,9 +47,9 @@ html, body {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'AvenirLTPro-Book', sans-serif;
   background: #F6F6F6;
-  color: #434343;
+  color: whitesmoke;
 }
 
 /* Barra de navegación */
@@ -68,8 +68,8 @@ body {
 }
 
 .logo img {
-  height: 40px;
-  width: auto;
+  height: auto;
+  width: 40px;
 }
 
 .category-bar {
@@ -80,7 +80,7 @@ body {
 
 .category-bar .label {
   font-size: 0.8rem;
-  color: #434343;
+  color: whitesmoke;
   margin-right: 10px;
   white-space: nowrap;
 }
@@ -92,7 +92,7 @@ body {
 }
 
 .category-bar button {
-  border: 1px solid #434343;
+  border: 1px solid whitesmoke;
   background: none;
   padding: 6px 14px;
   border-radius: 999px;
@@ -105,7 +105,7 @@ body {
 .category-bar button.active,
 .category-bar button:hover {
   background: #e6612c;
-  color: white;
+  color: whitesmoke;
 }
 
 .lang-toggle {
@@ -116,12 +116,12 @@ body {
 }
 
 .lang-toggle span {
-  color: #333;
+  color: whitesmoke;
   cursor: pointer;
 }
 
 .lang-toggle .active {
-  color: 434343;
+  color: whitesmoke;
   font-weight: bold;
 }
 
@@ -135,7 +135,7 @@ body {
   padding: 0;
   margin: 0;
 
-  background-image: url("images/IMG_1566.png");
+  background-image: url("images/IMG_1507.png");
   background-size: cover;         /* Para que cubra todo el section */
   background-position: center;    /* Centra la imagen */
   background-repeat: no-repeat;   /* Evita que se repita */
@@ -163,6 +163,7 @@ body {
   max-width: 600px;
   padding: 10px;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .hero-text .description {
@@ -173,13 +174,13 @@ body {
   padding: 10px;
   font-size: 1rem;
   line-height: 1.6;
-  color: #434343;
+  color: #fff;
 }
 
 .intro {
   font-family: 'AvenirLTPro-Book';
   font-size: 1rem;
-  color: #434343;
+  color: #ffff;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -1094,112 +1095,216 @@ body {
 
 
 /*ILLUSTRATION.HTML CSS----------------------------------------->*/
+.index-menu {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  position: absolute;
+  top: 10rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+  align-items: flex-start; /* Botones alineados a la izquierda */
+}
 
- .project-section {
-      display: flex;
-      gap: 40px;
-      padding: 60px 40px;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+.menu-label {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+  align-self: center; /* Centra solo el texto de label */
+  text-align: center;
+}
 
-    .project-left {
-      flex: 1;
-      min-width: 280px;
-      max-width: 45%;
-    }
+.menu-item {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  text-align: left;
+  background-color: transparent;
+  border: 1px solid #aaa;
+  color: #666;
+  width: fit-content;
+}
 
-    .project-right {
-      flex: 1;
-      min-width: 280px;
-      max-width: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+/* ----------- PROYECTOS ACTIVOS ----------- */
+.menu-item.project.active-project[data-project="altair"] {
+  background-color: #ea84aa;
+  color: white;
+  border-color: #ea84aa;
+  font-weight: bold;
+}
 
-    .project-title {
-      color: #eb6ca7;
-      font-family: 'AvenirNextLTPro-Heavy';
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
+.menu-item.project.active-project[data-project="project-2037"] {
+  background-color: #007455;
+  color: white;
+  border-color: #007455;
+  font-weight: bold;
+}
 
-    .project-description {
-      font-family: 'AvenirLTPro-Light';
-      font-size: 1rem;
-      color: #333;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
+.menu-item.subsection {
+  text-align: left;       /* texto alineado a la izquierda */
+  width: auto;            /* se expande a lo ancho del submenu */
+  box-sizing: border-box; /* asegura que padding y border no lo saquen del contenedor */
+  padding: 0.5rem 1rem;   /* Puedes ajustar el espacio interno si es necesario */
 
-    .project-images.references,
-    .project-final-characters,
-    .project-drafts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
+}
 
-    .project-images img,
-    .project-final-characters img,
-    .project-drafts img {
-      width: 100px;
-      height: auto;
-      object-fit: contain;
-      border-radius: 4px;
-    }
+/* ----------- PROYECTOS INACTIVOS ----------- */
+.menu-item.project {
+  color: #aaa;
+  border: 1px solid #aaa;
+  background-color: transparent;
+}
 
-    .project-technique {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: auto;
-    }
+/* ----------- SUBMENÚ ----------- */
+.submenu {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 0;
+  margin-top: 0.2rem;
+  align-items: flex-start; /* Esto asegura que los botones no se centren */
+}
 
-    .tech-label {
-      border: 1px solid #444; /* Contorno negro */
-      color: #444;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-family: 'AvenirLTPro-Roman';
-      text-transform: uppercase;
-    }
+.submenu.active {
+  display: flex;
+}
 
-    .icon-tech {
-    width: 80px;
-    height: auto; /* o por ejemplo: height: 36px; */
-    }
+/* ----------- SUBTÍTULOS INACTIVOS ----------- */
+.submenu[data-project="altair"] .menu-item.subsection {
+  border: 1px solid #ea84aa;
+  color: #ea84aa;
+}
+
+.submenu[data-project="project-2037"] .menu-item.subsection {
+  border: 1px solid #007455;
+  color: #007455;
+}
+
+/* ----------- SUBTÍTULOS ACTIVOS ----------- */
+.submenu[data-project="altair"] .menu-item.subsection.active-sub {
+  background-color: #1a1531;
+  color: #ea84aa;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="project-2037"] .menu-item.subsection.active-sub {
+  background-color: #007455;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .index-menu {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+
+  .menu-item {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .submenu {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .submenu .menu-item.subsection {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
 
 
-    /* Responsive hasta 700px */
-    @media (max-width: 700px) {
-      .project-section {
-        flex-direction: column;
-        padding: 40px 20px;
-        align-items: center;
-      }
+/* Hover: botón de proyecto inactivo */
+.menu-item.project:not(.active-project):hover {
+  background-color: #f4f4f4;
+  color: #444;
+  border-color: #888;
+}
 
-      .project-left, .project-right {
-        max-width: 100%;
-        text-align: center;
-      }
+/* Hover: subtítulo inactivo - Cartas a Altair */
+[data-project="altair"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #ea84aa;
+  color: white;
+}
 
-      .project-title {
-        font-size: 1.3rem;
-      }
+/* Hover: subtítulo inactivo - 2037 */
+[data-project="project-2037"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #007455;
+  color: white;
+}
 
-      .project-description {
-        font-size: 0.95rem;
-      }
+.altair-section {
+  position: relative;
+  background-color: whitesmoke;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
 
-      .project-images img,
-      .project-final-characters img,
-      .project-drafts img {
-        width: 80px;
-      }
-    }
+.altair-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/carta_trans.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.altair-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;   /* Centra verticalmente */
+}
+
+.altair-logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.altair-description {
+  max-width: 500px;
+  margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+}
+
+.altair-project-type {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
