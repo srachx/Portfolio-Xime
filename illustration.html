@@ -3,99 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio - Ximena</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    @media (max-width: 700px) {
-      .hero-text {
-        margin-top: -40px;
-      }
-    }
-  </style>
+  <title>Cartas a Altair - Illustration</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="accordion.js"></script>
 </head>
 <body>
 
-<header class="navbar">
-  <div class="navbar-section logo">
-    <img src="images/loguito.png" alt="Inicio">
-  </div>
-  <div class="navbar-section category-bar">
-    <span class="label lang-text" data-en="Portfolio" data-es="Portafolio">Portfolio</span>
-    <div class="category-bar-buttons">
-      <button onclick="location.href='illustration.html'" class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</button>
-      <button onclick="location.href='uxui.html'" class="lang-text" data-en="UX/UI" data-es="UX/UI">UX/UI</button>
-      <button onclick="location.href='graphic.html'" class="lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</button>
-      <button onclick="location.href='other.html'" class="lang-text" data-en="Other" data-es="Otros">Other</button>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar-section logo">
+      <img src="images/loguito.png" alt="Inicio" />
     </div>
-  </div>
-  <div class="navbar-section lang-toggle">
-    <span class="lang-btn" data-lang="es">ES</span>
-    <span class="lang-btn" data-lang="en" style="font-weight: bold;">EN</span>
-  </div>
-</header>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1><strong class="lang-text" data-en="Interactive Designer" data-es="Diseñadora Interactiva">Illustration</strong></h1>
-    <div class="arrow">
-      <img src="images/arrow.png" alt="Scroll down">
+    <div class="navbar-section category-bar">
+      <span class="label lang-text" data-en="Portfolio" data-es="Portafolio">Portfolio</span>
+      <div class="category-bar-buttons">
+        <button onclick="location.href='illustration.html'" class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</button>
+        <button onclick="location.href='uxui.html'" class="lang-text" data-en="UX/UI" data-es="UX/UI">UX/UI</button>
+        <button onclick="location.href='graphic.html'" class="lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</button>
+        <button onclick="location.href='other.html'" class="lang-text" data-en="Other" data-es="Otros">Other</button>
+      </div>
     </div>
-  </div>
-</section>
 
-<section class="project-section">
-  <div class="project-left">
-    <h2 class="project-title lang-text" data-en="CARTAS A ALTAIR CHARACTER DESIGN" data-es="CARTAS A ALTAIR DISEÑO DE PERSONAJE">
-      CARTAS A ALTAIR CHARACTER DESIGN
-    </h2>
-    <p class="project-description lang-text"
-       data-en="Cartas a Altair is a digital graphic novel that explores the vocational self-definition process from an emotional and relatable perspective. The project involved developing Itara’s visual and emotional identity through character design and expressive illustration."
-       data-es="Cartas a Altair es una novela gráfica digital que aborda el proceso de autodefinición vocacional desde una perspectiva emocional y cercana. Desarrollo de la identidad visual y emocional de Itara, la protagonista, a través del diseño de personaje y expresividad gráfica.">
-      Cartas a Altair is a digital graphic novel that explores the vocational self-definition process from an emotional and relatable perspective. The project involved developing Itara’s visual and emotional identity through character design and expressive illustration.
+    <div class="navbar-section lang-toggle">
+      <span class="lang-btn" data-lang="es">ES</span>
+      <span class="lang-btn" data-lang="en" style="font-weight: bold;">EN</span>
+    </div>
+  </header>
+
+  <!-- Índice Lateral -->
+  <div class="index-menu">
+    <span class="menu-label lang-text" data-en="Contents" data-es="Contenido">Contenido</span>
+
+    <button class="menu-item project" data-project="altair">Cartas a Altair</button>
+      <div class="submenu" data-project="altair">
+        <button class="menu-item subsection" data-section="altair-character">Character Design</button>
+        <button class="menu-item subsection" data-section="altair-illustration">Illustration</button>
+      </div>
+
+      <button class="menu-item project" data-project="project-2037">2037</button>
+      <div class="submenu" data-project="project-2037">
+        <button class="menu-item subsection" data-section="2037-character">Character Design</button>
+        <button class="menu-item subsection" data-section="2037-background">Illustration</button>
+      </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="intro lang-text" data-en="¡Hola!, <strong>I’m Ximena</strong> an" data-es="¡Hola!, <strong>Soy Ximena</strong>">¡Hola!, <strong>I’m Ximena</strong> an</p>
+      <h1><strong class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</strong></h1>
+      <div class="arrow" onclick="scrollToContent()">
+        <img src="images/arrow.png" alt="Scroll down" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenido Dinámico -->
+  <section class="custom-section" id="main-content">
+    <div class="content-section altair-section" id="altair">
+      <div class="altair-background"></div>
+      <div class="altair-overlay">
+        <img src="images/cartas_logo.png" alt="Cartas a Altair Logo" class="altair-logo" />
+        <p class="altair-description">
+          Cartas a Altair is a digital graphic novel that explores the vocational self-definition process from an emotional and relatable perspective. <br>
+          The project involved developing Itara’s visual and emotional identity through character design and expressive illustration.
+        </p>
+        <p class="altair-project-type">Final degree project</p>
+      </div>
+    </div>
+
+
+    <div class="content-section" id="altair-illustration">
+      <h2>Cartas a Altair - Illustration</h2>
+      <p>Contenido de Illustration...</p>
+    </div>
+
+    <div class="content-section" id="2037-character">
+      <h2>2037 - Character Design</h2>
+      <p>Contenido de Character Design 2037...</p>
+    </div>
+
+    <div class="content-section" id="2037-background">
+      <h2>2037 - Background</h2>
+      <p>Contenido de Background...</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="lang-text" data-en="Designed, illustrated and developed by Ximena Poot © 2025" data-es="Diseñado, ilustrado y desarrollado por Ximena Poot © 2025">
+      Designed, illustrated and developed by Ximena Poot © 2025
     </p>
+  </footer>
 
-    <div class="project-images references">
-      <!-- Aquí van tus imágenes de inspiración -->
-      <img src="images/moodboardcharacter.jpg" alt="reference 1">
-    </div>
-  </div>
-
-  <div class="project-right">
-    <div class="project-altfin-characters">
-      <!-- Aquí tus personajes finales -->
-      <img src="images/personajes.png" alt="altfin design">
-    </div>
-
-    <div class="project-final-characters">
-      <!-- Aquí tus personajes finales -->
-      <img src="images/itara.PNG" alt="Final design">
-      <img src="images/itarauniform.PNG" alt="Final design">
-      <img src="images/itarawocol.PNG" alt="Final design">
-    </div>
-
-    <div class="project-drafts">
-      <!-- Aquí tus drafts -->
-      <img src="images/draftone.png" alt="Draft">
-      <img src="images/drafttwo.png" alt="Draft">
-      <img src="images/draftthree.png" alt="Draft">
-    </div>
-
-    <div class="project-technique">
-      <span class="tech-label lang-text" data-en="RASTER ILLUSTRATION" data-es="ILUSTRACIÓN RÁSTER">RASTER ILLUSTRATION</span>
-      <img src="images/PHOTO.png" alt="Photoshop Icon" class="icon-tech">
-      <img src="images/PROCREATE.png" alt="Procreate Icon" class="icon-tech">
-    </div>
-  </div>
-</section>
-
-
-<footer class="site-footer">
-  <p class="lang-text" data-en="Designed, illustrated and developed by Ximena Poot © 2025" data-es="Diseñado, ilustrado y desarrollado por Ximena Poot © 2025">
-    Designed, illustrated and developed by Ximena Poot © 2025
-  </p>
-</footer>
-
-<script src="accordion.js"></script>
 </body>
 </html>
