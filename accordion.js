@@ -129,52 +129,71 @@ document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
   });
 });
 
-// --- SUBSECCIONES INTERACTIVAS ---
-// --- SUBSECCIONES INTERACTIVAS PERSONALIZADAS ---
+// --- SUBSECCIONES INTERACTIVAS PARA CARTAS A ALTAIR (con subtítulo toggle sin ocultar título) ---
 document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section');
+  if (!sectionId.startsWith('altair')) return;
+
   subBtn.addEventListener('click', () => {
-    const sectionId = subBtn.getAttribute('data-section');
-    const parentSubmenu = subBtn.closest('.submenu');
-    const parentProject = parentSubmenu.getAttribute('data-project');
-
-    const allProjects = document.querySelectorAll('.menu-item.project');
-    const allSubmenus = document.querySelectorAll('.submenu');
-    const allSubs = document.querySelectorAll('.menu-item.subsection');
-    const allSections = document.querySelectorAll('.content-section');
-
-    const sectionToShow = document.getElementById(sectionId);
-    const generalSection = document.getElementById(parentProject);
+    const parentProject = "altair";
     const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
     const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const generalSection = document.getElementById(parentProject);
+    const sectionToToggle = document.getElementById(sectionId);
+    const isActive = subBtn.classList.contains("active-sub");
 
-    // Limpiar todos los activos
-    allProjects.forEach(btn => btn.classList.remove('active-project'));
-    allSubmenus.forEach(menu => menu.classList.remove('active'));
-    allSubs.forEach(btn => btn.classList.remove('active-sub'));
-    allSections.forEach(section => section.classList.remove('active'));
+    // Asegurar que el proyecto esté activo (nunca se oculta desde subtítulos)
+    projectBtn?.classList.add("active-project");
+    submenu?.classList.add("active");
+    generalSection?.classList.add("active");
 
-    // Activar proyecto y submenu
-    projectBtn?.classList.add('active-project');
-    submenu?.classList.add('active');
-    generalSection?.classList.add('active');
-
-    // Activar sección seleccionada
-    subBtn.classList.add('active-sub');
-    sectionToShow?.classList.add('active');
-
-    // Si se hizo clic en Illustration, mostrar también Character Design si está activo
-    if (sectionId === "altair-illustration") {
-      const characterDesignBtn = document.querySelector('.menu-item.subsection[data-section="altair-character"]');
-      const characterDesignSection = document.getElementById("altair-character");
-      if (characterDesignBtn && characterDesignBtn.classList.contains("active-sub")) {
-        characterDesignSection?.classList.add("active");
-      }
+    if (isActive) {
+      // Si ya estaba activo, desactiva solo ese subtítulo y su sección
+      subBtn.classList.remove("active-sub");
+      sectionToToggle?.classList.remove("active");
+    } else {
+      // Activar ese subtítulo y su sección, sin afectar los demás
+      subBtn.classList.add("active-sub");
+      sectionToToggle?.classList.add("active");
+      sectionToToggle?.scrollIntoView({ behavior: 'smooth' });
     }
-
-    // Scroll hacia la sección seleccionada
-    sectionToShow?.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+
+// --- SUBSECCIONES INTERACTIVAS PARA 2037 (con subtítulo toggle sin ocultar título) ---
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section');
+  if (!sectionId.startsWith('2037')) return;
+
+  subBtn.addEventListener('click', () => {
+    const parentProject = "project-2037";
+    const generalSectionId = "2037"; // sección principal que debe mantenerse visible
+    const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const generalSection = document.getElementById(generalSectionId);
+    const sectionToToggle = document.getElementById(sectionId);
+    const isActive = subBtn.classList.contains("active-sub");
+
+    // Asegurar que el proyecto esté activo (nunca se oculta desde subtítulos)
+    projectBtn?.classList.add("active-project");
+    submenu?.classList.add("active");
+    generalSection?.classList.add("active");
+
+    if (isActive) {
+      // Si ya estaba activo, desactiva solo ese subtítulo y su sección
+      subBtn.classList.remove("active-sub");
+      sectionToToggle?.classList.remove("active");
+    } else {
+      // Activar ese subtítulo y su sección, sin afectar los demás
+      subBtn.classList.add("active-sub");
+      sectionToToggle?.classList.add("active");
+      sectionToToggle?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+
 
 
 // --- FUNCIÓN SCROLL HERO ---
