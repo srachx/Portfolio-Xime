@@ -95,12 +95,12 @@ document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
     const project = projectBtn.getAttribute('data-project');
     const submenu = document.querySelector(`.submenu[data-project="${project}"]`);
     const generalSection = document.getElementById(project);
-    const isActive = projectBtn.classList.contains('active-project');
-
     const allProjects = document.querySelectorAll('.menu-item.project');
     const allSubmenus = document.querySelectorAll('.submenu');
     const allSubs = document.querySelectorAll('.menu-item.subsection');
     const allSections = document.querySelectorAll('.content-section');
+
+    const isActive = projectBtn.classList.contains('active-project');
 
     if (isActive) {
       // Desactiva todo
@@ -109,22 +109,18 @@ document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
       allSubs.forEach(btn => btn.classList.remove('active-sub'));
       allSections.forEach(section => section.classList.remove('active'));
 
-      // Oculta también la sección general (como #altair)
-      if (generalSection) generalSection.classList.remove('active');
-
       scrollToHero();
     } else {
-      // Limpia estados anteriores
+      // Desactiva todo antes de activar el nuevo
       allProjects.forEach(btn => btn.classList.remove('active-project'));
       allSubmenus.forEach(menu => menu.classList.remove('active'));
       allSubs.forEach(btn => btn.classList.remove('active-sub'));
       allSections.forEach(section => section.classList.remove('active'));
 
-      // Activa título y submenu
+      // Activa el botón y menú
       projectBtn.classList.add('active-project');
       submenu.classList.add('active');
 
-      // Muestra sección general (como altair)
       if (generalSection) {
         generalSection.classList.add('active');
         generalSection.scrollIntoView({ behavior: 'smooth' });
@@ -137,35 +133,57 @@ document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
 document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   subBtn.addEventListener('click', () => {
     const sectionId = subBtn.getAttribute('data-section');
-    const contentSection = document.getElementById(sectionId);
     const parentSubmenu = subBtn.closest('.submenu');
-    const parentProject = parentSubmenu?.getAttribute('data-project');
-    const generalSection = document.getElementById(parentProject);
+    const parentProject = parentSubmenu.getAttribute('data-project');
 
     const allSubs = document.querySelectorAll('.menu-item.subsection');
     const allSections = document.querySelectorAll('.content-section');
 
-    const isAlreadyActive = subBtn.classList.contains('active-sub');
+    const sectionToShow = document.getElementById(sectionId);
+    const generalSection = document.getElementById(parentProject);
 
-    // Desactiva todos los subtítulos y secciones
-    allSubs.forEach(btn => btn.classList.remove('active-sub'));
-    allSections.forEach(section => section.classList.remove('active'));
+    const isActive = subBtn.classList.contains('active-sub');
 
-    if (isAlreadyActive) {
-      // Si estaba activo, ocultar también la sección general (como altair)
-      if (generalSection) generalSection.classList.add('active');
-      generalSection?.scrollIntoView({ behavior: 'smooth' });
+    if (isActive) {
+      subBtn.classList.remove('active-sub');
+      sectionToShow?.classList.remove('active');
+
+      // Mostrar solo sección general
+      document.querySelectorAll('.menu-item.subsection').forEach(btn => btn.classList.remove('active-sub'));
+      if (generalSection) {
+        generalSection.classList.add('active');
+        generalSection.scrollIntoView({ behavior: 'smooth' });
+      }
+
     } else {
+      // Desactivar otros
+      allSubs.forEach(btn => btn.classList.remove('active-sub'));
+      allSections.forEach(section => section.classList.remove('active'));
+
+      // Activar este subtítulo
       subBtn.classList.add('active-sub');
-      contentSection?.classList.add('active');
-      contentSection?.scrollIntoView({ behavior: 'smooth' });
+      sectionToShow?.classList.add('active');
+
+      // También mostrar sección general del proyecto
+      const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+      const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+
+      document.querySelectorAll('.menu-item.project').forEach(btn => btn.classList.remove('active-project'));
+      document.querySelectorAll('.submenu').forEach(menu => menu.classList.remove('active'));
+
+      projectBtn?.classList.add('active-project');
+      submenu?.classList.add('active');
+      generalSection?.classList.add('active');
+
+      sectionToShow?.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
 
-// --- SCROLL AL HERO ---
+// --- FUNCIÓN SCROLL HERO ---
 function scrollToHero() {
   const hero = document.querySelector('.hero');
-  if (hero) hero.scrollIntoView({ behavior: 'smooth' });
+  if (hero) {
+    hero.scrollIntoView({ behavior: 'smooth' });
+  }
 }
-
