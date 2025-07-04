@@ -1672,3 +1672,124 @@ body {
     text-align: center;
   }
 }
+
+
+/* ======= SECCIÓN 2037 - CHARACTER DESIGN ======= */
+
+#2037-character {
+  background-color: whitesmoke;
+  position: relative;
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+.char2037-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.char2037-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === COLUMNA 1: TEXTO === */
+.char2037-left-col .char2037-text {
+  max-width: 450px;
+}
+
+.char2037-text h3 {
+  color: #007455;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  font-family: 'AvenirNextLTPro-Heavy';
+}
+
+.char2037-text h2 {
+  font-size: 2.5rem;
+  color: #007455;
+  font-family: 'AvenirNextLTPro-Heavy';
+  margin-bottom: 1rem;
+}
+
+.char2037-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #222;
+}
+
+.char2037-note {
+  font-size: 0.85rem;
+  color: #444;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* === COLUMNA 2: CARRUSEL === */
+.char2037-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.char2037-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  transition: all 0.8s ease;
+  opacity: 0.3;
+  max-height: 320px;
+  z-index: 1;
+}
+
+.char2037-img.left {
+  transform: translateX(-100%) scale(0.85);
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.char2037-img.right {
+  transform: translateX(20%) scale(0.85);
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.char2037-img.active {
+  transform: translateX(-50%) scale(1.05);
+  opacity: 1;
+  z-index: 3;
+}
+
+/* === COLUMNA 3: OTROS PERSONAJES === */
+.char2037-right {
+  align-items: center;
+  text-align: center;
+}
+
+.char2037-other-title {
+  display: block;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  color: #333;
+}
+
+.char2037-others-img {
+  max-height: 300px;
+  width: auto;
+  object-fit: contain;
+}
