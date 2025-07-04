@@ -1366,9 +1366,10 @@ body {
   text-align: center;
   align-self: start;     /* evita que el contenido se centre automáticamente */
   justify-self: start;   /* para grid */
+  margin-top: 4rem;      /* 🔼 SUBE el bloque */
   margin-bottom: 2rem;
   max-width: 700px;
-  transform: translateX(-100px); /* mueve todo el bloque a la izquierda */
+  transform: translate(-100px, -130px);
 }
 
 .itara-text h3 {
