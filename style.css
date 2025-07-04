@@ -141,6 +141,11 @@ body {
   background-repeat: no-repeat;   /* Evita que se repita */
   width: 100vw;
   min-height: 100vh;
+  opacity: 1;
+  visibility: visible;
+  position: relative;   /* ✅ ayuda a que se comporte como capa base */
+  z-index: 1;           /* asegúrate de que no esté por debajo de overlays */
+
 }
 
 .hero-text {
