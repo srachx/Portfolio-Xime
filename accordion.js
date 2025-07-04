@@ -194,8 +194,6 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
 });
 
 
-
-
 // --- FUNCIÓN SCROLL HERO ---
 function scrollToHero() {
   const hero = document.querySelector('.hero');
