@@ -1598,3 +1598,73 @@ body {
   transform: translateX(-30px);
 }
 
+
+/* --- ALTAR ILLUSTRATION SECTION --- */
+.altair-illustration-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 40px;
+  gap: 60px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.altair-comics {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 500px;
+}
+
+.altair-comics img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.altair-comics img:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.altair-comics img:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.altair-illustration-text {
+  max-width: 400px;
+  text-align: left;
+}
+
+.altair-illustration-text h3 {
+  color: #e3639e;
+  font-size: 1.5rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  margin-bottom: 1rem;
+}
+
+.altair-illustration-text p {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .altair-illustration-container {
+    flex-direction: column;
+    padding: 60px 20px;
+    gap: 40px;
+  }
+
+  .altair-illustration-text {
+    text-align: center;
+  }
+}
