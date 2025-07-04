@@ -1442,7 +1442,8 @@ body {
   flex-direction: column;
   align-items: center;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 60px auto;
+
 }
 
 
@@ -1476,14 +1477,13 @@ body {
 
 /* Carrusel */
 .itara-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px; /* da altura mínima */
   position: relative;
-  height: 350px;
-  overflow: hidden;
 }
+
+
 
 .itara-img {
   position: absolute;
@@ -1497,19 +1497,19 @@ body {
 }
 
 .itara-img.left {
-  transform: translateX(-180%) scale(0.85);
+  transform: translateX(-110%) scale(1);
   z-index: 0;
   opacity: 0.3;
 }
 
 .itara-img.right {
-  transform: translateX(80%) scale(0.85);
+  transform: translateX(10%) scale(1);
   z-index: 0;
   opacity: 0.3;
 }
 
 .itara-img.active {
-  transform: translateX(-50%) scale(1.1);
+  transform: translateX(-50%) scale(2);
   opacity: 1;
   z-index: 3;
 }
@@ -1586,7 +1586,10 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  position: relative;
 }
 
 .itara-left-col {
