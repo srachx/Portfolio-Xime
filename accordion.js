@@ -76,6 +76,28 @@ document.querySelectorAll('.lang-btn').forEach(button => {
   });
 });
 
+
+// === DETECTAR SECCIÓN CON FONDO CLARO PARA CAMBIAR NAVBAR ===
+const navbar = document.querySelector('.navbar'); // o ajusta a tu clase de navbar
+const lightSections = document.querySelectorAll('.light-background'); // agrega esta clase a secciones blancas
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navbar.classList.add('navbar-dark'); // cambia color del texto a oscuro
+      } else {
+        navbar.classList.remove('navbar-dark');
+      }
+    });
+  },
+  {
+    threshold: 0.3
+  }
+);
+
+lightSections.forEach(section => observer.observe(section));
+
 const userLang = navigator.language.startsWith('es') ? 'es' : 'en';
 
 // --- SLIDESHOW ---
