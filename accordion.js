@@ -198,10 +198,18 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
     generalSection?.classList.add("active");
 
     if (isActive) {
-      // Si ya estaba activo, desactiva solo ese subtítulo y su sección
-      subBtn.classList.remove("active-sub");
-      sectionToToggle?.classList.remove("active");
-    } else {
+  subBtn.classList.remove("active-sub");
+  sectionToToggle?.classList.remove("active");
+
+  // Detecta si no quedan más subtítulos activos del mismo proyecto
+  const parentPrefix = sectionId.split('-')[0]; // '2037' o 'illustration'
+  const stillActiveSubs = document.querySelectorAll(`.menu-item.subsection.active-sub[data-section^="${parentPrefix}"]`);
+
+  if (stillActiveSubs.length === 0) {
+    const generalSection = document.getElementById(parentPrefix);
+    generalSection?.scrollIntoView({ behavior: 'smooth' });
+  }
+} else {
       // Activar ese subtítulo y su sección, sin afectar los demás
       subBtn.classList.add("active-sub");
       sectionToToggle?.classList.add("active");
@@ -315,4 +323,3 @@ if (char2037Images.length > 0) {
   updateChar2037Carousel(); // Estado inicial
   setInterval(updateChar2037Carousel, 3000); // Cambio automático cada 3 segundos
 }
-
