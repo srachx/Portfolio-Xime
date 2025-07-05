@@ -168,27 +168,39 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
 
   subBtn.addEventListener('click', () => {
     const parentProject = "project-2037";
-    const generalSectionId = "2037"; // sección principal que debe mantenerse visible
+    const generalSectionId = "project-2037";
     const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
     const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
     const generalSection = document.getElementById(generalSectionId);
     const sectionToToggle = document.getElementById(sectionId);
     const isActive = subBtn.classList.contains("active-sub");
 
-    // Asegurar que el proyecto esté activo (nunca se oculta desde subtítulos)
+    // Asegurar que el proyecto esté activo
     projectBtn?.classList.add("active-project");
     submenu?.classList.add("active");
     generalSection?.classList.add("active");
 
+    // Referencia al fondo de 2037
+    const project2037 = document.getElementById('project-2037');
+
     if (isActive) {
-      // Si ya estaba activo, desactiva solo ese subtítulo y su sección
+      // Desactiva solo ese subtítulo y su sección
       subBtn.classList.remove("active-sub");
       sectionToToggle?.classList.remove("active");
+
+      // Si ya no hay subtítulos activos, quitar clase que oculta fondo
+      const stillActive = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="2037"]').length;
+      if (stillActive === 0) {
+        project2037?.classList.remove('has-subsection');
+      }
     } else {
-      // Activar ese subtítulo y su sección, sin afectar los demás
+      // Activar subtítulo
       subBtn.classList.add("active-sub");
       sectionToToggle?.classList.add("active");
       sectionToToggle?.scrollIntoView({ behavior: 'smooth' });
+
+      // Ocultar fondo
+      project2037?.classList.add('has-subsection');
     }
   });
 });
@@ -228,3 +240,27 @@ if (itaraImages.length > 0) {
   setInterval(updateItaraCarousel, 3000); // Cambio cada 3 segundos
 }
 
+// --- Carrusel de personajes (2037 - Morgan) automático con efecto de posición ---
+let char2037Images = document.querySelectorAll('.char2037-carousel .char2037-img');
+let char2037CurrentIndex = 0;
+
+function updateChar2037Carousel() {
+  char2037Images.forEach((img, index) => {
+    img.classList.remove('active', 'left', 'right');
+
+    if (index === char2037CurrentIndex) {
+      img.classList.add('active');
+    } else if (index === (char2037CurrentIndex + 1) % char2037Images.length) {
+      img.classList.add('right');
+    } else if (index === (char2037CurrentIndex - 1 + char2037Images.length) % char2037Images.length) {
+      img.classList.add('left');
+    }
+  });
+
+  char2037CurrentIndex = (char2037CurrentIndex + 1) % char2037Images.length;
+}
+
+if (char2037Images.length > 0) {
+  updateChar2037Carousel(); // Estado inicial
+  setInterval(updateChar2037Carousel, 3000); // Cambio automático cada 3 segundos
+}

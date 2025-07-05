@@ -259,7 +259,7 @@ body {
   align-items: center;
   gap: 40px;
   margin-top: 20px;
-    margin-bottom: -200px; /* 👈 esto compensa el translateY visual */
+  margin-bottom: -200px; /* 👈 esto compensa el translateY visual */
 }
 
 .about-visual-content {
@@ -1489,8 +1489,6 @@ body {
   position: relative;
 }
 
-
-
 .itara-img {
   position: absolute;
   top: 0;
@@ -1519,6 +1517,7 @@ body {
   opacity: 1;
   z-index: 3;
 }
+
 
 .itara-extras {
   margin-top: 3rem;
@@ -1676,27 +1675,139 @@ body {
 
 /* ======= SECCIÓN 2037 - CHARACTER DESIGN ======= */
 
+/* Mostrar overlay de 2037 cuando se activa */
+.project2037-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 1.5rem;
+  z-index: 2;
+}
+
+
+#project-2037 .project2037-overlay {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+#project-2037.active .project2037-overlay {
+  display: flex;
+}
+
+.project2037-description {
+  max-width: 620px;
+  margin: 0 auto 1rem auto;
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #444;
+}
+
+.project2037-project-type {
+  color: #777;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.char2037-text{
+  text-align: left;
+  margin-top: 22rem;    /* Ajusta este valor para bajarlo más */
+  margin-left: 3rem;   /* Ajusta este valor para moverlo a la izquierda */
+  max-width: 700px;
+}
+
+/* Altura uniforme para secciones de 2037 */
+#project-2037,
+#2037-character,
+#2037-illustration,
+#2037-background {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* Fondo apagado por defecto */
+.project2037-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/2037_bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.04;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.project2037-logo {
+  max-width: 750px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.project2037-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto; /* <- centra el contenedor */
+}
+
+/* === SECCIÓN CHARACTER DESIGN === */
 #2037-character {
   background-color: whitesmoke;
   position: relative;
   padding: 4rem 2rem;
   overflow: hidden;
+  padding: 5rem 2rem;
 }
 
 .char2037-grid {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 2rem;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  align-items: flex-start;
+  gap: 2rem;
 }
 
 .char2037-column {
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  position: relative;
+}
+
+.char2037-left-col {
+  padding-right: 20px;
+  transform: translateX(-30px);
+}
+
+.char2037-column.char2037-right {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(200px); /* mueve todo el bloque a la izquierda */
+  gap: -0.8rem;
 }
 
 /* === COLUMNA 1: TEXTO === */
@@ -1734,13 +1845,12 @@ body {
 
 /* === COLUMNA 2: CARRUSEL === */
 .char2037-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  width: 100%;
+  max-width: 400px;
+  min-height: 400px; /* da altura mínima */
   position: relative;
-  height: 350px;
-  overflow: hidden;
+  margin-top: 8rem; /* 👈 Aumenta o reduce este valor según lo que necesites */
+  margin-left: 20rem; /* Aumenta el valor para moverlo más a la derecha */
 }
 
 .char2037-img {
@@ -1755,22 +1865,23 @@ body {
 }
 
 .char2037-img.left {
-  transform: translateX(-100%) scale(0.85);
+  transform: translateX(-150%) scale(1);
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .char2037-img.right {
-  transform: translateX(20%) scale(0.85);
+  transform: translateX(50%) scale(1);
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .char2037-img.active {
-  transform: translateX(-50%) scale(1.05);
+  transform: translateX(-50%) scale(2);
   opacity: 1;
   z-index: 3;
 }
+
 
 /* === COLUMNA 3: OTROS PERSONAJES === */
 .char2037-right {
