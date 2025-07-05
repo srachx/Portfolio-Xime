@@ -1799,6 +1799,7 @@ body {
 .char2037-left-col {
   padding-right: 20px;
   transform: translateX(-30px);
+  flex: 1.3;
 }
 
 .char2037-column.char2037-right {
@@ -1808,6 +1809,7 @@ body {
   align-items: center;
   transform: translateX(200px); /* mueve todo el bloque a la izquierda */
   gap: -0.8rem;
+  flex: 1.6;
 }
 
 /* === COLUMNA 1: TEXTO === */
@@ -1840,7 +1842,16 @@ body {
   font-size: 0.85rem;
   color: #444;
   margin-top: 1rem;
-  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+  min-width: 280px;
+  max-width: 600px;
+  padding-right: 40px;
+
 }
 
 /* === COLUMNA 2: CARRUSEL === */
@@ -1887,6 +1898,7 @@ body {
 .char2037-right {
   align-items: center;
   text-align: center;
+  flex: 1.7;
 }
 
 .char2037-other-title {
@@ -1900,7 +1912,11 @@ body {
 }
 
 .char2037-others-img {
-  max-height: 300px;
+  max-height: 400px;
   width: auto;
   object-fit: contain;
+}
+
+.char2037-note{
+
 }
