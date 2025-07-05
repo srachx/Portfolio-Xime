@@ -1722,7 +1722,6 @@ body {
 }
 
 /* Altura uniforme para secciones de 2037 */
-#project-2037,
 #2037-character,
 #2037-illustration,
 #2037-background {
@@ -1730,6 +1729,15 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#project-2037 {
+  min-height: 100vh; /* hace que ocupe toda la altura de la pantalla */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem; /* puedes ajustar el espacio interno si lo deseas */
+  position: relative;
 }
 
 
