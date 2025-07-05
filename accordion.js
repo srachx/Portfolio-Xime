@@ -1,4 +1,4 @@
-// --- WHEEL INTERACCIÓN (móvil) ---
+// --- WHEEL INTERACCIÓN (móvil y escritorio con toggle) ---
 const wheelItems = document.querySelectorAll('.wheel-item');
 const contents = document.querySelectorAll('.wheel-content');
 const placeholder = document.querySelector('.mobile-content-placeholder');
@@ -7,19 +7,22 @@ function isMobile() {
   return window.innerWidth <= 700;
 }
 
+function deactivateAllWheel() {
+  wheelItems.forEach(el => el.classList.remove('active'));
+  contents.forEach(el => el.classList.remove('visible'));
+  placeholder.innerHTML = '';
+  placeholder.classList.add('hidden');
+}
+
 wheelItems.forEach(item => {
   item.addEventListener('click', () => {
     const targetId = item.getAttribute('data-target');
     const targetContent = document.getElementById(targetId);
     const isActive = item.classList.contains('active');
 
-    wheelItems.forEach(el => el.classList.remove('active'));
-    contents.forEach(el => el.classList.remove('visible'));
-
-    placeholder.innerHTML = '';
-    placeholder.classList.add('hidden');
-
     if (isMobile()) {
+      // En móvil: toggle el ítem y el contenido
+      deactivateAllWheel();
       if (!isActive) {
         item.classList.add('active');
         placeholder.innerHTML = targetContent.innerHTML;
@@ -27,11 +30,36 @@ wheelItems.forEach(item => {
         item.insertAdjacentElement('afterend', placeholder);
       }
     } else {
-      item.classList.add('active');
-      targetContent.classList.add('visible');
+      // En escritorio: toggle visible
+      if (isActive) {
+        item.classList.remove('active');
+        targetContent.classList.remove('visible');
+      } else {
+        deactivateAllWheel();
+        item.classList.add('active');
+        targetContent.classList.add('visible');
+      }
     }
   });
 });
+
+// --- ACTIVAR POR DEFECTO 'ABOUT' ---
+window.addEventListener('DOMContentLoaded', () => {
+  const defaultItem = document.querySelector('.wheel-item[data-target="about-content"]');
+  const defaultContent = document.getElementById('about-content');
+
+  if (defaultItem && defaultContent) {
+    defaultItem.classList.add('active');
+    if (isMobile()) {
+      placeholder.innerHTML = defaultContent.innerHTML;
+      placeholder.classList.remove('hidden');
+      defaultItem.insertAdjacentElement('afterend', placeholder);
+    } else {
+      defaultContent.classList.add('visible');
+    }
+  }
+});
+
 
 // --- CAMBIO DE IDIOMA ---
 document.querySelectorAll('.lang-btn').forEach(button => {
@@ -265,3 +293,4 @@ if (char2037Images.length > 0) {
   updateChar2037Carousel(); // Estado inicial
   setInterval(updateChar2037Carousel, 3000); // Cambio automático cada 3 segundos
 }
+
