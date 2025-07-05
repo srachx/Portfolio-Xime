@@ -125,6 +125,28 @@ body {
   font-weight: bold;
 }
 
+/* Estilo general del navbar */
+.navbar {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Cuando entra en contacto con fondo claro */
+.navbar-dark {
+  color: #444 !important;
+}
+
+.navbar-dark .menu-item,
+.navbar-dark .lang-btn {
+  color: #444 !important;
+}
+
+/* Ejemplo: si tu navbar tiene íconos, asegúrate que también se actualicen */
+.navbar-dark svg,
+.navbar-dark img {
+  filter: invert(0); /* hace íconos oscuros si usas íconos blancos por defecto */
+}
+
+
 /* Hero */
 .hero {
   display: flex;
