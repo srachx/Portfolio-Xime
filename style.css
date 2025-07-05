@@ -1323,7 +1323,7 @@ body {
   overflow: hidden;
   margin-top: 20px;
   padding-bottom: 0 !important;
-  margin-bottom: o !important;
+  margin-bottom: 0 !important;
 }
 
 /* Imágenes de fondo */
@@ -1784,6 +1784,7 @@ body {
   width: 100%;
   max-width: 1200px;
   gap: 2rem;
+  z-index: 1;
 }
 
 .char2037-column {
@@ -1846,6 +1847,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: right;
 
   margin: auto;
   min-width: 280px;
@@ -1912,11 +1914,67 @@ body {
 }
 
 .char2037-others-img {
-  max-height: 400px;
+  max-height: 500px;
   width: auto;
+  height: 450px;
   object-fit: contain;
 }
 
-.char2037-note{
 
+/* ====== BACKGROUND DECORATIVO DE 2037 CHARACTER ====== */
+#2037-character {
+  background-color: whitesmoke;
+  position: relative;
+  padding: 3rem 1rem;
+  overflow: hidden;
+  margin-top: 20px;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.project2037-bg-container {
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.project2037-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* Posiciones personalizables */
+.project2037-bg:first-child {
+  top: 0%;
+  left: -20%;
+}
+
+.project2037-bg:last-child {
+  bottom: 0;
+  right: -39%;
+}
+
+.char2037-grid {
+  position: relative;
+  z-index: 2;
+}
+
+#2037-character.active .project2037-bg-container {
+  display: block;
+}
+
+.project2037-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: whitesmoke;
 }
