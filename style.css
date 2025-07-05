@@ -1198,7 +1198,7 @@ body {
 }
 
 .submenu[data-project="project-2037"] .menu-item.subsection.active-sub {
-  background-color: #007455;
+  background-color: #00645A;
   color: white;
   border: none;
   font-weight: bold;
@@ -1677,14 +1677,21 @@ body {
 
 /* Mostrar overlay de 2037 cuando se activa */
 .project2037-overlay {
+  .project2037-overlay {
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
   gap: 1.5rem;
   z-index: 2;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 
@@ -1716,12 +1723,12 @@ body {
 
 .char2037-text{
   text-align: left;
-  margin-top: 22rem;    /* Ajusta este valor para bajarlo más */
+  margin-top: 24rem;    /* Ajusta este valor para bajarlo más */
   margin-left: 3rem;   /* Ajusta este valor para moverlo a la izquierda */
   max-width: 700px;
 }
 
-/* Altura uniforme para secciones de 2037 */
+/* Altura uniforme para secciones de 2037 */ 
 #2037-character,
 #2037-illustration,
 #2037-background {
@@ -1732,13 +1739,20 @@ body {
 }
 
 #project-2037 {
-  min-height: 100vh; /* hace que ocupe toda la altura de la pantalla */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem; /* puedes ajustar el espacio interno si lo deseas */
+  min-height: 600px; /* Ajusta esto según el alto deseado */
+  padding-top: 10rem;
+  padding-bottom: 6rem;
+  gap: 1.5rem;
   position: relative;
+  z-index: 2  ;
+  width: 100%;
+  text-align: center;
 }
+
 
 
 /* Fondo apagado por defecto */
@@ -1792,7 +1806,8 @@ body {
   width: 100%;
   max-width: 1200px;
   gap: 2rem;
-  z-index: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .char2037-column {
@@ -1808,7 +1823,7 @@ body {
 .char2037-left-col {
   padding-right: 20px;
   transform: translateX(-30px);
-  flex: 1.3;
+  flex: 1.6;
 }
 
 .char2037-column.char2037-right {
@@ -1870,8 +1885,8 @@ body {
   max-width: 400px;
   min-height: 400px; /* da altura mínima */
   position: relative;
-  margin-top: 8rem; /* 👈 Aumenta o reduce este valor según lo que necesites */
-  margin-left: 20rem; /* Aumenta el valor para moverlo más a la derecha */
+  margin-top: 10rem; /* 👈 Aumenta o reduce este valor según lo que necesites */
+  margin-left: 18rem; /* Aumenta el valor para moverlo más a la derecha */
 }
 
 .char2037-img {
@@ -1971,9 +1986,9 @@ body {
   right: -39%;
 }
 
-.char2037-grid {
-  position: relative;
-  z-index: 2;
+.char2037-column:nth-child(2) {
+  flex: 1;
+  margin-left: -1.5rem; /* Ajusta el valor según cuánto quieras mover */
 }
 
 #2037-character.active .project2037-bg-container {

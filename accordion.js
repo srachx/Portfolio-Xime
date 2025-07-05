@@ -192,6 +192,7 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
       const stillActive = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="2037"]').length;
       if (stillActive === 0) {
         project2037?.classList.remove('has-subsection');
+        generalSection?.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       // Activar subtítulo
