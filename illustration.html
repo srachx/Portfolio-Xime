@@ -41,20 +41,19 @@
     <button class="menu-item project" data-project="altair">Cartas a Altair</button>
       <div class="submenu" data-project="altair">
         <button class="menu-item subsection" data-section="altair-character">Character Design</button>
-        <button class="menu-item subsection" data-section="altair-illustration">Illustration</button>
+        <button class="menu-item subsection" data-section="altair-illustration">Role</button>
       </div>
 
       <button class="menu-item project" data-project="project-2037">2037</button>
       <div class="submenu" data-project="project-2037">
         <button class="menu-item subsection" data-section="2037-character">Character Design</button>
-        <button class="menu-item subsection" data-section="2037-background">Illustration</button>
+        <button class="menu-item subsection" data-section="2037-illustration">Role</button>
       </div>
   </div>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text">
-      <p class="intro lang-text" data-en="¡Hola!, <strong>I’m Ximena</strong> an" data-es="¡Hola!, <strong>Soy Ximena</strong>">¡Hola!, <strong>I’m Ximena</strong> an</p>
       <h1><strong class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</strong></h1>
       <div class="arrow" onclick="scrollToContent()">
         <img src="images/arrow.png" alt="Scroll down" />
@@ -129,24 +128,24 @@
 
 
 
-   <div class="content-section light-background" id="altair-illustration">
-  <div class="altair-illustration-container">
-    <!-- Cómics -->
-    <div class="altair-comics">
-      <img src="images/viñeta.png" alt="Comic Page 1">
-    </div>
+  <div class="content-section light-background" id="altair-illustration">
+    <div class="altair-illustration-container">
+      <!-- Cómics -->
+      <div class="altair-comics">
+        <img src="images/viñeta.png" alt="Comic Page 1">
+      </div>
 
-    <!-- Texto -->
-    <div class="altair-illustration-text">
-      <h3 class="lang-text" data-en="ILLUSTRATION" data-es="ILUSTRACIÓN">ILLUSTRATION</h3>
-      <p class="lang-text"
-         data-en="I was responsible for the narrative and illustration of the project, creating the visual structure and the atmosphere that accompanies the story. This work was developed as a collaborative thesis, with the aim of generating a sensitive and reflective connection with teenagers in search of themselves."
-         data-es="Fui responsable de la narrativa e ilustración del proyecto, creando la estructura visual y la atmósfera que acompaña la historia. Esta obra fue desarrollada como tesis en colaboración, con el objetivo de generar una conexión sensible y reflexiva con adolescentes en búsqueda de sí mismos.">
-         I was responsible for the narrative and illustration of the project, creating the visual structure and the atmosphere that accompanies the story. This work was developed as a collaborative thesis, with the aim of generating a sensitive and reflective connection with teenagers in search of themselves.
-      </p>
-    </div>
+      <!-- Texto -->
+      <div class="altair-illustration-text">
+        <h3 class="lang-text" data-en="ILLUSTRATION" data-es="ILUSTRACIÓN">ROLE</h3>
+        <p class="lang-text"
+          data-en="Served as narrative lead and illustrator, responsible for developing the story’s structure and emotional tone. Created as a collaborative thesis project, the work aimed to build a sensitive and reflective connection with teenagers in search of themselves."
+          data-es="Desempeñé el rol de líder narrativa e ilustradora, siendo responsable del desarrollo de la estructura de la historia y de su tono emocional. El proyecto fue realizado como una tesis colaborativa, con el objetivo de generar una conexión sensible y reflexiva con adolescentes en búsqueda de sí mismos.">
+          Served as narrative lead and illustrator, responsible for developing the story’s structure and emotional tone. Created as a collaborative thesis project, the work aimed to build a sensitive and reflective connection with teenagers in search of themselves.
+        </p>
+      </div>
 
-  </div>
+    </div>
 </div>
 
   <!-- Contenido General de 2037 -->
@@ -212,9 +211,21 @@
     </div>
 
 
-    <div class="content-section light-background" id="2037-background">
-      <h2>2037 - Background</h2>
-      <p>Contenido de Background...</p>
+    <div class="content-section light-background" id="illustration-2037">
+      <div class="illustration-2037-container">
+        <div class="project2037-frame">
+          <img src="images/phone_mockup_4.png" alt="Comic Page 1">
+        </div>
+
+        <!-- Texto -->
+        <div class="illustration-2037-text">
+          <h3 class="lang-text" data-en="ILLUSTRATION" data-es="ILUSTRACIÓN">ROLE</h3>
+          <p class="lang-text"
+            data-en="I led the narrative and visual development of 2037, creating an emotionally consistent universe where character design, worldbuilding, and player choices shape an introspective experience. Developed in collaboration during my studies, the project seeks to connect with teenagers through empathy and environmental awareness."
+            data-es="Lideré el desarrollo narrativo y visual de 2037, creando un universo emocionalmente consistente donde el diseño de personajes, el entorno y las decisiones del jugador construyen una experiencia introspectiva. El proyecto, realizado en colaboración durante mi formación, busca conectar con adolescentes desde la empatía y la conciencia ambiental.">
+          I led the narrative and visual development of 2037, creating an emotionally consistent universe where character design, worldbuilding, and player choices shape an introspective experience. Developed in collaboration during my studies, the project seeks to connect with teenagers through empathy and environmental awareness.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -224,6 +235,19 @@
       Designed, illustrated and developed by Ximena Poot © 2025
     </p>
   </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const activeSection = document.querySelector(".content-section.active");
+    if (!activeSection) {
+      document.body.classList.add("page-illustration", "has-active-section");
+      document.body.classList.remove("has-active-section");
+    } else {
+      document.body.classList.add("page-illustration", "has-active-section");
+    }
+  });
+</script>
+
 
 </body>
 </html>
