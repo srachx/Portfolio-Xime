@@ -1751,8 +1751,7 @@ body {
 
 /* Altura uniforme para secciones de 2037 */ 
 #2037-character,
-#2037-illustration,
-#2037-background {
+#2037-illustration {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -2023,3 +2022,50 @@ body {
   background-color: whitesmoke;
 }
 
+/* ======= ILLUSTRATION 2037 ======= */
+#illustration-2037 {
+  background-color: #fff;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.illustration-2037-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.project2037-frame {
+  flex: 1 1 55%;
+  text-align: right;
+}
+
+.project2037-frame img {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  object-fit: contain;
+}
+
+.illustration-2037-text {
+  flex: 1 1 45%;
+  text-align: left;
+}
+
+.illustration-2037-text h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #008060;
+}
+
+.illustration-2037-text p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #333;
+}
