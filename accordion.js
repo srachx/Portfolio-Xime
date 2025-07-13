@@ -202,13 +202,14 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   sectionToToggle?.classList.remove("active");
 
   // Detecta si no quedan más subtítulos activos del mismo proyecto
-  const parentPrefix = sectionId.split('-')[0]; // '2037' o 'illustration'
+  const parentPrefix = sectionId.split('-')[0]; // 'altair'
+  const generalSection = document.getElementById(parentPrefix);
   const stillActiveSubs = document.querySelectorAll(`.menu-item.subsection.active-sub[data-section^="${parentPrefix}"]`);
 
-  if (stillActiveSubs.length === 0) {
-    const generalSection = document.getElementById(parentPrefix);
-    generalSection?.scrollIntoView({ behavior: 'smooth' });
+  if (stillActiveSubs.length === 0 && generalSection) {
+    generalSection.scrollIntoView({ behavior: 'smooth' });
   }
+
 } else {
       // Activar ese subtítulo y su sección, sin afectar los demás
       subBtn.classList.add("active-sub");
@@ -241,18 +242,33 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
     // Referencia al fondo de 2037
     const project2037 = document.getElementById('project-2037');
 
-    if (isActive) {
-      // Desactiva solo ese subtítulo y su sección
-      subBtn.classList.remove("active-sub");
-      sectionToToggle?.classList.remove("active");
+   if (isActive) {
+    // Desactiva solo ese subtítulo y su sección
+    subBtn.classList.remove("active-sub");
+    sectionToToggle?.classList.remove("active");
 
-      // Si ya no hay subtítulos activos, quitar clase que oculta fondo
-      const stillActive = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="2037"]').length;
-      if (stillActive === 0) {
-        project2037?.classList.remove('has-subsection');
-        generalSection?.scrollIntoView({ behavior: 'smooth' });
-      }
+    // Si ya no hay subtítulos activos, quitar clase que oculta fondo
+    const stillActive = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="2037"]').length;
+
+    if (stillActive === 0) {
+      project2037?.classList.remove('has-subsection');
+
+      
+
+      // Hacer scroll hacia el primer subtítulo activo o al título principal
+      const scrollTarget =
+      document.querySelector('#project-2037 h2, #project-2037 h3, #project-2037 .section-title') ||
+      document.querySelector('#project-2037');
+
+    if (scrollTarget) {
+      console.log("Scrolling to:", scrollTarget);
+      scrollTarget.scrollIntoView({ behavior: 'smooth' });
     } else {
+      console.warn("No scroll target found for 2037.");
+    }
+
+
+    }} else {
       // Activar subtítulo
       subBtn.classList.add("active-sub");
       sectionToToggle?.classList.add("active");

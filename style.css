@@ -178,7 +178,7 @@ body {
 
   margin: auto;
   min-width: 280px;
-  max-width: 600px;
+  max-width: 800px;
   padding-left: 40px;
 }
 
@@ -1328,6 +1328,12 @@ body {
 }
 
 .content-section {
+  width: 100%;
+  position: relative;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  overflow: hidden; /* evita fugas de imágenes absolutas */
+  z-index: 1;
   display: none;
 }
 
@@ -2055,12 +2061,19 @@ body {
 .illustration-2037-text {
   flex: 1 1 45%;
   text-align: left;
+  align-self: start;     /* evita que el contenido se centre automáticamente */
+  justify-self: start;   /* para grid */
+  margin-top: 15rem;      /* 🔼 SUBE el bloque */
+  margin-bottom: 2rem;
+  max-width: 500px;
+  transform: translate(-100px, -130px);
 }
 
 .illustration-2037-text h3 {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  font-family: 'AvenirNextLTPro-Heavy';
   color: #008060;
 }
 
@@ -2069,3 +2082,82 @@ body {
   line-height: 1.8;
   color: #333;
 }
+
+.bouncy-text span {
+  display: inline-block;
+  opacity: 0;
+  animation: exaggeratedBounce 1s ease-out forwards;
+  white-space: pre;
+  vertical-align: top;
+}
+
+.bouncy-text {
+  letter-spacing: -8px;
+}
+
+
+
+@keyframes exaggeratedBounce {
+  0% {
+    transform: scale(0) rotate(-40deg);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.4) rotate(20deg);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.8) rotate(-10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.project2037-frame {
+  display: block !important;
+  height: 200px !important;     /* Ajusta la altura que quieres ver */
+  width: auto !important;       /* Para que mantenga la proporción */
+  max-height: 100vh !important;  /* Evita que desborde en pantallas bajas */
+  margin: 2rem auto !important; /* Centrado */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25)) !important;
+  object-fit: contain !important;
+}
+
+.project2037-frame img.mockup-single {
+  display: block;
+  height: 700px !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  margin: 2rem auto;
+  object-fit: contain;
+  margin-top: -2rem;
+  margin-right: -10rem;
+
+}
+
+#2037-character,
+#2037-illustration {
+  display: none;
+}
+
+#2037-character.active,
+#2037-illustration.active {
+  display: block;
+}
+
+
+@media screen and (max-width: 500px) {
+  .mockup-single {
+    width: 95%;
+  }
+}
+
+
