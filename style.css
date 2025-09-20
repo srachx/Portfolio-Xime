@@ -2163,3 +2163,16 @@ body {
   }
 }
 
+/* ==== Hero top fix (solo illustration.html) ==== */
+.page-illustration {
+  padding-top: 0 !important;   /* quita empuje global */
+}
+
+.page-illustration .hero {
+  margin-top: 0 !important;    /* sube el bloque hero */
+  padding-top: 72px;           /* reserva espacio por el navbar fijo */
+}
+
+.page-illustration .hero-text h1 {
+  margin-top: 0;               /* evita margen extra del h1 */
+}
