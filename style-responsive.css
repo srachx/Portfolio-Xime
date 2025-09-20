@@ -115,76 +115,61 @@ img, svg, video, canvas {
 }
 
 
-/* === iPad Landscape: hard fix (1024×768 aprox.) === */
+/* === iPad Landscape (fix puntual Itara) === */
 @media (min-width: 900px) and (max-width: 1180px) and (orientation: landscape) {
-  /* Seguridad global anti-overflow */
-  html, body { max-width: 100%; overflow-x: hidden !important; }
-  * { box-sizing: border-box; }
-  img, svg, video, canvas { max-width: 100% !important; height: auto; }
+  /* Seguridad general */
+  html, body { overflow-x: hidden; }
+  img, svg, canvas, video { max-width: 100%; height: auto; }
 
-  /* Hero: evitar 100vw que genera scroll lateral en iPad */
-  .hero { width: 100% !important; min-height: 88vh; }
-
-  /* Menú índice: compacto y sin empujar layout */
-  .index-menu {
-    position: fixed;
-    top: 6rem;
-    left: 1rem;
-    right: auto;
-    gap: .4rem;
-    max-width: 40vw;
+  /* Cambiamos la fila flex por una grid estable 3 columnas */
+  #altair-character .itara-grid{
+    display: grid !important;
+    grid-template-columns: minmax(260px,1fr) minmax(280px,340px) minmax(260px,1fr);
+    gap: 20px;
+    align-items: start;
+    justify-items: center;
+    width: 100%;
+    max-width: 1100px;
+    margin-inline: auto;
   }
-  .menu-item { font-size: .8rem; padding: .35rem .9rem; }
-  .submenu .menu-item.subsection { font-size: .75rem; padding: .3rem .7rem; }
 
-  /* ALTair — Character: apaga transforms y márgenes largos */
-  .itara-left-col,
-  .itara-text,
-  .itara-extras,
-  .drafts-section {
+  /* Apaga desplazamientos que empujan fuera */
+  #altair-character .itara-left-col,
+  #altair-character .itara-text,
+  #altair-character .itara-extras,
+  #altair-character .drafts-section,
+  #altair-character .others-section{
     transform: none !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* Si aún ves desborde, descomenta la siguiente línea para apilar todo:
-  .itara-grid { flex-direction: column !important; align-items: center !important; gap: 1rem !important; }
-  */
-
-  .itara-text {
-    text-align: left;
-    max-width: 520px;
-    margin-top: 1.5rem !important;
+  /* Texto izquierda (Itara) centrado en su columna y sin recortes */
+  #altair-character .itara-text{
+    width: 100% !important;
+    max-width: 520px !important;
+    text-align: left !important;
   }
+  #altair-character .itara-text h3,
+  #altair-character .itara-text h2,
+  #altair-character .itara-text p{ text-align:left !important; }
 
-  /* Carrusel Itara: clamp de escala */
-  .itara-carousel { max-width: 320px; min-height: 320px; margin: 0 !important; }
-  .itara-img { max-height: 260px !important; opacity: 1; }
-  .itara-img.active { transform: translateX(-50%) scale(1) !important; }   /* <- clave */
-  .itara-img.left  { transform: translateX(-80%)  scale(1) !important; }
-  .itara-img.right { transform: translateX(-20%)  scale(1) !important; }
-
-  /* ALTair — ROLE (cómics + texto) */
-  .altair-illustration-container { gap: 36px; padding: 36px 24px; }
-  .altair-comics img { width: 100% !important; }   /* quita el 150% */
-  .altair-illustration-text { margin: 0 !important; max-width: 520px; }
-
-  /* 2037 — Character */
-  .char2037-text,
-  .char2037-column.char2037-right { transform: none !important; margin: 0 !important; }
-  .char2037-text { max-width: 520px; }
-
-  .char2037-carousel { max-width: 320px; min-height: 320px; margin: 0 !important; }
-  .char2037-img { max-height: 260px !important; }
-  .char2037-img.active { transform: translateX(-50%) scale(1) !important; } /* <- clave */
-  .char2037-img.left  { transform: translateX(-80%)  scale(1) !important; }
-  .char2037-img.right { transform: translateX(-20%)  scale(1) !important; }
-  .char2037-others-img { max-height: 300px !important; }
-
-  /* 2037 — Illustration mockup: sin empujar a la derecha */
-  .project2037-frame img.mockup-single {
-    height: 460px !important;
-    margin-right: 0 !important;
+  /* Carrusel: tamaño contenido y SIN scale grande */
+  #altair-character .itara-carousel{
+    width: 100% !important;
+    max-width: 320px !important;
+    min-height: 320px !important;
+    margin: 0 !important;
   }
-  .illustration-2037-text { margin: 0 !important; transform: none !important; max-width: 520px; }
+  #altair-character .itara-img{ max-height: 260px !important; opacity: 1; }
+  #altair-character .itara-img.active{ transform: translateX(-50%) scale(1) !important; }
+  #altair-character .itara-img.left { transform: translateX(-80%)  scale(1) !important; }
+  #altair-character .itara-img.right{ transform: translateX(-20%)  scale(1) !important; }
+
+  /* Columna derecha (drafts/others) ajustada a columna sin desbordar */
+  #altair-character .itara-extras{ width: 100% !important; max-width: 520px !important; }
+  #altair-character .drafts-section img,
+  #altair-character .others-section img{
+    width: 100% !important; max-width: 520px !important; height:auto !important; object-fit:contain !important;
+  }
 }

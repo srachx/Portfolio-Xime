@@ -61,21 +61,59 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- CAMBIO DE IDIOMA ---
-document.querySelectorAll('.lang-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const selectedLang = button.dataset.lang;
+// --- CAMBIO DE IDIOMA (auto-detectar, recordar y permitir ?lang=) ---
+(function () {
+  const $langBtns = document.querySelectorAll('.lang-btn');
+  const $translatables = document.querySelectorAll('[data-en][data-es]');
 
-    document.querySelectorAll('[data-en][data-es]').forEach(el => {
-      const translation = el.dataset[selectedLang];
-      if (translation) el.innerHTML = translation;
+  function setLanguage(lang) {
+    // Normaliza
+    lang = (lang === 'es' || lang === 'en') ? lang : 'en';
+
+    // Aplica traducciones
+    $translatables.forEach(el => {
+      const txt = el.dataset[lang];
+      if (typeof txt === 'string') el.innerHTML = txt;
     });
 
-    document.querySelectorAll('.lang-btn').forEach(btn => btn.style.fontWeight = 'normal');
-    button.style.fontWeight = 'bold';
-  });
-});
+    // Actualiza estilos del switch
+    $langBtns.forEach(btn => {
+      btn.style.fontWeight = (btn.dataset.lang === lang) ? 'bold' : 'normal';
+    });
 
+    // <html lang="..."> para accesibilidad/SEO
+    const html = document.documentElement;
+    if (html) html.setAttribute('lang', lang);
+
+    // Guarda preferencia
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  // Idioma inicial:
+  // 1) ?lang=es|en en la URL
+  // 2) preferencia guardada en localStorage
+  // 3) auto-detección por navegador (es → 'es'; otro → 'en')
+  const params = new URLSearchParams(location.search);
+  const urlLang = params.get('lang');
+  const storedLang = (() => { try { return localStorage.getItem('lang'); } catch(e){ return null; } })();
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().startsWith('es') ? 'es' : 'en';
+
+  const initialLang = (urlLang === 'es' || urlLang === 'en')
+    ? urlLang
+    : (storedLang === 'es' || storedLang === 'en')
+      ? storedLang
+      : browserLang;
+
+  setLanguage(initialLang);
+
+  // Click en los botones ES/EN
+  $langBtns.forEach(button => {
+    button.addEventListener('click', () => {
+      const selected = button.dataset.lang;
+      setLanguage(selected);
+    });
+  });
+})();
 
 // === DETECTAR SECCIÓN CON FONDO CLARO PARA CAMBIAR NAVBAR ===
 const navbar = document.querySelector('.navbar'); // o ajusta a tu clase de navbar
