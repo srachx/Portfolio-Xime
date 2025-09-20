@@ -113,3 +113,66 @@ img, svg, video, canvas {
   .hero-text h1 { font-size: 1.6rem; }
   .altair-description { font-size: 0.9rem; }
 }
+
+
+/* === iPad Landscape Fixes (1024x768) === */
+@media (min-width: 900px) and (max-width: 1180px) and (orientation: landscape) {
+  html, body { overflow-x: hidden; }
+  .navbar { padding: 14px 24px; }
+  :root { --navbar-h: 72px; }
+  .page-illustration { padding-top: var(--navbar-h); }
+
+  .index-menu {
+    position: fixed;
+    top: 6rem;
+    left: 1rem;
+    gap: .4rem;
+  }
+  .menu-item { font-size: .8rem; padding: .35rem .9rem; }
+  .submenu .menu-item.subsection { font-size: .75rem; padding: .3rem .7rem; }
+
+  .hero { width: 100% !important; min-height: 88vh; }
+
+  .itara-grid { flex-direction: row; gap: 1rem; }
+  .itara-left-col { transform: none; padding-right: 10px; }
+  .itara-text {
+    margin: 1.5rem 0 0;
+    transform: none !important;
+    text-align: left;
+    max-width: 520px;
+  }
+  .itara-carousel { max-width: 320px; min-height: 320px; }
+  .itara-img { max-height: 260px; }
+  .itara-img.active { transform: translateX(-50%) scale(1.25) !important; }
+  .itara-extras, .drafts-section { transform: none !important; margin-top: 0; }
+  .drafts-section img { max-width: 520px; }
+
+  .altair-illustration-container { gap: 36px; padding: 36px 24px; }
+  .altair-comics img { width: 100% !important; }
+  .altair-illustration-text { margin-left: 0; max-width: 520px; }
+
+  .char2037-text {
+    margin: 0 !important;
+    transform: none !important;
+    max-width: 520px;
+  }
+  .char2037-carousel {
+    max-width: 320px;
+    min-height: 320px;
+    margin: 0 !important;
+  }
+  .char2037-img { max-height: 260px; }
+  .char2037-img.active { transform: translateX(-50%) scale(1.35) !important; }
+  .char2037-column.char2037-right { transform: none !important; margin-top: 0; }
+  .char2037-others-img { max-height: 300px; }
+
+  .project2037-frame img.mockup-single {
+    height: 480px !important;
+    margin-right: 0 !important;
+  }
+  .illustration-2037-text {
+    margin: 0 !important;
+    transform: none !important;
+    max-width: 520px;
+  }
+}
