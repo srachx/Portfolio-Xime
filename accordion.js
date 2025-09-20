@@ -1,3 +1,4 @@
+
 // --- WHEEL INTERACCIÓN (móvil y escritorio con toggle) ---
 const wheelItems = document.querySelectorAll('.wheel-item');
 const contents = document.querySelectorAll('.wheel-content');
@@ -61,59 +62,65 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- CAMBIO DE IDIOMA (auto-detectar, recordar y permitir ?lang=) ---
+// --- CAMBIO DE IDIOMA con animación por letra (auto + recuerdo + ?lang=) ---
 (function () {
   const $langBtns = document.querySelectorAll('.lang-btn');
-  const $translatables = document.querySelectorAll('[data-en][data-es]');
+  const $nodes = document.querySelectorAll('[data-en][data-es]');
+
+  // Genera <span> con delay incremental (espacios preservados)
+  function renderBouncy(el, text) {
+    let delay = 0;
+    const step = 0.12; // segundos entre letras
+    let html = '';
+    for (const ch of text) {
+      if (ch === ' ') {
+        html += ' ';
+      } else {
+        html += `<span style="animation-delay:${delay.toFixed(2)}s">${ch}</span>`;
+        delay += step;
+      }
+    }
+    el.innerHTML = html;
+  }
 
   function setLanguage(lang) {
-    // Normaliza
     lang = (lang === 'es' || lang === 'en') ? lang : 'en';
 
-    // Aplica traducciones
-    $translatables.forEach(el => {
-      const txt = el.dataset[lang];
-      if (typeof txt === 'string') el.innerHTML = txt;
+    // Aplica traducciones y (si procede) animación por letra
+    $nodes.forEach(el => {
+      const txt = el.dataset[lang] ?? '';
+      if (el.classList.contains('bouncy-text')) {
+        renderBouncy(el, txt);      // 🔹 anima letra por letra
+      } else {
+        el.innerHTML = txt;         // 🔹 texto normal
+      }
     });
 
-    // Actualiza estilos del switch
+    // Toggle visual de botones (si existen)
     $langBtns.forEach(btn => {
-      btn.style.fontWeight = (btn.dataset.lang === lang) ? 'bold' : 'normal';
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle('active', active);
+      btn.style.fontWeight = active ? '700' : '400';
     });
 
-    // <html lang="..."> para accesibilidad/SEO
-    const html = document.documentElement;
-    if (html) html.setAttribute('lang', lang);
-
-    // Guarda preferencia
+    // <html lang="..."> y preferencia
+    document.documentElement.setAttribute('lang', lang);
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
-  // Idioma inicial:
-  // 1) ?lang=es|en en la URL
-  // 2) preferencia guardada en localStorage
-  // 3) auto-detección por navegador (es → 'es'; otro → 'en')
+  // Idioma inicial: URL ?lang > localStorage > navegador
   const params = new URLSearchParams(location.search);
   const urlLang = params.get('lang');
-  const storedLang = (() => { try { return localStorage.getItem('lang'); } catch(e){ return null; } })();
-  const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().startsWith('es') ? 'es' : 'en';
+  const stored = (() => { try { return localStorage.getItem('lang'); } catch(e){ return null; }})();
+  const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase().startsWith('es') ? 'es' : 'en';
+  const initial = (urlLang === 'es' || urlLang === 'en') ? urlLang : (stored === 'es' || stored === 'en') ? stored : browser;
 
-  const initialLang = (urlLang === 'es' || urlLang === 'en')
-    ? urlLang
-    : (storedLang === 'es' || storedLang === 'en')
-      ? storedLang
-      : browserLang;
+  setLanguage(initial);
 
-  setLanguage(initialLang);
-
-  // Click en los botones ES/EN
-  $langBtns.forEach(button => {
-    button.addEventListener('click', () => {
-      const selected = button.dataset.lang;
-      setLanguage(selected);
-    });
-  });
+  // Click en ES/EN (opcional)
+  $langBtns.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 })();
+
 
 // === DETECTAR SECCIÓN CON FONDO CLARO PARA CAMBIAR NAVBAR ===
 const navbar = document.querySelector('.navbar'); // o ajusta a tu clase de navbar

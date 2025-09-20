@@ -182,6 +182,9 @@ body {
   padding-left: 40px;
 }
 
+.bouncy-text { --letter-gap: 0.10em; }            /* ajusta a tu gusto */
+.bouncy-text span + span { margin-left: var(--letter-gap); }
+
 .hero-text h1 {
   font-family: 'AvenirNextLTPro-Heavy';
   font-size: 4rem;
@@ -2159,3 +2162,4 @@ body {
     width: 95%;
   }
 }
+
