@@ -37,8 +37,7 @@
 
 <section class="hero">
   <div class="hero-text">
-    <p class="intro lang-text" data-en="¡Hola!, <strong>I’m Ximena</strong> an" data-es="¡Hola!, <strong> Soy Ximena </strong>">¡Hola!, <strong>I’m Ximena</strong> an</p>
-    <h1><strong class="lang-text" data-en="Interactive Designer" data-es="Diseñadora Interactiva">Interactive<br>Designer</strong></h1>
+    <h1><strong class="lang-text" data-en="Gallery" data-es="Galería"><strong>Gallery</strong></h1>
     <div class="arrow">
       <img src="images/arrow.png" alt="Scroll down">
     </div>
@@ -46,7 +45,50 @@
 </section>
 
 <section class="custom-section">
-  <!-- AQUÍ VA EL CONTENIDO DE CADA SECCIÓN NUEVA COMO illustration.html, uxui.html, etc. -->
+<section id="others" class="content-section light-background">
+  <h2 class="section-title">Others</h2>
+
+  <div class="others-gallery" id="othersGallery">
+    <!-- Cada tarjeta -->
+    <figure class="gallery-card"
+            data-title="Ilustración editorial"
+            data-desc="Portada para revista cultural. Técnica mixta."
+            data-img="images/others/editorial.jpg">
+      <img src="images/Tatloks.png" alt="Ilustración personalizada" loading="lazy" />
+      <figcaption class="overlay"><span>Ilustración personalizada</span></figcaption>
+    </figure>
+
+    <figure class="gallery-card"
+            data-title="Comisión personaje"
+            data-desc="Character commission estilo cartoon americano."
+            data-img="images/others/commission1.jpg">
+      <img src="images/others/commission1_thumb.jpg" alt="Comisión personaje" loading="lazy" />
+      <figcaption class="overlay"><span>Comisión personaje</span></figcaption>
+    </figure>
+
+    <figure class="gallery-card"
+            data-title="Poster evento"
+            data-desc="Poster para festival independiente, formato 70×100."
+            data-img="images/others/poster.jpg">
+      <img src="images/others/poster_thumb.jpg" alt="Poster evento" loading="lazy" />
+      <figcaption class="overlay"><span>Poster evento</span></figcaption>
+    </figure>
+
+    <!-- duplica más <figure> con tus imágenes -->
+  </div>
+
+  <!-- Modal -->
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="gm-backdrop" data-close></div>
+    <div class="gm-dialog" role="document">
+      <button class="gm-close" aria-label="Close" data-close>&times;</button>
+      <img class="gm-image" alt="" />
+      <div class="gm-text">
+        <h3 class="gm-title"></h3>
+        <p class="gm-desc"></p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer class="site-footer">
