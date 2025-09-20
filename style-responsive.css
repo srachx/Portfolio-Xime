@@ -173,3 +173,14 @@ img, svg, video, canvas {
     width: 100% !important; max-width: 520px !important; height:auto !important; object-fit:contain !important;
   }
 }
+
+@media (min-width: 900px) and (max-width: 1180px) and (orientation: landscape){
+  #altair-character .itara-grid{
+    display:grid !important;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap:18px;
+    justify-items:center;
+  }
+  #altair-character .itara-column{ min-width:auto !important; width:100% !important; max-width:680px !important; }
+}
