@@ -385,49 +385,52 @@ if (char2037Images.length > 0) {
   setInterval(updateChar2037Carousel, 3000); // Cambio automático cada 3 segundos
 }
 
-// === Others Gallery: modales por imagen ===
+// ===== Others: modal bilingüe =====
 (function () {
-  const gallery = document.getElementById('othersGallery');
-  const modal   = document.getElementById('galleryModal');
-  if (!gallery || !modal) return;
+  const g = document.getElementById('othersGallery');
+  const m = document.getElementById('othersModal');
+  if (!g || !m) return;
 
-  const imgEl   = modal.querySelector('.gm-image');
-  const titleEl = modal.querySelector('.gm-title');
-  const descEl  = modal.querySelector('.gm-desc');
+  const img   = m.querySelector('.om-image');
+  const title = m.querySelector('.om-title');
+  const desc  = m.querySelector('.om-desc');
+
+  function currentLang() {
+    const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+    return htmlLang.startsWith('es') ? 'es' : 'en';
+  }
 
   function openModal(card) {
+    const lang = currentLang();
+    const t = card.dataset[`title${lang === 'es' ? 'Es' : 'En'}`] || '';
+    const d = card.dataset[`desc${lang === 'es' ? 'Es' : 'En'}`] || '';
     const full = card.dataset.img || card.querySelector('img')?.src;
-    const title = card.dataset.title || card.querySelector('figcaption span')?.textContent || '';
-    const desc  = card.dataset.desc || '';
 
-    imgEl.src = full;
-    imgEl.alt = title;
-    titleEl.textContent = title;
-    descEl.textContent = desc;
+    title.textContent = t;
+    desc.textContent  = d;
+    img.src = full;
+    img.alt = t || 'Artwork';
 
-    modal.setAttribute('aria-hidden', 'false');
-    document.documentElement.style.overflow = 'hidden'; // bloquea scroll fondo
+    m.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden'; // bloquea scroll del fondo
   }
 
   function closeModal() {
-    modal.setAttribute('aria-hidden', 'true');
-    imgEl.src = '';
+    m.setAttribute('aria-hidden', 'true');
+    img.src = '';
     document.documentElement.style.overflow = '';
   }
 
-  // Abrir
-  gallery.addEventListener('click', (e) => {
-    const card = e.target.closest('.gallery-card');
+  g.addEventListener('click', (e) => {
+    const card = e.target.closest('.others-card');
     if (card) openModal(card);
   });
 
-  // Cerrar (botón & backdrop)
-  modal.addEventListener('click', (e) => {
-    if (e.target.matches('[data-close], .gm-backdrop')) closeModal();
+  m.addEventListener('click', (e) => {
+    if (e.target.matches('[data-close], .om-backdrop')) closeModal();
   });
 
-  // ESC
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+    if (e.key === 'Escape' && m.getAttribute('aria-hidden') === 'false') closeModal();
   });
 })();

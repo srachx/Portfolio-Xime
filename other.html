@@ -26,7 +26,7 @@
       <button onclick="location.href='illustration.html'" class="lang-text" data-en="Illustration" data-es="Ilustración">Illustration</button>
       <button onclick="location.href='uxui.html'" class="lang-text" data-en="UX/UI" data-es="UX/UI">UX/UI</button>
       <button onclick="location.href='graphic.html'" class="lang-text" data-en="Graphic Design" data-es="Diseño Gráfico">Graphic Design</button>
-      <button onclick="location.href='other.html'" class="lang-text" data-en="Other" data-es="Otros">Other</button>
+      <button onclick="location.href='other.html'" class="lang-text" data-en="Gallery" data-es="Galería">Gallery</button>
     </div>
   </div>
   <div class="navbar-section lang-toggle">
@@ -37,59 +37,87 @@
 
 <section class="hero">
   <div class="hero-text">
-    <h1><strong class="lang-text" data-en="Gallery" data-es="Galería"><strong>Gallery</strong></h1>
+    <h1><strong class="lang-text" data-en="Gallery" data-es="Galería">Gallery</strong></h1>
     <div class="arrow">
       <img src="images/arrow.png" alt="Scroll down">
     </div>
   </div>
 </section>
 
-<section class="custom-section">
-<section id="others" class="content-section light-background">
-  <h2 class="section-title">Others</h2>
+<section class="custom-section" id="others">
+  <h2 class="section-title lang-text" data-en="Other Works" data-es="Otros Trabajos">Other Works</h2>
 
   <div class="others-gallery" id="othersGallery">
-    <!-- Cada tarjeta -->
-    <figure class="gallery-card"
-            data-title="Ilustración editorial"
-            data-desc="Portada para revista cultural. Técnica mixta."
-            data-img="images/others/editorial.jpg">
-      <img src="images/Tatloks.png" alt="Ilustración personalizada" loading="lazy" />
+    <!-- Tarjeta #1 -->
+    <figure class="others-card"
+            data-title-en="Editorial Illustration"
+            data-title-es="Ilustración Editorial"
+            data-desc-en="Cover for a culture magazine. Mixed technique."
+            data-desc-es="Portada para revista cultural. Técnica mixta."
+            data-img="images/Tatloks.PNG">
+      <!-- usa *thumb* para cargar rápido -->
+      <img src="images/Tatloks.PNG" alt="Editorial Illustration" loading="lazy">
       <figcaption class="overlay"><span>Ilustración personalizada</span></figcaption>
     </figure>
 
-    <figure class="gallery-card"
-            data-title="Comisión personaje"
-            data-desc="Character commission estilo cartoon americano."
-            data-img="images/others/commission1.jpg">
-      <img src="images/others/commission1_thumb.jpg" alt="Comisión personaje" loading="lazy" />
-      <figcaption class="overlay"><span>Comisión personaje</span></figcaption>
+    <!-- Tarjeta #2 -->
+    <figure class="others-card"
+            data-title-en="Character Commission"
+            data-title-es="Comisión de Personaje"
+            data-desc-en="Cartoon/indie style character for social avatar."
+            data-desc-es="Personaje estilo cartoon/indie para avatar social."
+            data-img="images/IMG876.JPG">
+      <img src="images/IMG876.JPG" alt="Character Commission" loading="lazy">
+      <figcaption class="overlay"><span>Retrato</span></figcaption>
     </figure>
 
-    <figure class="gallery-card"
-            data-title="Poster evento"
-            data-desc="Poster para festival independiente, formato 70×100."
-            data-img="images/others/poster.jpg">
-      <img src="images/others/poster_thumb.jpg" alt="Poster evento" loading="lazy" />
-      <figcaption class="overlay"><span>Poster evento</span></figcaption>
+    <!-- Tarjeta #3 -->
+    <figure class="others-card"
+            data-title-en="Event Poster"
+            data-title-es="Póster de Evento"
+            data-desc-en="Independent festival poster, 70×100 cm."
+            data-desc-es="Póster para festival independiente, 70×100 cm."
+            data-img="images/FELIX@10x.png">
+      <img src="images/FELIX@10x.png" alt="Event Poster" loading="lazy">
+      <figcaption class="overlay"><span>Personaje para juego de mesa</span></figcaption>
     </figure>
 
-    <!-- duplica más <figure> con tus imágenes -->
+<figure class="others-card"
+            data-title-en="Event Poster"
+            data-title-es="Póster de Evento"
+            data-desc-en="Independent festival poster, 70×100 cm."
+            data-desc-es="Póster para festival independiente, 70×100 cm."
+            data-img="images/IMG_7347.PNG">
+      <img src="images/IMG_7347.PNG" alt="Event Poster" loading="lazy">
+      <figcaption class="overlay"><span>Fanart de la serie SHE-RA</span></figcaption>
+    </figure>
+
+    <figure class="others-card"
+            data-title-en="Event Poster"
+            data-title-es="Póster de Evento"
+            data-desc-en="Independent festival poster, 70×100 cm."
+            data-desc-es="Póster para festival independiente, 70×100 cm."
+            data-img="images/IMG_7823.JPG">
+      <img src="images/IMG_7823.JPG" alt="Event Poster" loading="lazy">
+      <figcaption class="overlay"><span>Comisión Mascota</span></figcaption>
+    </figure>
+    <!-- Duplica más <figure> cambiando rutas y textos -->
   </div>
 
   <!-- Modal -->
-  <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="gm-backdrop" data-close></div>
-    <div class="gm-dialog" role="document">
-      <button class="gm-close" aria-label="Close" data-close>&times;</button>
-      <img class="gm-image" alt="" />
-      <div class="gm-text">
-        <h3 class="gm-title"></h3>
-        <p class="gm-desc"></p>
+  <div class="others-modal" id="othersModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="om-backdrop" data-close></div>
+    <div class="om-dialog" role="document">
+      <button class="om-close" aria-label="Close" data-close>&times;</button>
+      <img class="om-image" alt="">
+      <div class="om-text">
+        <h3 class="om-title"></h3>
+        <p class="om-desc"></p>
       </div>
     </div>
   </div>
 </section>
+
 
 <footer class="site-footer">
   <p class="lang-text" data-en="Designed, illustrated and developed by Ximena Poot © 2025" data-es="Diseñado, ilustrado y desarrollado por Ximena Poot © 2025">
