@@ -14,7 +14,7 @@
     }
   </style>
 </head>
-<body>
+<body class="page-uxui">
 
 <header class="navbar">
     <div class="navbar-section logo">
@@ -40,13 +40,20 @@
 <div class="index-menu">
     <span class="menu-label lang-text" data-en="Contents" data-es="Contenido">Contenido</span>
 
-    <button class="menu-item project" data-project="altair">Hazbin Hotel Test</button>
+    <button class="menu-item project" data-project="hazbin">Hazbin Hotel Test</button>
+       <div class="submenu" data-project="hazbin">
+        <button class="menu-item subsection" data-section="hazbin-role">Role</button>
+      </div>
 
-      <button class="menu-item project" data-project="project-2037">2037</button>
+      <button class="menu-item project" data-project="demento">Dementophobia</button>
+      <div class="submenu" data-project="demento">
+        <button class="menu-item subsection" data-section="demento-role">Role</button>
+      </div>
 
-      <button class="menu-item project" data-project="project-2037">Dementophobia</button>
-
-      <button class="menu-item project" data-project="project-2037">Cubs Dots</button>
+      <button class="menu-item project" data-project="cubs">Cubs Dots</button>
+       <div class="submenu" data-project="cubs">
+        <button class="menu-item subsection" data-section="cubs-role">Role</button>
+      </div>
 
   </div>
 
@@ -59,8 +66,94 @@
   </div>
 </section>
 
-<section class="custom-section">
-  <!-- AQUÍ VA EL CONTENIDO DE CADA SECCIÓN NUEVA COMO illustration.html, uxui.html, etc. -->
+ <div class="content-section light-background demento-section" id="demento">
+      <div class="demento-background"></div>
+      <div class="demento-overlay">
+        <img src="images/DEMENTOPHOBIA.png" alt="Dementophobia Logo" class="demento-logo" />
+        <p class="demento-description lang-text"
+          data-en="A survival-platformer that explores schizophrenia through a fragmented mindscape where medication, routine, and perception become tools of survival. The project focuses on creating visual tension, emotional immersion, and awareness of mental health through minimalist interaction and atmospheric storytelling."
+          data-es="Una plataforma de supervivencia que explora la esquizofrenia a través de un paisaje mental fragmentado, donde la medicación, la rutina y la percepción se convierten en herramientas de supervivencia. <br>El proyecto se centra en generar tensión visual, inmersión emocional y conciencia sobre la salud mental mediante una interacción minimalista y una narrativa atmosférica.">
+          A survival-platformer that explores schizophrenia through a fragmented mindscape where medication, routine, and perception become tools of survival. The project focuses on creating visual tension, emotional immersion, and awareness of mental health through minimalist interaction and atmospheric storytelling.
+        </p>
+        <p class="demento-project-type lang-text" data-en="Degree project" data-es="Proyecto de grado"> Degree project</p>
+      </div>
+  </div>
+
+   <div class="content-section light-background" id="demento-role">
+    <div class="demento-uxui-container light-background">
+
+       <!-- Screens -->
+      <div class="demento-screens light-background">
+        <img src="images/deme_play.png" alt="Comic Page 1" class="ss">
+      </div>
+
+      <!-- Texto -->
+      <div class="demento-role-text light-background">
+        <h3 class="lang-text" data-en="ROLE" data-es="ROL">ROLE</h3>
+        <p class="lang-text"
+          data-en="I was in charge of designing the user interface and key visual elements of the game, including screens such as gameplay, pause, and settings."
+          data-es="Estuve a cargo de diseñar la interfaz de usuario y los elementos visuales clave del juego, incluyendo pantallas como la de juego, pausa y configuración.">
+          I was in charge of designing the user interface and key visual elements of the game, including screens such as gameplay, pause, and settings.
+        </p>
+
+        <p class="lang-text"
+          data-en="I also developed the visual concept for the enemies, designed as hallucinations based on research into schizophrenia. All assets were created under the supervision of a project lead, who reviewed and approved each element. "
+          data-es="También desarrollé el concepto visual de los enemigos, diseñados como alucinaciones basadas en investigaciones sobre la esquizofrenia. Todos los elementos fueron creados bajo la supervisión de un líder de proyecto, quien revisó y aprobó cada uno de ellos.">
+           Also I developed the visual concept for the enemies, designed as hallucinations based on research into schizophrenia. All assets were created under the supervision of a project lead, who reviewed and approved each element. 
+        </p>
+      </div>
+    </div>
+   </div>
+
+  
+<!-- HAZBIN HOTEL -->
+ <div class="content-section light-background hazbin-section" id="hazbin">
+  <div class="hazbin-background"></div>
+      <div class="hazbin-overlay">
+        <img src="images/hazbin logo@10x.png" alt="hazbin Logo" class="hazbin-logo" />
+        <p class="hazbin-description lang-text"
+          data-en="This mobile test is a fan-made interactive experience inspired by Hazbin Hotel, the animated series by Vivziepop, now streaming on Amazon. This is a purely entertainment-focused project with no psychological or diagnostic basis, intended to engage fans and celebrate the series’ music, characters, and community."
+          data-es="Esta prueba móvil es una experiencia interactiva creada por y para fans e inspirada en Hazbin Hotel, la serie animada de Vivziepop que actualmente se transmite en Amazon. Es un proyecto enfocado únicamente en el entretenimiento, sin base psicológica ni diagnóstica, pensado para atraer a los fans y celebrar la música, los personajes y la comunidad de la serie.">
+          This mobile test is a fan-made interactive experience inspired by Hazbin Hotel, the animated series by Vivziepop, now streaming on Amazon. This is a purely entertainment-focused project with no psychological or diagnostic basis, intended to engage fans and celebrate the series’ music, characters, and community.
+        </p>
+        <p class="hazbin-project-type lang-text" data-en="Degree project" data-es="Proyecto de grado"> Degree project</p>
+      </div>
+
+  </div>
+
+<div class="content-section light-background" id="hazbin-role">
+    <div class="hazbin-container light-background">
+      <div class="hazbin-role-text light-background">
+        <h3 class="lang-text" data-en="ROLE" data-es="ROL">ROLE</h3>
+        <p class="lang-text"
+          data-en="I was fully in charge of the visual and UI design of the test, carefully crafting each screen to reflect the unique aesthetic of Hazbin Hotel. From typography and color palette to icons and transitions, every design decision was guided by the show’s bold, chaotic, and theatrical visual identity. The goal was to create an immersive fan experience that felt consistent with the world of the series while remaining intuitive and engaging for mobile users."
+          data-es="Estuve completamente a cargo del diseño visual y de la interfaz de usuario de la prueba, cuidando cada pantalla para reflejar la estética única de Hazbin Hotel. Desde la tipografía y la paleta de colores hasta los íconos y las transiciones, cada decisión de diseño estuvo guiada por la identidad visual audaz, caótica y teatral de la serie. El objetivo fue crear una experiencia inmersiva para los fans que se sintiera coherente con el mundo de la serie, pero al mismo tiempo resultara intuitiva y atractiva para los usuarios móviles.">
+          I was fully in charge of the visual and UI design of the test, carefully crafting each screen to reflect the unique aesthetic of Hazbin Hotel. From typography and color palette to icons and transitions, every design decision was guided by the show’s bold, chaotic, and theatrical visual identity. The goal was to create an immersive fan experience that felt consistent with the world of the series while remaining intuitive and engaging for mobile users.
+        </p>
+      </div>      
+      
+    <div class="hazbin-screens light-background">
+        <img src="images/hazbin.png" alt="Comic Page 1" class="ss">
+      </div>
+
+    </div>
+ </div>
+
+<!-- CUBS DOTS -->
+ <div class="content-section light-background cubs-section" id="cubs">
+ </div>
+
+ <div class="content-section light-background" id="cubs-role">
+    <div class="hazbin-container light-background">
+      <div class="hazbin-role-text light-background">
+        <h3 class="lang-text" data-en="ROLE" data-es="ROL">ROLE</h3>
+        <p class="lang-text"
+          data-en="I was fully in charge of the visual and UI design of the test, carefully crafting each screen to reflect the unique aesthetic of Hazbin Hotel. From typography and color palette to icons and transitions, every design decision was guided by the show’s bold, chaotic, and theatrical visual identity. The goal was to create an immersive fan experience that felt consistent with the world of the series while remaining intuitive and engaging for mobile users."
+          data-es="Estuve completamente a cargo del diseño visual y de la interfaz de usuario de la prueba, cuidando cada pantalla para reflejar la estética única de Hazbin Hotel. Desde la tipografía y la paleta de colores hasta los íconos y las transiciones, cada decisión de diseño estuvo guiada por la identidad visual audaz, caótica y teatral de la serie. El objetivo fue crear una experiencia inmersiva para los fans que se sintiera coherente con el mundo de la serie, pero al mismo tiempo resultara intuitiva y atractiva para los usuarios móviles.">
+          I was fully in charge of the visual and UI design of the test, carefully crafting each screen to reflect the unique aesthetic of Hazbin Hotel. From typography and color palette to icons and transitions, every design decision was guided by the show’s bold, chaotic, and theatrical visual identity. The goal was to create an immersive fan experience that felt consistent with the world of the series while remaining intuitive and engaging for mobile users.
+        </p>
+      </div>    
+
 </section>
 
 <footer class="site-footer">

@@ -271,8 +271,8 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   if (!sectionId.startsWith('2037')) return;
 
   subBtn.addEventListener('click', () => {
-    const parentProject = "project-2037";
-    const generalSectionId = "project-2037";
+    const parentProject = "demento";
+    const generalSectionId = "demento";
     const projectBtn = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
     const submenu = document.querySelector(`.submenu[data-project="${parentProject}"]`);
     const generalSection = document.getElementById(generalSectionId);
@@ -285,7 +285,7 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
     generalSection?.classList.add("active");
 
     // Referencia al fondo de 2037
-    const project2037 = document.getElementById('project-2037');
+    const project2037 = document.getElementById('demento');
 
    if (isActive) {
     // Desactiva solo ese subtítulo y su sección
@@ -302,8 +302,8 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
 
       // Hacer scroll hacia el primer subtítulo activo o al título principal
       const scrollTarget =
-      document.querySelector('#project-2037 h2, #project-2037 h3, #project-2037 .section-title') ||
-      document.querySelector('#project-2037');
+      document.querySelector('#demento h2, #demento h3, #demento .section-title') ||
+      document.querySelector('#demento');
 
     if (scrollTarget) {
       console.log("Scrolling to:", scrollTarget);
@@ -434,3 +434,106 @@ if (char2037Images.length > 0) {
     if (e.key === 'Escape' && m.getAttribute('aria-hidden') === 'false') closeModal();
   });
 })();
+
+// --- SUBSECCIONES: HAZBIN (prefijo: "hazbin" y "hazbin-role")
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section') || '';
+  if (!sectionId.startsWith('hazbin')) return;
+
+  subBtn.addEventListener('click', () => {
+    const parentProject = 'hazbin';
+    const projectBtn    = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu       = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const general       = document.getElementById(parentProject);
+    const sectionToTgl  = document.getElementById(sectionId);
+    const isActive      = subBtn.classList.contains('active-sub');
+
+    // asegurar proyecto/submenú activos
+    projectBtn?.classList.add('active-project');
+    submenu?.classList.add('active');
+    general?.classList.add('active');
+
+    if (isActive) {
+      subBtn.classList.remove('active-sub');
+      sectionToTgl?.classList.remove('active');
+      const anyLeft = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="hazbin"]').length;
+      if (!anyLeft) {
+        general?.classList.remove('has-subsection');
+        (document.querySelector('#hazbin h2, #hazbin h3, #hazbin .section-title') || general)?.scrollIntoView({behavior:'smooth'});
+      }
+    } else {
+      subBtn.classList.add('active-sub');
+      sectionToTgl?.classList.add('active');
+      general?.classList.add('has-subsection');
+      sectionToTgl?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// --- SUBSECCIONES: CUBS (acepta "cub", "cubs", "cubs-role")
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section') || '';
+  if (!(sectionId.startsWith('cub') || sectionId.startsWith('cubs'))) return;
+
+  subBtn.addEventListener('click', () => {
+    const parentProject = 'cubs';
+    const projectBtn    = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu       = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const general       = document.getElementById(parentProject);
+    const sectionToTgl  = document.getElementById(sectionId);
+    const isActive      = subBtn.classList.contains('active-sub');
+
+    projectBtn?.classList.add('active-project');
+    submenu?.classList.add('active');
+    general?.classList.add('active');
+
+    if (isActive) {
+      subBtn.classList.remove('active-sub');
+      sectionToTgl?.classList.remove('active');
+      const anyLeft = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="cub"], .menu-item.subsection.active-sub[data-section^="cubs"]').length;
+      if (!anyLeft) {
+        general?.classList.remove('has-subsection');
+        (document.querySelector('#cubs h2, #cubs h3, #cubs .section-title') || general)?.scrollIntoView({behavior:'smooth'});
+      }
+    } else {
+      subBtn.classList.add('active-sub');
+      sectionToTgl?.classList.add('active');
+      general?.classList.add('has-subsection');
+      sectionToTgl?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// --- SUBSECCIONES: DEMENTO (acepta "demento", "demento-role")
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section') || '';
+  if (!(sectionId.startsWith('demento') || sectionId.startsWith('demento'))) return;
+
+  subBtn.addEventListener('click', () => {
+    const parentProject = 'demento';
+    const projectBtn    = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu       = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const general       = document.getElementById(parentProject);
+    const sectionToTgl  = document.getElementById(sectionId);
+    const isActive      = subBtn.classList.contains('active-sub');
+
+    projectBtn?.classList.add('active-project');
+    submenu?.classList.add('active');
+    general?.classList.add('active');
+
+    if (isActive) {
+      subBtn.classList.remove('active-sub');
+      sectionToTgl?.classList.remove('active');
+      const anyLeft = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="cub"], .menu-item.subsection.active-sub[data-section^="demento"]').length;
+      if (!anyLeft) {
+        general?.classList.remove('has-subsection');
+        (document.querySelector('#demento h2, #demento h3, #demento .section-title') || general)?.scrollIntoView({behavior:'smooth'});
+      }
+    } else {
+      subBtn.classList.add('active-sub');
+      sectionToTgl?.classList.add('active');
+      general?.classList.add('has-subsection');
+      sectionToTgl?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});

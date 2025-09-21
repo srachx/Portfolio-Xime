@@ -1181,6 +1181,27 @@ body {
 
 }
 
+.menu-item.project.active-project[data-project="demento"] {
+  background-color: #000000;
+  color: white;
+  border-color: #000000;
+  font-weight: bold;
+}
+
+.menu-item.project.active-project[data-project="hazbin"] {
+  background-color: #A63434;
+  color: white;
+  border-color: #A63434;
+  font-weight: bold;
+}
+
+.menu-item.project.active-project[data-project="cubs"] {
+  background-color: #6288D1;
+  color: white;
+  border-color: #6288D1;
+  font-weight: bold;
+}
+
 /* ----------- PROYECTOS INACTIVOS ----------- */
 .menu-item.project {
   color: #aaa;
@@ -1213,6 +1234,20 @@ body {
   color: #007455;
 }
 
+.submenu[data-project="demento"] .menu-item.subsection {
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.submenu[data-project="hazbin"] .menu-item.subsection {
+  border: 1px solid #EDD78E;
+  color: #EDD78E;
+}
+.submenu[data-project="cubs"] .menu-item.subsection {
+  border: 1px solid #FFB000;
+  color: #FFB000;
+}
+
 /* ----------- SUBTÍTULOS ACTIVOS ----------- */
 .submenu[data-project="altair"] .menu-item.subsection.active-sub {
   background-color: #1a1531;
@@ -1223,6 +1258,27 @@ body {
 
 .submenu[data-project="project-2037"] .menu-item.subsection.active-sub {
   background-color: #00645A;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="demento"] .menu-item.subsection.active-sub {
+  background-color: #000000;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="hazbin"] .menu-item.subsection.active-sub {
+  background-color: #A63434;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="cubs"] .menu-item.subsection.active-sub {
+  background-color: #6288D1;
   color: white;
   border: none;
   font-weight: bold;
@@ -2252,3 +2308,276 @@ body {
   .om-dialog { grid-template-columns: 1fr; }
   .om-image  { aspect-ratio: 4 / 3; }
 }
+
+.demento-section {
+  position: relative;
+  background-color: whitesmoke;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.demento-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/Murcielago-Malo.png ');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.03;
+  z-index: 0;
+}
+
+.demento-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;   /* Centra verticalmente */
+}
+
+.demento-logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.demento-description {
+  max-width: 500px;
+  margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+}
+
+.demento-project-type {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.demento-role-container {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 40px;
+  gap: 100px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.demento-role-text {
+  max-width: 400px;
+  text-align: left;
+  margin-left: 120px;
+  margin-top: -5rem;
+}
+
+.demento-screens {
+  display: block !important;
+  height: 350px !important;     /* Ajusta la altura que quieres ver */
+  width: auto !important;       /* Para que mantenga la proporción */
+  max-height: 100vh !important;  /* Evita que desborde en pantallas bajas */
+  margin: 2rem auto !important; /* Centrado */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25)) !important;
+  object-fit: contain !important;
+  align-items: right;
+}
+
+.demento-screens img.ss {
+  display: block;
+  height: 500px !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  margin: 2rem auto;
+  object-fit: contain;
+  margin-top: 5rem;
+  margin-right: 1rem;
+
+}
+
+.demento-screens img {
+  width: 100%;
+  height: auto;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+/* Responsivo: apilar en pantallas pequeñas */
+@media (max-width: 900px) {
+  .demento-role-container {
+    grid-template-columns: 1fr;  /* 1 sola columna */
+  }
+}
+
+
+.demento-role-text h3 {
+  color: #000000;
+  font-size: 1.5rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  margin-bottom: 1rem;
+}
+
+.demento-role-text p {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* UX/UI side menu: show nested submenu when active */
+.index-menu { overflow: visible; }           /* evita que se “corte” */
+.submenu { display: none; gap: 8px; margin: 6px 0 10px 16px; flex-direction: column; }
+.submenu.active { display: flex; }           /* <-- clave para que aparezca */
+.menu-item.subsection { text-align: left; }
+
+
+.hazbin-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;   /* Centra verticalmente */
+}
+
+.hazbin-section {
+  position: relative;
+  background-color: whitesmoke;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.hazbin-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/hazbin\ logo@10x.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.010;
+  z-index: 0;
+}
+
+
+.hazbin-logo {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.hazbin-description {
+  max-width: 500px;
+  margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+}
+
+.hazbin-project-type {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/* Solo afecta a la página UX/UI */
+body.page-uxui .content-section { display: none; }
+body.page-uxui .content-section.active { display: block; }
+
+
+.hazbin-container {
+  max-width: 1200px;
+  max-height: 1000px;
+}
+
+.hazbin-role-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 40px;
+  gap: 100px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.hazbin-role-text {
+  max-width: 400px;
+  text-align: left;
+  margin-left: 120px;
+  margin-top: 20rem;
+}
+
+.hazbin-role-text h3 {
+  color: #A63434;
+  font-size: 1.5rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  margin-bottom: 1rem;
+}
+
+.hazbin-role-text p {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+
+/* Hazbin ROLE */
+.hazbin-screens img.ss {
+  display: block;
+  max-width: 1000px;   /* cámbialo a lo que necesites */
+  width: 100%;
+  height: auto;
+  margin-left: 1px;  /* mueve 40px a la derecha */
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.25));
+}
+
+
+
+.hazbin-screens { 
+  transform: translateY(70px);  /* ajusta -50px a tu gusto: -30 / -60 / etc */
+}
+
+/* === HAZBIN ROLE (layout final) === */
+#hazbin-role .hazbin-container{
+  display: grid;
+  grid-template-columns: minmax(320px, 520px) minmax(560px, 1fr); /* texto | mockup */
+  gap: 3.5rem;
+  align-items: start;            /* permite mover el texto hacia abajo */
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Texto: bájalo un poco respecto a la imagen */
+#hazbin-role .hazbin-role-text{
+  margin-left: 100px;                     /* resetea márgenes heredados */
+  align-self: start;
+  margin-top: 300px;             /* ← ajusta (80–160px) según tu gusto */
+}
+
+#hazbin-role .hazbin-screens img.ss{
+  width: clamp(820px, 64vw, 1320px);  /* crece y es responsive */
+}
+
+
