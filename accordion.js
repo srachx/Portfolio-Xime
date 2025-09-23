@@ -537,3 +537,72 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
     }
   });
 });
+
+// --- SUBSECCIONES: modelo (acepta "modelo", "modelo-dig", "modelo-imp")
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section') || '';
+  if (!(sectionId.startsWith('modelo') || sectionId.startsWith('modelo'))) return;
+
+  subBtn.addEventListener('click', () => {
+    const parentProject = 'modelo';
+    const projectBtn    = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu       = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const general       = document.getElementById(parentProject);
+    const sectionToTgl  = document.getElementById(sectionId);
+    const isActive      = subBtn.classList.contains('active-sub');
+
+    projectBtn?.classList.add('active-project');
+    submenu?.classList.add('active');
+    general?.classList.add('active');
+
+    if (isActive) {
+      subBtn.classList.remove('active-sub');
+      sectionToTgl?.classList.remove('active');
+      const anyLeft = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="cub"], .menu-item.subsection.active-sub[data-section^="modelo"]').length;
+      if (!anyLeft) {
+        general?.classList.remove('has-subsection');
+        (document.querySelector('#modelo h2, #modelo h3, #modelo .section-title') || general)?.scrollIntoView({behavior:'smooth'});
+      }
+    } else {
+      subBtn.classList.add('active-sub');
+      sectionToTgl?.classList.add('active');
+      general?.classList.add('has-subsection');
+      sectionToTgl?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+// --- SUBSECCIONES: mundo- (acepta "mundo-post", "mundo-mock")
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  const sectionId = subBtn.getAttribute('data-section') || '';
+  if (!sectionId.startsWith('mundo-')) return;
+
+  subBtn.addEventListener('click', () => {
+    const parentProject = 'mundomaya';
+    const projectBtn    = document.querySelector(`.menu-item.project[data-project="${parentProject}"]`);
+    const submenu       = document.querySelector(`.submenu[data-project="${parentProject}"]`);
+    const general       = document.getElementById(parentProject);
+    const sectionToTgl  = document.getElementById(sectionId);
+    const isActive      = subBtn.classList.contains('active-sub');
+
+    projectBtn?.classList.add('active-project');
+    submenu?.classList.add('active');
+    general?.classList.add('active');
+
+    if (isActive) {
+      subBtn.classList.remove('active-sub');
+      sectionToTgl?.classList.remove('active');
+      
+      const anyLeft = document.querySelectorAll('.menu-item.subsection.active-sub[data-section^="cub"], .menu-item.subsection.active-sub[data-section^="mundomaya"]').length;
+      if (!anyLeft) {
+        general?.classList.remove('has-subsection');
+        (document.querySelector('#mundomaya h2, #mundomaya h3, #mundomaya .section-title') || general)?.scrollIntoView({behavior:'smooth'});
+      }
+    } else {
+      subBtn.classList.add('active-sub');
+      sectionToTgl?.classList.add('active');
+      general?.classList.add('has-subsection');
+      sectionToTgl?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});

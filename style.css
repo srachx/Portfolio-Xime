@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'AvenirNextLTPro-Heavy';
   src: url('fonts/AvenirNextLTPro-Heavy.woff2') format('woff2'),
@@ -157,7 +158,7 @@ body {
   padding: 0;
   margin: 0;
 
-  background-image: url("/Portfolio-Xime/images/IMG_1507.PNG");
+  background-image: url("/Portfolio-Xime/images/IMG_0932 (1).PNG");
   background-size: cover;         /* Para que cubra todo el section */
   background-position: center;    /* Centra la imagen */
   background-repeat: no-repeat;   /* Evita que se repita */
@@ -1202,6 +1203,20 @@ body {
   font-weight: bold;
 }
 
+.menu-item.project.active-project[data-project="modelo"] {
+  background-color: #305675;
+  color: white;
+  border-color: #305675;
+  font-weight: bold;
+}
+
+.menu-item.project.active-project[data-project="mundomaya"] {
+  background-color: #00443F;
+  color: white;
+  border-color: #00443F;
+  font-weight: bold;
+}
+
 /* ----------- PROYECTOS INACTIVOS ----------- */
 .menu-item.project {
   color: #aaa;
@@ -1243,9 +1258,20 @@ body {
   border: 1px solid #EDD78E;
   color: #EDD78E;
 }
+
 .submenu[data-project="cubs"] .menu-item.subsection {
   border: 1px solid #FFB000;
   color: #FFB000;
+}
+
+.submenu[data-project="modelo"] .menu-item.subsection {
+  border: 1px solid #305675;
+  color: #305675;
+}
+
+.submenu[data-project="mundomaya"] .menu-item.subsection {
+  border: 1px solid #00443F;
+  color: #00443F;
 }
 
 /* ----------- SUBTÍTULOS ACTIVOS ----------- */
@@ -1279,6 +1305,20 @@ body {
 
 .submenu[data-project="cubs"] .menu-item.subsection.active-sub {
   background-color: #6288D1;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="modelo"] .menu-item.subsection.active-sub {
+  background-color: #305675;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="mundomaya"] .menu-item.subsection.active-sub {
+  background-color: #00443F;
   color: white;
   border: none;
   font-weight: bold;
@@ -1329,6 +1369,36 @@ body {
 /* Hover: subtítulo inactivo - 2037 */
 [data-project="project-2037"] .menu-item.subsection:not(.active-sub):hover {
   background-color: #007455;
+  color: white;
+}
+
+/* Hover: subtítulo inactivo - hazbin */
+[data-project="hazbin"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #A63434;
+  color: white;
+}
+
+/* Hover: subtítulo inactivo - demento */
+[data-project="demento"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #000000;
+  color: white;
+}
+
+/* Hover: subtítulo inactivo - cubs */
+[data-project="cubs"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #6288D1;
+  color: white;
+}
+
+/* Hover: subtítulo inactivo - modelo */
+[data-project="modelo"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #305675;
+  color: white;
+}
+
+/* Hover: subtítulo inactivo - mundomaya */
+[data-project="mundomaya"] .menu-item.subsection:not(.active-sub):hover {
+  background-color: #00443F;
   color: white;
 }
 
@@ -2580,4 +2650,458 @@ body.page-uxui .content-section.active { display: block; }
   width: clamp(820px, 64vw, 1320px);  /* crece y es responsive */
 }
 
+.modelo-section {
+  position: relative;
+  background-color: whitesmoke;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
 
+.modelo-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/carta_trans.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.modelo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;   /* Centra verticalmente */
+}
+
+.modelo-logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.modelo-description {
+  max-width: 500px;
+  margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+}
+
+.modelo-project-type {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.modelo-role-container {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 40px;
+  gap: 100px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.modelo-role-text {
+  max-width: 400px;
+  text-align: left;
+  margin-left: 120px;
+  margin-top: -5rem;
+}
+
+.modelo-screens {
+  display: block !important;
+  height: 500px !important;     /* Ajusta la altura que quieres ver */
+  width: auto !important;       /* Para que mantenga la proporción */
+  max-height: 100vh !important;  /* Evita que desborde en pantallas bajas */
+  margin: 2rem auto !important; /* Centrado */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25)) !important;
+  object-fit: contain !important;
+  align-items: right;
+}
+
+.modelo-screens img.ss {
+  display: block;
+  height: 500px !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  margin: 2rem auto;
+  object-fit: contain;
+  margin-top: 5rem;
+  margin-right: 1rem;
+
+}
+
+.modelo-role-text {
+  max-width: 400px;
+  text-align: left;
+  margin-left: 120px;
+  margin-top: 5rem;
+}
+
+.modelo-role-text h3 {
+  color: #305675;
+  font-size: 1.5rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  margin-bottom: 1rem;
+}
+
+.modelo-role-text p {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* --- SOLO EN #modelo-dig --- */
+#modelo-dig .modelo-container{
+  display: grid;
+  grid-template-columns: minmax(460px, 1fr) minmax(420px, 520px); /* imagen | texto */
+  gap: 2.5rem;
+  max-width: 1600px;     /* sube el ancho total del bloque */
+  margin: 0 auto;
+}
+
+#modelo-dig .modelo-screens{
+  height: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  justify-self: start;
+}
+
+#modelo-dig .modelo-screens img.ss{
+  height: auto !important;        /* deja de controlar por altura */
+  width: 1000px !important;       /* ← súbelo a 1500/1600 si quieres más */
+  max-width: none !important;     /* quita cualquier tope escondido */
+  margin: 0 !important;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
+}
+
+  #modelo-dig .modelo-role-text{
+    margin: 0 !important;      /* quita márgenes heredados */
+    max-width: 520px;
+    text-align: left;
+  }
+
+  #modelo-dig .modelo-role-text h3{
+    color: #305675;
+    margin-bottom: 0.75rem;
+  }
+
+/* ↓ Solo Modelo → Digital: baja el bloque de texto */
+#modelo-dig .modelo-role-text{
+  padding-right: 100px;
+  padding-top: 200px !important;     /* ajusta 60–160px a gusto */
+  align-self: start;                 /* en grid, al inicio de la columna */
+}
+
+/* Si quieres afinar aún más, puedes empujar sólo los elementos internos: */
+#modelo-dig .modelo-role-text > h3,
+#modelo-dig .modelo-role-text > p{
+  position: relative;
+  top: 20px !important;              /* suma 20px extra; sube/baja a gusto */
+}
+
+/* === MODELO → PRINTED MEDIA: swap columnas (imagen derecha | texto izquierda) === */
+
+/* La columna 1 (izq) será estrecha para el texto; la 2 (der) será ancha para la imagen */
+#modelo-imp .modelo-container{
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) minmax(460px, 1fr); /* texto | imagen */
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Texto a la IZQUIERDA (col 1) */
+#modelo-imp .modelo-role-text{
+  grid-column: 1;
+  margin: 0 !important;
+  max-width: 520px;
+  text-align: left;
+  padding-left: 100px;   /* si antes usabas padding-right, cámbialo a left */
+  padding-right: 0 !important;
+  padding-top: 0 !important;   /* si lo estabas usando para bajarlo */
+  transform: translateY(-250px); /* ajusta: -10, -20, -40… */
+
+}
+
+/* Imagen a la DERECHA (col 2), respetando tamaños que ya tenías */
+#modelo-imp .modelo-screens{
+  grid-column: 2;
+  justify-self: end;     /* alíneala al borde derecho de su columna */
+  height: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+#modelo-imp .modelo-screens img.ss{
+  display: block;
+  height: auto !important;
+  width: clamp(720px, 60vw, 800px) !important;  /* mismo tope que usabas */
+  max-width: none !important;
+  margin: 0 !important;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
+}
+
+/* Responsive: apila y centra en móvil */
+@media (max-width: 900px){
+  #modelo-imp .modelo-container{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  #modelo-imp .modelo-role-text{ grid-column: 1; padding-left: 0; padding-top: 0 !important; }
+  #modelo-imp .modelo-screens{ grid-column: 1; justify-self: center; }
+  #modelo-imp .modelo-screens img.ss{ width: 92vw !important; max-width: 720px !important; }
+}
+
+
+/* Solo Graphic Design */
+body.page-graphicdesign .content-section { display: none !important; }
+body.page-graphicdesign .content-section.active { display: block !important; }
+
+body.page-graphicdesign .submenu { display: none !important; }
+body.page-graphicdesign .submenu.active { display: flex !important; }
+
+
+.mundomaya-section {
+  position: relative;
+  background-color: whitesmoke;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
+
+.mundomaya-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/carta_trans.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.mundomaya-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;   /* Centra verticalmente */
+}
+
+.mundomaya-logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.mundomaya-description {
+  max-width: 500px;
+  margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+}
+
+.mundomaya-project-type {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.mundomaya-role-container {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 40px;
+  gap: 100px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.mundomaya-role-text {
+  max-width: 400px;
+  text-align: left;
+  margin-left: 120px;
+  margin-top: -5rem;
+}
+
+.mundomaya-screens {
+  display: block !important;
+  height: 800px !important;     /* Ajusta la altura que quieres ver */
+  width: auto !important;       /* Para que mantenga la proporción */
+  max-height: 100vh !important;  /* Evita que desborde en pantallas bajas */
+  margin: 2rem auto !important; /* Centrado */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25)) !important;
+  object-fit: contain !important;
+  align-items: right;
+  transform: translate(120px, -56px);
+}
+
+.mundomaya-screens img.ss {
+  display: block;
+  height: 650px !important;
+  width: auto !important;
+  max-height: none !important;
+  max-width: none !important;
+  margin: 2rem auto;
+  object-fit: contain;
+  margin-top: 5rem;
+  margin-right: 1rem;
+
+}
+
+.mundomaya-role-text {
+  max-width: 400px;
+  text-align: left;
+  margin-left: 120px;
+  margin-top: 5rem;
+}
+
+.mundomaya-role-text h3 {
+  color: #305675;
+  font-size: 1.5rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  margin-bottom: 1rem;
+}
+
+.mundomaya-role-text p {
+  font-family: 'AvenirLTPro-Book', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* --- SOLO EN #mundomaya-post --- */
+#mundo-post .mundomaya-container{
+  display: grid;
+  grid-template-columns: minmax(460px, 1fr) minmax(420px, 520px); /* imagen | texto */
+  gap: 2.5rem;
+  max-width: 1600px;     /* sube el ancho total del bloque */
+  margin: 0 auto;
+}
+
+#mundomaya-post .mundomaya-screens{
+ max-width: 520px;
+  text-align: left;
+  justify-self: start;
+  align-self: start;
+  transform: translate(-180px, 250px);  /* X negativo = hacia la izquierda; Y positivo = abajo */
+}
+
+#mundomaya-post .mundomaya-screens img.ss{
+  height: auto !important;        /* deja de controlar por altura */
+  width: 1100px !important;       /* ← súbelo a 1500/1600 si quieres más */
+  max-width: none !important;     /* quita cualquier tope escondido */
+  margin: 0 !important;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
+}
+
+  #mundomaya-post .mundomaya-role-text{
+    margin: 0 !important;      /* quita márgenes heredados */
+    max-width: 520px;
+    text-align: left;
+    justify-self: start;
+    align-self: start;
+  }
+
+  #mundomaya-post .mundomaya-role-text h3{
+    color: #305675;
+    margin-bottom: 0.75rem;
+  }
+
+/* ↓ Solo mundomaya → Digital: baja el bloque de texto */
+#mundomaya-post .mundomaya-role-text{
+  padding-right: 100px;
+  padding-top: 200px !important;     /* ajusta 60–160px a gusto */
+  align-self: start;                 /* en grid, al inicio de la columna */
+}
+
+/* Si quieres afinar aún más, puedes empujar sólo los elementos internos: */
+#mundomaya-post .mundomaya-role-text > h3,
+#mundomaya-post .mundomaya-role-text > p{
+  position: relative;
+  top: 20px !important;              /* suma 20px extra; sube/baja a gusto */
+}
+
+/* === mundomaya → PRINTED MEDIA: swap columnas (imagen derecha | texto izquierda) === */
+
+/* La columna 1 (izq) será estrecha para el texto; la 2 (der) será ancha para la imagen */
+#mundomaya-mock .mundomaya-container{
+  display: grid;
+  grid-template-columns: minmax(420px, 520px) minmax(460px, 1fr); /* texto | imagen */
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Texto a la IZQUIERDA (col 1) */
+#mundomaya-mock .mundomaya-role-text{
+  grid-column: 1;
+  margin: 0 !important;
+  max-width: 520px;
+  text-align: left;
+  padding-left: 100px;   /* si antes usabas padding-right, cámbialo a left */
+  padding-right: 0 !important;
+  padding-top: 0 !important;   /* si lo estabas usando para bajarlo */
+  transform: translateY(-250px); /* ajusta: -10, -20, -40… */
+
+}
+
+/* Imagen a la DERECHA (col 2), respetando tamaños que ya tenías */
+#mundomaya-mock .mundomaya-screens{
+  grid-column: 2;
+  justify-self: end;     /* alíneala al borde derecho de su columna */
+  height: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+#mundomaya-mock .mundomaya-screens img.ss{
+  display: block;
+  height: auto !important;
+  width: clamp(720px, 60vw, 800px) !important;  /* mismo tope que usabas */
+  max-width: none !important;
+  margin: 0 !important;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
+}
+
+/* Responsive: apila y centra en móvil */
+@media (max-width: 900px){
+  #mundomaya-mock .mundomaya-container{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  #mundomaya-mock .mundomaya-role-text{ grid-column: 1; padding-left: 0; padding-top: 0 !important; }
+  #mundomaya-mock .mundomaya-screens{ grid-column: 1; justify-self: center; }
+  #mundomaya-mock .mundomaya-screens img.ss{ width: 92vw !important; max-width: 720px !important; }
+}
