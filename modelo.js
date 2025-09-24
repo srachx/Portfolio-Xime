@@ -120,8 +120,7 @@ const INTERNAL_MAP_BY_ID = {
           }
 
           // Ajusta cuando ya está en DOM
-          requestAnimationFrame(() =>
-          requestAnimationFrame(() => fitWhenReady(true)));
+          fitWhenReady(true);
 
         })
         .catch(err => {
@@ -227,3 +226,8 @@ new ResizeObserver(() => {
   fitToContainer(!fittedOnce);
   fittedOnce = true;
 }).observe(svg);
+
+const resetBtn = document.getElementById("reset");
+const clone = resetBtn.cloneNode(true);
+resetBtn.parentNode.replaceChild(clone, resetBtn);
+clone.addEventListener("click", () => fitWhenReady(true));
