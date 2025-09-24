@@ -2631,11 +2631,11 @@ body.glow-bg {
 .hazbin-background {
   position: absolute;
   inset: 0;
-  background-image: url('images/hazbin\ logo@10x.png');
+  background-image: url('images/hazbin logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.010;
+  opacity: 0.02;
   z-index: 0;
 }
 
@@ -2989,11 +2989,11 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 .mundomaya-background {
   position: absolute;
   inset: 0;
-  background-image: url('images/museo mundo maya @10x.png');
+  background-image: url('images/logo-mundo\ maya.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.4;
+  opacity: 0.025;
   z-index: 0;
 }
 
