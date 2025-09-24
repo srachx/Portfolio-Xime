@@ -3349,3 +3349,75 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   filter: none !important;
   box-shadow: none !important; /* por si alguna imagen usa box-shadow */
 }
+
+/* ===========================
+   UX/UI — Responsive (tablet & móvil)
+   =========================== */
+@media (max-width: 1024px){
+
+  /* Hero más compacto */
+  body.page-uxui .hero-text h1{
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  /* Contenedores de cada “ROLE”: apilar y centrar */
+  #demento-role .demento-uxui-container,
+  #hazbin-role   .hazbin-container,
+  #cubs-role     .hazbin-container{
+    display: flex;
+    flex-direction: column;     /* imagen arriba, texto abajo */
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 820px;
+    margin: 0 auto !important;
+  }
+
+  /* Imágenes fluidas */
+  #demento-role .demento-screens img.ss,
+  #hazbin-role   .hazbin-screens  img.ss,
+  #cubs-role     .hazbin-screens  img.ss{
+    width: min(92vw, 720px) !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    transform: none !important;
+  }
+
+  /* Texto debajo de las imágenes, ancho legible */
+  #demento-role .demento-role-text,
+  #hazbin-role   .hazbin-role-text,
+  #cubs-role     .hazbin-role-text{
+    max-width: min(92vw, 700px);
+    margin: 0 !important;
+    text-align: left;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    line-height: 1.65;
+  }
+
+  /* Título ROL */
+  #demento-role .demento-role-text h3,
+  #hazbin-role   .hazbin-role-text   h3,
+  #cubs-role     .hazbin-role-text   h3{
+    font-size: clamp(1.1rem, 3.8vw, 1.35rem);
+    margin-bottom: .5rem;
+  }
+
+  /* En secciones donde el texto venía primero (Hazbin/Cubs),
+     forzamos el orden: imagen 1º, texto 2º */
+  #hazbin-role .hazbin-screens{ order: 1; }
+  #hazbin-role .hazbin-role-text{ order: 2; }
+  #cubs-role   .hazbin-screens{ order: 1; }
+  #cubs-role   .hazbin-role-text{ order: 2; }
+}
+
+@media (max-width: 600px){
+  /* Ajustes un poco más compactos para teléfonos */
+  body.page-uxui .hero-text h1{ font-size: clamp(1.8rem, 12vw, 2.5rem); }
+  #demento-role .demento-uxui-container,
+  #hazbin-role   .hazbin-container,
+  #cubs-role     .hazbin-container{ gap: .75rem; }
+  #demento-role .demento-role-text,
+  #hazbin-role   .hazbin-role-text,
+  #cubs-role     .hazbin-role-text{ line-height: 1.6; }
+}
