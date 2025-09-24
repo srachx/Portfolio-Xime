@@ -145,6 +145,72 @@ lightSections.forEach(section => observer.observe(section));
 
 const userLang = navigator.language.startsWith('es') ? 'es' : 'en';
 
+
+// Spotlight scroll fade (apaga la luz al bajar)
+(() => {
+  const hero = document.querySelector('.page-illustration .hero');
+  if (!hero) return;
+
+  const rootStyle = document.documentElement.style;
+
+  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+  function update(){
+    // Cuánto has scrolleado desde el top hasta ~60% del alto del hero
+    const rect = hero.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // Progreso: 0 en top, 1 cuando ya pasaste ~60% del hero
+    // Usamos el top relativo del hero respecto a la ventana
+    const start = 0;                   // cuando top del hero toca el top de la ventana
+    const end   = vh * 0.6;            // hasta 60% de la altura de viewport
+    const y = clamp((0 - rect.top - start) / (end - start), 0, 1);
+
+    const opacity = 1 - y;             // 1 → 0 al bajar
+    rootStyle.setProperty('--beam-opacity', opacity.toFixed(3));
+  }
+
+  // Dispara en scroll y en resize
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  // Primer cálculo
+  update();
+})();
+
+// Spotlight fade-out al hacer scroll (para todas las .hero de la página)
+(() => {
+  const heroes = Array.from(document.querySelectorAll('.hero'));
+  if (!heroes.length) return;
+
+  const root = document.documentElement;
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+  function update() {
+    // Revisa cada hero y calcula opacidad según su posición en viewport
+    let maxFade = 0; // si hay varios hero en pantalla, usa el mayor fade
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    heroes.forEach(hero => {
+      const rect = hero.getBoundingClientRect();
+      // progreso 0→1 desde que top del hero toca la parte alta hasta 60% de viewport
+      const start = 0;
+      const end = vh * 0.6;
+      const prog = clamp((0 - rect.top - start) / (end - start), 0, 1);
+      if (prog > maxFade) maxFade = prog;
+    });
+
+    const opacity = 1 - maxFade;
+    root.style.setProperty('--spot-opacity', opacity.toFixed(3));
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+
+
 // --- SLIDESHOW ---
 const images = document.querySelectorAll('.carousel-img');
 let index = 0;
@@ -606,3 +672,81 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
     }
   });
 });
+
+// === illustration.html: Responsive accordion for mobile + iPad ===
+(function () {
+  // Solo activar comportamiento bajo 1024px y en la página correcta
+  const isIllustration = document.body.classList.contains('page-illustration');
+  const isSmall = window.matchMedia('(max-width: 1024px)').matches;
+  if (!isIllustration || !isSmall) return;
+
+  // Mapeo de proyectos -> secciones que deben mostrarse juntas
+  const PROJECT_SECTIONS = {
+    // Cartas a Altair
+    altair: ['#altair', '#altair-character', '#altair-illustration'],
+    // 2037
+    'project-2037': ['#project-2037', '#2037-character', '#2037-illustration']
+  };
+
+  const body = document.body;
+  const projectButtons = Array.from(document.querySelectorAll('.index-menu .menu-item.project'));
+
+  // Estado inicial: sin proyecto abierto, no hay scroll
+  body.classList.add('no-scroll');
+  body.classList.remove('scrollable');
+
+  // Ayudantes
+  function clearActiveAll() {
+    document.querySelectorAll('.content-section.active').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.menu-item.project.active-project').forEach(btn => btn.classList.remove('active-project'));
+  }
+
+  function openProject(projectKey, btn) {
+    clearActiveAll();
+    const selectors = PROJECT_SECTIONS[projectKey] || [];
+    selectors.forEach(sel => {
+      const el = document.querySelector(sel);
+      if (el) el.classList.add('active');
+    });
+    btn.classList.add('active-project');
+
+    // Habilitar scroll y hacer foco en la primera sección activa
+    body.classList.remove('no-scroll');
+    body.classList.add('scrollable');
+
+    const first = document.querySelector(selectors[0]);
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeAll() {
+    clearActiveAll();
+    // Volver a “solo índice” y bloquear scroll
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    body.classList.add('no-scroll');
+    body.classList.remove('scrollable');
+  }
+
+  // Clicks en botones de proyecto
+  projectButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const projectKey = btn.getAttribute('data-project');
+      const isActive = btn.classList.contains('active-project');
+
+      if (isActive) {
+        // Si ya estaba abierto, colapsamos
+        closeAll();
+      } else {
+        // Abrimos el proyecto seleccionado
+        openProject(projectKey, btn);
+      }
+    });
+  });
+
+  // Por si el usuario rota la pantalla y ya hay contenido abierto
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      const active = document.querySelector('.content-section.active');
+      if (active) active.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  });
+})();

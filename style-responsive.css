@@ -185,3 +185,21 @@ img, svg, video, canvas {
   #altair-character .itara-column{ min-width:auto !important; width:100% !important; max-width:680px !important; }
 }
 
+
+/* Solo móvil/tablet: abre el tracking del título en hero */
+@media (max-width: 768px){
+  .page-illustration .hero-text .bouncy-text{
+    letter-spacing: 0 !important;          /* neutraliza el -8px */
+    --letter-gap: 0.10em;                   /* controla la separación real */
+  }
+  .page-illustration .hero-text .bouncy-text span + span{
+    margin-left: var(--letter-gap) !important;
+  }
+}
+
+/* Si lo quieres aún más abierto en pantallas muy pequeñas */
+@media (max-width: 480px){
+  .page-illustration .hero-text .bouncy-text{
+    --letter-gap: 0.10em;
+  }
+}
