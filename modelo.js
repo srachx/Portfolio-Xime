@@ -68,6 +68,8 @@ const INTERNAL_MAP_BY_ID = {
   }
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
+  let fittedOnce = false;
+
   function fitToContainer(setAsMin = false) {
     const bbox = content.getBBox?.();
     if (!bbox) return;
@@ -119,7 +121,7 @@ const INTERNAL_MAP_BY_ID = {
 
           // Ajusta cuando ya está en DOM
           requestAnimationFrame(() =>
-          requestAnimationFrame(() => fitToContainer(true)));
+          requestAnimationFrame(() => fitWhenReady(true)));
 
         })
         .catch(err => {
@@ -202,3 +204,26 @@ const INTERNAL_MAP_BY_ID = {
     window.addEventListener("resize", () => requestAnimationFrame(fitToContainer));
   }
 })();
+
+let fittedOnce = false;
+
+function fitWhenReady(setAsMin = false) {
+  const tryFit = () => {
+    const rect = svg.getBoundingClientRect();
+    // espera a que el SVG tenga tamaño real y haya contenido
+    if (rect.width < 20 || rect.height < 20 || !content.hasChildNodes()) {
+      requestAnimationFrame(tryFit);
+      return;
+    }
+    fitToContainer(setAsMin);
+    fittedOnce = true;
+  };
+  requestAnimationFrame(tryFit);
+}
+
+new ResizeObserver(() => {
+  if (!content.hasChildNodes()) return;
+  // La primera vez fija el mínimo; después solo centra
+  fitToContainer(!fittedOnce);
+  fittedOnce = true;
+}).observe(svg);
