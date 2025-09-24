@@ -1,3 +1,4 @@
+
 // modelo.js
 (() => {
   // ====== Config ======
@@ -13,7 +14,8 @@ const INTERNAL_MAP_BY_ID = {
   "103": ASSET_BASE + "mapa-int-3piso.svg",
 };
 
-  const MIN_SCALE = 0.5, MAX_SCALE = 5;
+  let MIN_SCALE = 1;          // se recalcula con "Ajustar"
+  const MAX_SCALE = 5;
 
   // ====== Nodos ======
   const section   = document.getElementById("modelo-dig");
@@ -66,7 +68,7 @@ const INTERNAL_MAP_BY_ID = {
   }
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
-  function fitToContainer() {
+  function fitToContainer(setAsMin = false) {
     const bbox = content.getBBox?.();
     if (!bbox) return;
     const padding = 24;
@@ -76,9 +78,11 @@ const INTERNAL_MAP_BY_ID = {
     const s = Math.min(cw / bbox.width, ch / bbox.height);
     const tx = padding + (cw - bbox.width * s) / 2 - bbox.x * s;
     const ty = padding + (ch - bbox.height * s) / 2 - bbox.y * s;
+
     scale = clamp(s, MIN_SCALE, MAX_SCALE);
     translate = { x: tx, y: ty };
     lastTranslate = { ...translate };
+    if (setAsMin) MIN_SCALE = scale; // ← este “fit” será tu zoom-out mínimo
     applyTransform();
   }
 
@@ -114,7 +118,9 @@ const INTERNAL_MAP_BY_ID = {
           }
 
           // Ajusta cuando ya está en DOM
-          requestAnimationFrame(() => requestAnimationFrame(fitToContainer));
+          requestAnimationFrame(() =>
+          requestAnimationFrame(() => fitToContainer(true)));
+
         })
         .catch(err => {
           console.error("[map] error cargando:", err);
@@ -178,8 +184,8 @@ const INTERNAL_MAP_BY_ID = {
     }
     btnIn?.addEventListener("click", () => zoomBy(1.15));
     btnOut?.addEventListener("click", () => zoomBy(1/1.15));
-    btnFit?.addEventListener("click", fitToContainer);
-    btnReset?.addEventListener("click", () => { scale = 1; translate = { x: 0, y: 0 }; lastTranslate = { ...translate }; applyTransform(); });
+    btnFit?.addEventListener("click", () => fitToContainer(true));
+    btnReset?.addEventListener("click", () => fitToContainer(true));
 
     // Hotspots -> modal
     svg.addEventListener("click", (e) => {

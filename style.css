@@ -3545,12 +3545,14 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 
 .contact-text h2 {
   font-size: 2rem;
+  font-family: 'AvenirLTPro-Roman';
   margin-bottom: 15px;
   color: #333;
 }
 
 .contact-text p {
   font-size: 1rem;
+  font-family: 'AvenirLTPro-Book';
   margin-bottom: 25px;
   color: #444;
 }
@@ -3566,3 +3568,37 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 .social-links img:hover {
   transform: scale(1.2);
 }
+
+.contact-icons {
+  margin-bottom: 20px;
+}
+
+.contact-link {
+  display: block;        /* Que aparezcan uno debajo del otro */
+  font-size: 1rem;
+  color: #333;           /* Cambia al color que quieras */
+  text-decoration: none; /* Quita el subrayado */
+  margin: 5px 0;
+}
+
+.contact-link:hover {
+  color: #0077b5;        /* Azul al pasar el cursor, por ejemplo */
+}
+
+/* Quita cualquier separador automático en los enlaces de redes */
+.social-links a::before,
+.social-links a::after,
+.contact-icons a::before,
+.contact-icons a::after {
+  content: none !important;
+}
+
+/* De paso, alínea y separa con gap (sin guiones) */
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* o start/left según tu layout */
+  gap: 0px;                 /* espaciado entre íconos */
+}
+
+.social-links a { text-decoration: none; }
