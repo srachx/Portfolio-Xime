@@ -1,4 +1,5 @@
 
+
 // --- WHEEL INTERACCIÓN (móvil y escritorio con toggle) ---
 const wheelItems = document.querySelectorAll('.wheel-item');
 const contents = document.querySelectorAll('.wheel-content');

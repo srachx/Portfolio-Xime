@@ -70,7 +70,7 @@
     <div class="content-section light-background modelo-section" id="modelo">
       <div class="modelo-background light-background"></div>
       <div class="modelo-overlay light-background">
-        <img src="images/cartas_logo.png" alt="Cartas a Altair Logo" class="modelo-logo" />
+        <img src="images/modelo-letra@2x.png" alt="Universidad Modelo Logo" class="modelo-logo" />
         <p class="modelo-project-type lang-text" data-en="Professional Internship" data-es="Servicio Social">Professional Internship</p>
       </div>
     </div>
@@ -89,7 +89,35 @@
           data-es="Durante mi servicio social en la Escuela de Ingeniería de la Universidad Modelo, diseñé un mapa digital interactivo (Edificio F) para orientar a estudiantes y visitantes dentro del campus, así como contenido gráfico para redes sociales, incluyendo publicaciones e invitaciones digitales para eventos como Tomorrow Life.">
           During my internship at the School of Engineering of Universidad Modelo, I designed an interactive digital map (Building F) to guide students and visitors around the campus, as well as graphic content for social media, including posts and digital invitations for events such as Tomorrow Life.
         </p>
-      </div>      
+      </div>  
+
+            <!-- dentro del PRIMER #modelo-dig, justo después del texto -->
+      <div class="mapa-wrap">
+        <div class="mapa-controls">
+          <button id="zoom-in">+</button>
+          <button id="zoom-out">−</button>
+          <button id="fit">Ajustar</button>
+          <button id="reset">Reset</button>
+        </div>
+
+        <svg id="mapa-svg" class="mapa-svg" aria-label="Mapa interactivo">
+          <g id="mapa-content"></g>
+        </svg>
+      </div>
+
+      <div id="mapa-modal" class="mapa-modal" aria-hidden="true">
+        <div class="mapa-modal__dialog" role="dialog" aria-modal="true">
+          <div class="mapa-modal__header">
+            <h3 class="mapa-modal__title">Mapa interno — <span id="modal-id"></span></h3>
+            <button id="modal-close" class="mapa-modal__close">Cerrar</button>
+          </div>
+          <div class="mapa-modal__body">
+            <img id="modal-img" alt="Mapa interno" />
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
@@ -166,5 +194,6 @@
 </footer>
 
 <script src="accordion.js"></script>
+<script src="modelo.js" defer></script>
 </body>
 </html>

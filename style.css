@@ -102,7 +102,7 @@ body {
   cursor: pointer;
   transition: background 0.3s;
   outline: none;
-  color: #444 !important;
+  color: #444;
   text-decoration: none;
   -webkit-appearance:none; /* quita estilo nativo de iOS */
   appearance:none;
@@ -194,13 +194,20 @@ body.glow-bg {
   overflow: hidden;
 }
 
+/* Asegura que el glow siempre quede DETRÁS del contenido */
+.glow-bg{
+  position: relative;   /* crea el contexto */
+  z-index: 0;           /* piso del contexto */
+  isolation: isolate;   /* evita que el -1 se salga del contenedor */
+}
+
 /* Glows generales */
 .glow-bg::before,
 .glow-bg::after {
   content: "";
   position: absolute;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   border-radius: 50%;
   filter: blur(160px);
   opacity: 0.7;
@@ -2751,11 +2758,11 @@ body.page-illustration .content-section.active { display: block; }
 .modelo-background {
   position: absolute;
   inset: 0;
-  background-image: url('images/carta_trans.png');
-  background-size: contain;
+  background-image: url('images/modelo-logo@2x.png');
+  background-size: 500px;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.4;
+  opacity: 0.05;
   z-index: 0;
 }
 
@@ -2939,6 +2946,7 @@ body.page-illustration .content-section.active { display: block; }
   width: auto !important;
   margin: 0 !important;
 }
+
 #modelo-imp .modelo-screens img.ss{
   display: block;
   height: auto !important;
@@ -3409,7 +3417,7 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   #hazbin-role .hazbin-role-text{ order: 2; }
   #cubs-role   .hazbin-screens{ order: 1; }
   #cubs-role   .hazbin-role-text{ order: 2; }
-}
+
 
 @media (max-width: 600px){
   /* Ajustes un poco más compactos para teléfonos */
@@ -3420,4 +3428,141 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   #demento-role .demento-role-text,
   #hazbin-role   .hazbin-role-text,
   #cubs-role     .hazbin-role-text{ line-height: 1.6; }
+}
+}
+
+/* Fondo del apartado */
+#modelo-dig .mapa-wrap {
+  position: relative;
+  width: 100%;
+  height: 80vh;             /* alto del visor */
+  background: #AFD6B1;      /* tu color */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  max-width: 900px;   /* ajusta a tu gusto (900–1200px) */
+  margin: 100px auto;   /* centra horizontal y da respiro arriba/abajo */
+  transform: translateX(500px);
+}
+
+/* Controles */
+.mapa-controls {
+  position: absolute;
+  top: 12px;
+  left: 650px;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+.mapa-controls button {
+  background: rgba(255,255,255,.9);
+  border: 0;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font: 600 14px/1 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+.mapa-controls button:hover {
+  background: #fff;
+}
+
+/* SVG ocupa todo el contenedor */
+.mapa-svg {
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* necesario para pan/pinch en móvil */
+}
+
+/* Modal */
+.mapa-modal {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(2px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.mapa-modal[aria-hidden="false"] {
+  display: flex;
+}
+.mapa-modal__dialog {
+  width: min(100%, 960px);
+  max-height: 85vh;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,.2);
+  display: flex;
+  flex-direction: column;
+}
+.mapa-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+.mapa-modal__title {
+  margin: 0;
+  font: 600 16px/1.2 ui-sans-serif, system-ui;
+}
+.mapa-modal__close {
+  background: #f3f4f6;
+  border: 0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.mapa-modal__body {
+  padding: 0;
+}
+.mapa-modal__body img {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  object-fit: contain;
+}
+
+/* (Opcional) cursor de mano sobre hotspots */
+[data-id] { cursor: pointer; }
+
+
+
+
+/*INDEX*/
+.contact-section {
+  padding: 60px 20px;
+  background: whitesmoke; /* color que pediste */
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.contact-text h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.contact-text p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.contact-icons img,
+.social-links img {
+  width: 40px;
+  margin: 0 10px;
+  transition: transform 0.3s;
+}
+
+.contact-icons img:hover,
+.social-links img:hover {
+  transform: scale(1.2);
 }
