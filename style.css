@@ -2245,7 +2245,6 @@ body.glow-bg {
 
 .project2037-section {
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
   background-color: whitesmoke;
 }
@@ -2667,6 +2666,22 @@ body.page-uxui .content-section.active { display: block; }
 /* Solo afecta a la página UX/UI */
 body.page-illustration .content-section { display: none; }
 body.page-illustration .content-section.active { display: block; }
+
+/* --- illustration: colapsar el wrapper vacío de 2037 --- */
+body.page-illustration .project2037-section{
+  display: none;          /* por defecto no pinta nada */
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* si contiene una .content-section activa, entonces sí se muestra */
+body.page-illustration .project2037-section:has(.content-section.active){
+  display: block;
+  /* si quieres mantener la altura grande cuando esté activa, vuelve a ponerla aquí: */
+  min-height: 100vh;
+}
+
 
 .hazbin-container {
   max-width: 1200px;
@@ -3748,6 +3763,55 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   font-family: 'AvenirNextLTPro-Heavy';
   text-align: center;
   transform: translateY(50px);
+}
+
+/* --- FIX: reducir espacio de placeholders del cómic --- */
+#altair-illustration .comic-page.loading{
+  min-height: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  animation: none !important;
+}
+
+/* --- FIX: evitar pantallas vacías enormes (solo en illustration) --- */
+body.page-illustration .altair-section,
+body.page-illustration #project-2037,
+body.page-illustration #2037-character,
+body.page-illustration #2037-illustration {
+  min-height: unset !important;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* ====== FIX ILUSTRACIÓN: colapsar lo que no está activo ====== */
+
+/* 1) Cualquier .content-section NO activa no debe ocupar espacio */
+body.page-illustration .content-section:not(.active){
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 2) El wrapper de 2037 no debe reservar altura si adentro no hay nada activo */
+body.page-illustration .project2037-section{
+  display: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* si contiene alguna .content-section activa, entonces sí se muestra */
+body.page-illustration .project2037-section:has(.content-section.active){
+  display: block !important;   /* ponle min-height si quieres cuando esté activo */
+}
+
+/* 3) Por si quedara padding/margen de seguridad en la sección actual */
+#altair-illustration{
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 
