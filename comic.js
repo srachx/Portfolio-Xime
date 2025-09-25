@@ -1,79 +1,98 @@
+// comic.js
 (() => {
-  // === Ruta del PDF ===
-  const COMIC_PDF_URL = "images/altair-comic.pdf";
+  // ====== Detecta la carpeta "images/" a partir de tu viñeta que ya carga ======
+  function assetsBaseFrom(selector) {
+    const img = document.querySelector(selector);
+    if (!img) return "images/"; // fallback
+    const url = new URL(img.getAttribute("src"), window.location.href);
+    return url.href.replace(/[^/]+$/, ""); // carpeta terminada en /
+  }
 
-  // === Nodos
-  const section  = document.getElementById("altair-illustration");
-  const pagesEl  = document.getElementById("comic-pages");
-  const btnIn    = document.getElementById("comic-zoom-in");
-  const btnOut   = document.getElementById("comic-zoom-out");
-  const btnFit   = document.getElementById("comic-fit");
-
+  // ====== Nodos ======
+  const section = document.getElementById("altair-illustration");
+  const pagesEl = document.getElementById("comic-pages");
+  const btnIn   = document.getElementById("comic-zoom-in");
+  const btnOut  = document.getElementById("comic-zoom-out");
+  const btnFit  = document.getElementById("comic-fit");
   if (!section || !pagesEl) return;
 
-  // === Estado
+  // ====== Rutas ======
+  const ASSET_BASE   = assetsBaseFrom('#altair-illustration .altair-comics img'); // p.ej. .../images/
+  const COMIC_PDF_URL = ASSET_BASE + "CartasaAltair.pdf"; // <-- cambia el nombre aquí si usas otro
+  console.log("[comic] ASSET_BASE:", ASSET_BASE, "PDF:", COMIC_PDF_URL);
+
+  // ====== PDF.js worker ======
+  // No incluyas el worker <script> aparte; lo cargamos con esta línea:
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+  }
+
+  // ====== Estado ======
   let pdf = null;
-  let scaleBase = 1;         // escala base (ajuste al ancho)
-  let uiScale   = 1;         // multiplicador de zoom del usuario
+  let scaleBase = 1;     // ajusta al ancho del contenedor
+  let uiScale   = 1;     // zoom del usuario
   const MIN_UI  = 0.6, MAX_UI = 2;
 
-  // ---- Inicializar una sola vez cuando se abra la sección
+  // ====== Init una sola vez al abrir la sección ======
   let initialized = false;
   const initOnce = () => { if (!initialized) { initialized = true; initComic(); } };
 
-  // Si tu framework añade .active al abrir, usa esto:
   if (section.classList.contains("active")) initOnce();
-  document
-    .querySelector('.menu-item.subsection[data-section="altair-illustration"]')
+  document.querySelector('.menu-item.subsection[data-section="altair-illustration"]')
     ?.addEventListener("click", () => requestAnimationFrame(initOnce), { once: true });
-
-  // Fallback: inicia cuando entre al viewport
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting && initOnce()), { threshold: 0.2 })
     .observe(section);
 
-  async function initComic(){
+  async function initComic() {
     if (!window.pdfjsLib) {
-      pagesEl.innerHTML = `<p style="color:#b00">No cargó PDF.js</p>`;
+      showError("No cargó PDF.js.");
       return;
     }
 
-    // Cargar documento
+    // Aviso si estás usando file:// (bloquea XHR/fetch en muchos navegadores)
+    if (location.protocol === "file:") {
+      console.warn("[comic] Estás en file:// — usa Live Server o http.server");
+    }
+
+    // Carga el PDF
     try {
       pdf = await pdfjsLib.getDocument({ url: COMIC_PDF_URL }).promise;
     } catch (e) {
-      console.error("No pude abrir el PDF:", e);
-      pagesEl.innerHTML = `<p style="color:#b00">No pude cargar el PDF. Revisa la ruta: ${COMIC_PDF_URL}</p>`;
+      console.error("[comic] No pude abrir el PDF:", e);
+      showFallbackObject("No pude cargar el PDF. Revisa la ruta: " + COMIC_PDF_URL +
+        (location.protocol === "file:" ? "\nSugerencia: abre con Live Server o http://localhost/ en vez de file://." : ""));
       return;
     }
 
-    // Crear placeholders por página
-    for (let p = 1; p <= pdf.numPages; p++){
-      const holder = document.createElement("div");
-      holder.className = "comic-page loading";
+    // Placeholders de páginas
+    for (let p = 1; p <= pdf.numPages; p++) {
+      const card = document.createElement("div");
+      card.className = "comic-page loading";
       const canvas = document.createElement("canvas");
       canvas.dataset.pageNumber = p;
-      holder.appendChild(canvas);
-      pagesEl.appendChild(holder);
+      card.appendChild(canvas);
+      pagesEl.appendChild(card);
     }
 
-    // Fit inicial (espera a que el contenedor tenga ancho real)
+    // Fit inicial cuando el contenedor tenga ancho real
     fitWhenReady(true);
     setupLazyRender();
     setupControls();
 
-    // Refit al redimensionar
+    // Refit al cambio de tamaño
     new ResizeObserver(() => fitToWidth(false)).observe(pagesEl);
     window.addEventListener("resize", () => fitToWidth(false));
   }
 
-  function setupControls(){
+  function setupControls() {
     btnIn ?.addEventListener("click", () => { uiScale = Math.min(MAX_UI, uiScale * 1.15); rerenderVisible(); });
     btnOut?.addEventListener("click", () => { uiScale = Math.max(MIN_UI, uiScale / 1.15); rerenderVisible(); });
     btnFit?.addEventListener("click", () => { fitWhenReady(true); });
   }
 
-  // Espera a que el contenedor tenga tamaño y calcula scaleBase
-  function fitWhenReady(setAsBase){
+  // Espera a que el contenedor tenga tamaño antes de calcular el fit
+  function fitWhenReady(setAsBase) {
     const tryFit = () => {
       const w = pagesEl.clientWidth || section.clientWidth;
       if (!w || w < 50) { requestAnimationFrame(tryFit); return; }
@@ -82,8 +101,8 @@
     requestAnimationFrame(tryFit);
   }
 
-  // Calcula scaleBase para que la página 1 entre al ancho del contenedor
-  function fitToWidth(setAsBase){
+  // Calcula la escala base para que la página 1 ajuste al ancho
+  function fitToWidth(setAsBase) {
     const sampleCanvas = pagesEl.querySelector("canvas");
     if (!sampleCanvas || !pdf) return;
 
@@ -93,18 +112,19 @@
     pdf.getPage(1).then(page => {
       const vp1 = page.getViewport({ scale: 1 });
       const s = maxW / vp1.width;
-      if (setAsBase) uiScale = 1; // restablece zoom de usuario
+      if (setAsBase) uiScale = 1;
       scaleBase = s;
       rerenderVisible(true);
     });
   }
 
   // Lazy render de páginas visibles
-  function setupLazyRender(){
+  function setupLazyRender() {
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          renderPage(parseInt(e.target.querySelector('canvas')?.dataset.pageNumber || "0", 10));
+          const canvas = e.target.querySelector("canvas");
+          if (canvas) renderPage(parseInt(canvas.dataset.pageNumber || "0", 10));
         }
       });
     }, { root: null, rootMargin: "200px 0px", threshold: 0.01 });
@@ -112,9 +132,9 @@
     pagesEl.querySelectorAll(".comic-page").forEach(card => io.observe(card));
   }
 
-  function currentScale(){ return scaleBase * uiScale; }
+  function currentScale() { return scaleBase * uiScale; }
 
-  async function renderPage(pageNumber){
+  async function renderPage(pageNumber) {
     if (!pdf || !pageNumber) return;
     const canvas = pagesEl.querySelector(`canvas[data-page-number="${pageNumber}"]`);
     const card   = canvas?.parentElement;
@@ -135,8 +155,8 @@
     card?.classList.remove("loading");
   }
 
-  // Rerender solo lo visible para hacerlo ágil
-  function rerenderVisible(forceAll = false){
+  // Rerender solo lo visible para performance
+  function rerenderVisible(forceAll = false) {
     const rect = pagesEl.getBoundingClientRect();
     pagesEl.querySelectorAll("canvas").forEach(c => {
       const r = c.getBoundingClientRect();
@@ -144,4 +164,18 @@
       if (visible) renderPage(parseInt(c.dataset.pageNumber || "0", 10));
     });
   }
+
+  // --- Fallbacks UI ---
+  function showError(msg) {
+    pagesEl.innerHTML = `<p style="color:#b00">${msg}</p>`;
+  }
+  function showFallbackObject(msg) {
+    pagesEl.innerHTML = `
+      <p style="color:#b00;margin-bottom:8px">${msg}</p>
+      <object data="${COMIC_PDF_URL}" type="application/pdf" width="100%" height="800">
+        <p>No se pudo mostrar el PDF aquí. <a href="${COMIC_PDF_URL}" target="_blank" rel="noopener">Ábrelo en otra pestaña</a>.</p>
+      </object>`;
+  }
 })();
+
+console.log("[comic] PDF URL =>", COMIC_PDF_URL);
