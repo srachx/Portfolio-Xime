@@ -70,7 +70,7 @@ body {
 
 .logo img {
   height: auto;
-  width: 40px;
+  width: 100px;
 }
 
 .category-bar {
@@ -3732,3 +3732,22 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 
 
 #altair-illustration .comic-controls{ display:none !important; }
+
+.comic-wrap h3 {
+  color: #e3639e;
+  font-weight: bold;
+  font-size: 3rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  text-align: center;
+}
+
+.comic-wrap h4 {
+  color: #e3639e;
+  font-weight: bold;
+  font-size: 4rem;
+  font-family: 'AvenirNextLTPro-Heavy';
+  text-align: center;
+  transform: translateY(50px);
+}
+
+
