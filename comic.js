@@ -17,9 +17,10 @@
   if (!section || !pagesEl) return;
 
   // ====== Rutas ======
-  const ASSET_BASE   = assetsBaseFrom('#altair-illustration .altair-comics img'); // p.ej. .../images/
-  const COMIC_PDF_URL = ASSET_BASE + "CartasaAltair.pdf"; // <-- cambia el nombre aquí si usas otro
-  console.log("[comic] ASSET_BASE:", ASSET_BASE, "PDF:", COMIC_PDF_URL);
+  // Rutas (usa siempre la carpeta /images relativa a la página actual)
+  const ASSET_BASE     = new URL('./images/', location.href).href;
+  const COMIC_PDF_URL  = new URL('CartasaAltair.pdf?v=2', ASSET_BASE).href; // respeta mayúsculas
+
 
   // ====== PDF.js worker ======
   // No incluyas el worker <script> aparte; lo cargamos con esta línea:
@@ -59,10 +60,13 @@
     try {
       pdf = await pdfjsLib.getDocument({ url: COMIC_PDF_URL }).promise;
     } catch (e) {
-      console.error("[comic] No pude abrir el PDF:", e);
-      showFallbackObject("No pude cargar el PDF. Revisa la ruta: " + COMIC_PDF_URL +
-        (location.protocol === "file:" ? "\nSugerencia: abre con Live Server o http://localhost/ en vez de file://." : ""));
-      return;
+    console.error("[comic] No pude abrir el PDF:", e);
+    const msg = (location.protocol === "file:")
+      ? `No pude cargar el PDF. Revisa la ruta: ${COMIC_PDF_URL}
+        Sugerencia: abre con Live Server o http://localhost/ en vez de file://.`
+      : ""; // en http/https NO mostramos texto rojo
+    showFallbackObject(msg);
+    return;
     }
 
     // Placeholders de páginas
@@ -176,6 +180,8 @@
         <p>No se pudo mostrar el PDF aquí. <a href="${COMIC_PDF_URL}" target="_blank" rel="noopener">Ábrelo en otra pestaña</a>.</p>
       </object>`;
   }
+  
+  console.log("[comic] PDF URL =>", COMIC_PDF_URL);
+
 })();
 
-console.log("[comic] PDF URL =>", COMIC_PDF_URL);
