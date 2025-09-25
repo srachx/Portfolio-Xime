@@ -3729,3 +3729,6 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
     width: 96vw;
   }
 }
+
+
+#altair-illustration .comic-controls{ display:none !important; }
