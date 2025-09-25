@@ -3569,7 +3569,7 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 }
 
 .contact-link:hover {
-  color: #0077b5;        /* Azul al pasar el cursor, por ejemplo */
+  color: #444;        /* Azul al pasar el cursor, por ejemplo */
 }
 
 /* Quita cualquier separador automático en los enlaces de redes */
