@@ -3105,53 +3105,40 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   margin: 0 auto;
 }
 
-#mundomaya-post .mundomaya-screens{
+#mundo-post .mundomaya-screens{
  max-width: 520px;
   text-align: left;
   justify-self: start;
   align-self: start;
-  transform: translate(-180px, 250px);  /* X negativo = hacia la izquierda; Y positivo = abajo */
+  transform: translate(80px, -50px);  /* X negativo = hacia la izquierda; Y positivo = abajo */
 }
 
-#mundomaya-post .mundomaya-screens img.ss{
-  height: auto !important;        /* deja de controlar por altura */
-  width: 1100px !important;       /* ← súbelo a 1500/1600 si quieres más */
+#mundo-post .mundomaya-screens img.ss{
+  height: 800px !important;        /* deja de controlar por altura */
+  width: 600px !important;       /* ← súbelo a 1500/1600 si quieres más */
   max-width: none !important;     /* quita cualquier tope escondido */
   margin: 0 !important;
   filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
 }
 
-  #mundomaya-post .mundomaya-role-text{
-    margin: 0 !important;      /* quita márgenes heredados */
+  #mundo-post .mundomaya-role-text{
+    margin: 0;                 /* limpia márgenes heredados */
     max-width: 520px;
     text-align: left;
     justify-self: start;
     align-self: start;
+    transform: translate(-50px, 280px); /* ← ajusta X e Y a gusto */
   }
 
-  #mundomaya-post .mundomaya-role-text h3{
-    color: #305675;
+  #mundo-post .mundomaya-role-text h3{
+    color: #00443F;
     margin-bottom: 0.75rem;
   }
-
-/* ↓ Solo mundomaya → post : baja el bloque de texto */
-#mundomaya-post .mundomaya-role-text{
-  padding-right: 100px;
-  padding-top: 200px !important;     /* ajusta 60–160px a gusto */
-  align-self: start;                 /* en grid, al inicio de la columna */
-}
-
-/* Si quieres afinar aún más, puedes empujar sólo los elementos internos: */
-#mundomaya-post .mundomaya-role-text > h3,
-#mundomaya-post .mundomaya-role-text > p{
-  position: relative;
-  top: 20px !important;              /* suma 20px extra; sube/baja a gusto */
-}
 
 /* === mundomaya → PRINTED MEDIA: swap columnas (imagen derecha | texto izquierda) === */
 
 /* La columna 1 (izq) será estrecha para el texto; la 2 (der) será ancha para la imagen */
-#mundomaya-mock .mundomaya-container{
+#mundo-mock .mundomaya-container{
   display: grid;
   grid-template-columns: minmax(420px, 520px) minmax(460px, 1fr); /* texto | imagen */
   gap: 2.5rem;
@@ -3161,7 +3148,7 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 }
 
 /* Texto a la IZQUIERDA (col 1) */
-#mundomaya-mock .mundomaya-role-text{
+#mundo-mock .mundomaya-role-text{
   grid-column: 1;
   margin: 0 !important;
   max-width: 520px;
@@ -3174,7 +3161,7 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 }
 
 /* Imagen a la DERECHA (col 2), respetando tamaños que ya tenías */
-#mundomaya-mock .mundomaya-screens{
+#mundo-mock .mundomaya-screens{
   grid-column: 2;
   justify-self: end;     /* alíneala al borde derecho de su columna */
   height: auto !important;
@@ -3182,7 +3169,7 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   margin: 0 !important;
 }
 
-#mundomaya-mock .mundomaya-screens img.ss{
+#mundo-mock .mundomaya-screens img.ss{
   display: block;
   height: auto !important;
   width: clamp(720px, 60vw, 800px) !important;  /* mismo tope que usabas */
@@ -3193,13 +3180,13 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 
 /* Responsive: apila y centra en móvil */
 @media (max-width: 900px){
-  #mundomaya-mock .mundomaya-container{
+  #mundo-mock .mundomaya-container{
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  #mundomaya-mock .mundomaya-role-text{ grid-column: 1; padding-left: 0; padding-top: 0 !important; }
-  #mundomaya-mock .mundomaya-screens{ grid-column: 1; justify-self: center; }
-  #mundomaya-mock .mundomaya-screens img.ss{ width: 92vw !important; max-width: 720px !important; }
+  #mundo-mock .mundomaya-role-text{ grid-column: 1; padding-left: 0; padding-top: 0 !important; }
+  #mundo-mock .mundomaya-screens{ grid-column: 1; justify-self: center; }
+  #mundo-mock .mundomaya-screens img.ss{ width: 92vw !important; max-width: 720px !important; }
 }
 
 /* === illustration.html: Responsive overrides (mobile + iPad) === */
@@ -3602,3 +3589,86 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 }
 
 .social-links a { text-decoration: none; }
+
+/* ----- ALTAR ILLUSTRATION (layout básico) ----- */
+#altair-illustration .altair-illustration-container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Imagen superior (tu viñeta de portada) */
+#altair-illustration .altair-comics{
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+#altair-illustration .altair-comics img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Texto lateral/abajo (como ya lo uses en tu tema) */
+#altair-illustration .altair-illustration-text{
+  margin: 16px 0 24px;
+}
+
+/* ----- Comic (PDF) ----- */
+#altair-illustration .comic-wrap{
+  margin: 0 auto;
+}
+
+/* Controles */
+#altair-illustration .comic-controls{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+#altair-illustration .comic-controls button{
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.08);
+  cursor: pointer;
+  font-weight: 600;
+}
+#altair-illustration .comic-controls button:hover{
+  background: rgba(0,0,0,0.14);
+}
+
+/* Páginas centradas y con separación */
+#altair-illustration .comic-pages{
+  display: grid;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Tarjeta por página */
+#altair-illustration .comic-page{
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+/* Canvas ocupa el ancho disponible */
+#altair-illustration .comic-page canvas{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Placeholder de carga (opcional) */
+#altair-illustration .comic-page.loading{
+  min-height: 480px;
+  background: repeating-linear-gradient(
+    45deg, #f6f7f8, #f6f7f8 10px, #ecebeb 10px, #ecebeb 20px
+  );
+  animation: comicShimmer 1.2s linear infinite;
+}
+@keyframes comicShimmer {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 0; }
+}
