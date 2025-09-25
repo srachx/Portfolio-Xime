@@ -3672,3 +3672,60 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   from { background-position: 0 0; }
   to   { background-position: 60px 0; }
 }
+
+/* ====== Comic: tamaño del lienzo por breakpoint ====== */
+/* Contenedor de páginas centrado y con ancho de lectura */
+#altair-illustration .comic-pages{
+  /* Desktop por defecto: ancho cómodo de lectura */
+  width: clamp(820px, 68vw, 1100px);
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Controles centrados */
+#altair-illustration .comic-controls{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center; /* centrados */
+  margin: 8px 0 16px;
+}
+
+/* Tarjeta por página */
+#altair-illustration .comic-page{
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+
+/* Canvas ocupa el ancho disponible del contenedor (lo calibramos en JS para retina) */
+#altair-illustration .comic-page canvas{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ====== Breakpoints ====== */
+/* Tablet horizontal / laptops pequeños */
+@media (max-width: 1024px){
+  #altair-illustration .comic-pages{
+    width: clamp(680px, 88vw, 900px);
+  }
+}
+
+/* Tablet vertical y móviles grandes */
+@media (max-width: 768px){
+  #altair-illustration .comic-pages{
+    width: 94vw;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 420px){
+  #altair-illustration .comic-pages{
+    width: 96vw;
+  }
+}

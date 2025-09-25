@@ -144,19 +144,29 @@
     const card   = canvas?.parentElement;
     if (!canvas) return;
 
-    const targetScale = currentScale();
-    if (canvas.dataset.renderedScale && Math.abs(parseFloat(canvas.dataset.renderedScale) - targetScale) < 0.02) return;
+  // Escala objetivo (ancho del contenedor × zoom del usuario)
+  const targetScale = currentScale();
+  // Evita rerender casi idéntico
+  if (canvas.dataset.renderedScale && Math.abs(parseFloat(canvas.dataset.renderedScale) - targetScale) < 0.02) return;
 
-    const page = await pdf.getPage(pageNumber);
-    const vp   = page.getViewport({ scale: targetScale });
-    const ctx  = canvas.getContext("2d", { alpha: false });
+  const page = await pdf.getPage(pageNumber);
 
-    canvas.width  = Math.floor(vp.width);
-    canvas.height = Math.floor(vp.height);
+  // === Soporte HiDPI (retina) ===
+  const dpr = Math.min(window.devicePixelRatio || 1, 2); // tope 2x para no matar GPU/CPU
+  const vpCss = page.getViewport({ scale: targetScale });        // tamaño en CSS
+  const vpDev = page.getViewport({ scale: targetScale * dpr });  // tamaño real de bitmap
 
-    await page.render({ canvasContext: ctx, viewport: vp }).promise;
-    canvas.dataset.renderedScale = String(targetScale);
-    card?.classList.remove("loading");
+  // Asigna tamaño real del canvas y tamaño “CSS”
+  canvas.width  = Math.floor(vpDev.width);
+  canvas.height = Math.floor(vpDev.height);
+  canvas.style.width  = Math.floor(vpCss.width) + "px";
+  canvas.style.height = Math.floor(vpCss.height) + "px";
+
+  const ctx = canvas.getContext("2d", { alpha: false });
+
+  await page.render({ canvasContext: ctx, viewport: vpDev }).promise;
+  canvas.dataset.renderedScale = String(targetScale);
+  card?.classList.remove("loading");
   }
 
   // Rerender solo lo visible para performance
