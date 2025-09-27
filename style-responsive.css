@@ -1,205 +1,290 @@
+/* Si lo quieres aún más abierto en pantallas muy pequeñas */
+@media (max-width: 480px){
+  .page-illustration .hero-text .bouncy-text{
+    --letter-gap: 0.03em;
+    font-size: clamp(40px, 10vw, 56px);
+  }
 
-/* === Responsive overrides (tablet & mobile) === */
+  /* por defecto */
+#illustration .hero{ --hero-shift-y: 0px; }
+#illustration .hero .hero-text{ transform: translateY(var(--hero-shift-y)); }
 
-/* Normalize hero width to prevent sideways scrollbars on mobile */
-.page-illustration .hero {
-  width: 100% !important;
+@media (max-width: 480px){
+  #illustration .hero{ --hero-shift-y: -20px; }  /* súbelo en móvil */
 }
 
-/* Account for fixed navbar so content isn't hidden underneath */
-:root { --navbar-h: 72px; }
-.page-illustration { padding-top: var(--navbar-h); }
-
-/* Global image safety */
-img, svg, video, canvas {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Tablet (≤ 1024px) */
-@media (max-width: 1024px) {
-  /* Index menu spacing */
-  .index-menu { margin-top: 1rem; }
-
-  /* Itara grid stacks */
-  .itara-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .itara-left-col { transform: none; padding-right: 0; }
-
-  .itara-text {
-    margin: 0;
-    transform: none;
-    text-align: center;
-    max-width: 720px;
-  }
-
-  .itara-text h2, .itara-text h3, .itara-text p { text-align: center; }
-
-  .itara-carousel {
-    max-width: 320px;
-    min-height: 320px;
-  }
-
-  .itara-img { max-height: 300px; }
-  .itara-img.active { transform: translateX(-50%) scale(1.3); }
-
-  .itara-extras,
-  .drafts-section {
-    transform: none;
-    margin-top: 1rem;
-  }
-
-  /* Altair illustration block */
-  .altair-illustration-container {
-    gap: 32px;
-    padding: 40px 20px;
-  }
-
-  .altair-comics img {
-    width: 100% !important;
-  }
-
-  .altair-illustration-text {
-    margin-left: 0;
-    max-width: 640px;
-    text-align: center;
-  }
-}
-
-/* Large phones / small tablets (≤ 768px) */
-@media (max-width: 768px) {
-  .navbar { padding: 12px 16px; }
-
-  .hero-text h1 { font-size: 2rem; }
-
-  .altair-section { min-height: auto; padding: 64px 16px; }
-  .altair-overlay { position: relative; top: auto; left: auto; transform: none; padding: 0; }
-
-  /* Kill aggressive transforms that cause overflow */
-  .itara-text,
-  .itara-extras,
-  .drafts-section,
-  .others-section {
-    transform: none !important;
-    margin-left: 0 !important;
-  }
-
-  .itara-carousel { max-width: 280px; min-height: 280px; }
-  .itara-img { max-height: 240px; }
-  .itara-img.active { transform: translateX(-50%) scale(1.15); }
-
-  /* 2037 section text */
-  .char2037-text { margin: 0 !important; max-width: 720px; }
-
-  .altair-illustration-text h3 { text-align: center; }
-}
-
-/* Phones (≤ 600px) */
-@media (max-width: 600px) {
-  .hero-text h1 { font-size: 1.8rem; }
-  .altair-description { font-size: 0.95rem; }
-  .menu-item { font-size: 0.68rem; }
-  .submenu .menu-item.subsection { font-size: 0.68rem; }
-  .itara-img { max-height: 220px; }
-  .itara-carousel { max-width: 240px; min-height: 240px; }
-}
-
-/* Ultra small (≤ 380px) */
-@media (max-width: 380px) {
-  .hero-text h1 { font-size: 1.6rem; }
-  .altair-description { font-size: 0.9rem; }
+@media (max-width: 480px){
+  #illustration .hero .hero-chevron{ transform: translateY(-10px); }
 }
 
 
-/* === iPad Landscape (fix puntual Itara) === */
-@media (min-width: 900px) and (max-width: 1180px) and (orientation: landscape) {
-  /* Seguridad general */
-  html, body { overflow-x: hidden; }
-  img, svg, canvas, video { max-width: 100%; height: auto; }
-
-  /* Cambiamos la fila flex por una grid estable 3 columnas */
-  #altair-character .itara-grid{
-    display: grid !important;
-    grid-template-columns: minmax(260px,1fr) minmax(280px,340px) minmax(260px,1fr);
-    gap: 20px;
-    align-items: start;
-    justify-items: center;
-    width: 100%;
-    max-width: 1100px;
-    margin-inline: auto;
-  }
-
-  /* Apaga desplazamientos que empujan fuera */
-  #altair-character .itara-left-col,
-  #altair-character .itara-text,
-  #altair-character .itara-extras,
-  #altair-character .drafts-section,
-  #altair-character .others-section{
-    transform: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Texto izquierda (Itara) centrado en su columna y sin recortes */
-  #altair-character .itara-text{
-    width: 100% !important;
-    max-width: 520px !important;
-    text-align: left !important;
-  }
-  #altair-character .itara-text h3,
-  #altair-character .itara-text h2,
-  #altair-character .itara-text p{ text-align:left !important; }
-
-  /* Carrusel: tamaño contenido y SIN scale grande */
-  #altair-character .itara-carousel{
-    width: 100% !important;
-    max-width: 320px !important;
-    min-height: 320px !important;
-    margin: 0 !important;
-  }
-  #altair-character .itara-img{ max-height: 260px !important; opacity: 1; }
-  #altair-character .itara-img.active{ transform: translateX(-50%) scale(1) !important; }
-  #altair-character .itara-img.left { transform: translateX(-80%)  scale(1) !important; }
-  #altair-character .itara-img.right{ transform: translateX(-20%)  scale(1) !important; }
-
-  /* Columna derecha (drafts/others) ajustada a columna sin desbordar */
-  #altair-character .itara-extras{ width: 100% !important; max-width: 520px !important; }
-  #altair-character .drafts-section img,
-  #altair-character .others-section img{
-    width: 100% !important; max-width: 520px !important; height:auto !important; object-fit:contain !important;
-  }
 }
 
-@media (min-width: 900px) and (max-width: 1180px) and (orientation: landscape){
-  #altair-character .itara-grid{
-    display:grid !important;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-    gap:18px;
-    justify-items:center;
-  }
-  #altair-character .itara-column{ min-width:auto !important; width:100% !important; max-width:680px !important; }
-}
+/* =========================
+   ILLUSTRATION — MOBILE ONLY
+   ========================= */
 
-
-/* Solo móvil/tablet: abre el tracking del título en hero */
+/* 1) Título del hero: abre tracking en móvil */
 @media (max-width: 768px){
   .page-illustration .hero-text .bouncy-text{
-    letter-spacing: 0 !important;          /* neutraliza el -8px */
-    --letter-gap: 0.10em;                   /* controla la separación real */
+    letter-spacing: 0 !important;      /* neutraliza el -8px de desktop */
+    --letter-gap: 0.05em;
   }
   .page-illustration .hero-text .bouncy-text span + span{
     margin-left: var(--letter-gap) !important;
   }
 }
-
-/* Si lo quieres aún más abierto en pantallas muy pequeñas */
 @media (max-width: 480px){
-  .page-illustration .hero-text .bouncy-text{
-    --letter-gap: 0.10em;
+  .page-illustration .hero-text .bouncy-text{ --letter-gap: 0.03em; }
+}
+
+/* 2) Header móvil + Drawer */
+.mobile-header{
+  display:none; position:fixed; top:10px; left:12px; right:12px;
+  z-index:1100; align-items:center; justify-content:space-between;
+}
+.hamburger{
+  width:40px; height:40px; display:grid; place-items:center;
+  background:whitesmoke; border:none; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.08);
+  transform: translate(20px, 40px);
+}
+
+.mh-logo{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 25px);   /* centro perfecto */
+  }
+
+.hamburger img{ width:18px; height:18px; display:block;}
+.mh-logo img{ height:40px; display:block;}
+
+.mobile-drawer{
+  position:fixed; inset:0; z-index:1200; background:rgba(0,0,0,.45);
+  backdrop-filter:blur(2px); opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.mobile-drawer.open{ opacity:1; pointer-events:auto; }
+.md-content{
+  position:absolute; top:0; left:0; height:100%; width:min(320px,86vw);
+  background:whitesmoke; box-shadow:6px 0 20px rgba(0,0,0,.18);
+  padding:16px; transform:translateX(-100%); transition:transform .25s;
+}
+.mobile-drawer.open .md-content{ transform:translateX(0); }
+.md-close{
+  position:absolute; top:10px; right:10px; width:38px; height:38px;
+  border:none; border-radius:10px; background:whitesmoke; font-size:22px;
+}
+.md-list{ list-style:none; margin:60px 0 0; padding:0 8px; display:grid; gap:12px; }
+.md-link{
+  width:100%; padding:12px 14px; border-radius:999px; border:1px solid #ddd; background:#fff;
+  text-align:left; font:600 .95rem 'AvenirLTPro-Book', sans-serif; color:#333;
+}
+
+/* 3) Comportamiento móvil: ocultar navbar desktop y mostrar header móvil */
+@media (max-width: 768px){
+  .navbar{ display:none !important; }
+  .mobile-header{ display:flex; }
+
+  /* si el navbar de desktop ocupaba espacio fijo, da aire al hero */
+  .page-illustration .hero{ padding-top:72px !important; }
+}
+
+/* 4) Asegurar scroll aunque quede alguna clase de bloqueo */
+@media (max-width: 1024px){
+  body.page-illustration,
+  body.page-illustration.no-scroll{
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+}
+
+/* 5) Mundo-mock: forzar apilado (1 por encima de 2) */
+#mundo-mock .mundomaya-screens:nth-child(1){ position:relative; z-index:3; }
+#mundo-mock .mundomaya-screens:nth-child(2){ position:relative; z-index:2; }
+#mundo-mock .mundomaya-screens:nth-child(3){ position:relative; z-index:1; }
+
+/* 6) NUEVO: Botones (Cartas a Altair / 2037) flotando sobre el hero
+      — Ajusta con variables --ix (X) y --iy (Y) —
+*/
+@media (max-width: 768px){
+  /* el hero de Illustration es el contexto del overlay */
+  #illustration .hero{ position:relative; }
+
+  /* overlay dentro del hero */
+  #index-floater{
+    /* AJUSTA AQUÍ: usa % o px */
+    --ix: 50%;   /* X (por defecto centrado) */
+    --iy: 50%;   /* Y (más abajo del centro) */
+
+    position:absolute; inset:0;
+    z-index:1050;                      /* sobre el hero, bajo el header (1100) */
+    pointer-events:none;               /* el overlay no bloquea toques */
+  }
+
+   #index-floater .index-stack{
+    position: absolute;
+    left: var(--ix, 50%); top: var(--iy, 70%);
+    transform: translate(-50%, -50%);
+    display: flex ; flex-direction: column;
+    align-items: center; gap: 12px;   /* espacio entre "Contenido" y los chips */
+    text-align: center; pointer-events: auto;
+  }
+
+  /* Hacemos que .index-menu sea una grilla 2 columnas,
+     y posicionamos “Contenido” ocupando las 2 columnas (fila 1).
+     Los dos chips quedarán en la fila 2, uno por columna. */
+  #index-floater .index-menu{
+    position: absolute !important;
+    left: var(--ix, 50%) !important;
+    top:  var(--iy, 70%) !important;
+    transform: translate(-50%, -50%) !important;
+
+    display: grid !important;
+    grid-template-columns: auto auto;
+    grid-auto-rows: auto;
+    gap: 10px 12px;
+    align-items: center;
+    justify-items: center;
+
+    margin: 0 !important;
+    background: transparent !important;
+    pointer-events: auto;
+  }
+
+  /* La etiqueta “Contenido” va arriba (fila 1), centrada, ocupando las dos columnas */
+  #index-floater .index-menu .menu-label{
+    grid-column: 1 / -1 !important;
+    margin: 0 !important;
+    opacity: .9;
+    display: block !important;
+    text-align: center;
+  }
+
+  /* Si tus dos chips viven dentro de .menu-group, dejamos pasar sus hijos a la grilla */
+  #index-floater .index-menu .menu-group{
+    display: contents !important;
+  }
+
+  /* Por si alguna regla anterior insistía en forzar flex en estos contenedores,
+     los anulamos con grid (más específico y con !important). */
+  #index-floater .index-stack .index-menu,
+  #index-floater .index-stack .menu-top,
+  #index-floater .index-stack .menu-group{
+    display: grid !important;
+  }
+
+   #index-floater .menu-label{
+    font-size: clamp(18px, 5.6vw, 21px);
+    letter-spacing: .2px;
+  }
+
+  /* botones dentro del overlay (funciona si son <button>, <a> o .menu-item) */
+  #index-floater .index-menu .menu-item,
+  #index-floater .index-menu button,
+  #index-floater .index-menu a,
+  #index-floater .menu-group .menu-item,
+  #index-floater .menu-group button,
+  #index-floater .menu-group a{
+    font-size: clamp(18px, 5.6vw, 21px);  /* ↑ texto más grande */
+    line-height: 1.1;
+    padding: 10px 18px;                 /* ↑ área táctil */
+    min-height: 40px;                   /* altura consistente */
+    border-radius: 999px;               /* forma “pastilla” */
+    white-space: nowrap;                /* evita salto en "Cartas a Altair" */
+  }
+
+    /* si algún estilo viejo estrecha demasiado el chip largo, garantizamos ancho mínimo */
+  #index-floater .index-menu .menu-item:first-child,
+  #index-floater .index-menu button:first-child,
+  #index-floater .index-menu a:first-child{
+    min-width: 150px;                   /* ¡ajústalo si quieres! */
+  } 
+
+/* 2) Hero: encoger las “bolitas” del glow */
+  /* Opción por variable (si la usas en tus glows) */
+  #illustration .hero.glow-bg{
+    --glow-scale: .58 !important;               /* cambia .78 a lo que te guste */
+    background-size: 120% 120% !important;      /* reduce si tu glow es por background */
+  }
+
+  /* Pseudo-elementos comunes de glow */
+  #illustration .hero.glow-bg::before,
+  #illustration .hero.glow-bg::after{
+    transform: scale(var(--glow-scale)) !important;
+    transform-origin: scale(.58) !important;           /* encoge las manchas */
+    filter: blur(32px) !important;              /* un blur un poco menor */
+    opacity: .9 !important;                     /* opcional, menos “fogonazo” */
+    animation: none;
+  }
+
+  /* Si usas nodos internos para el glow (ajusta al selector real que tengas) */
+  #illustration .hero.glow-bg .glow,
+  #illustration .hero.glow-bg .glow-dot,
+  #illustration .hero.glow-bg .glow-blob{
+    transform: scale(var(--glow-scale)) !important;
+    transform-origin: center center !important;
+    animation: none !important;
+  }
+
+   /* 4) Si algún script mete transform inline, lo forzamos igual */
+  #illustration .hero.glow-bg [class*="glow"][style*="transform"]{
+    transform: scale(var(--glow-scale)) !important;
+    transform-origin: center center !important;
+  }
+
+}
+
+/* 7) Ajuste fino para pantallas muy pequeñas */
+/* (opcional) Pantallas muy pequeñas: baja un poco el bloque */
+@media (max-width: 420px){
+  #index-floater{ --iy: 74%; }
+}
+
+/* ====== INDEX MOBILE (≤480px) ====== */
+@media (max-width:480px){
+
+  /* Por defecto, oculta ambos bloques grandes en móvil */
+  #altair-illustration,
+  #project-2037,
+  #project2037-section {          /* por si tu id es este */
+    display: none;
+  }
+
+  /* Al activar un chip, se muestra su bloque */
+  body.mobile-show-altair #altair-illustration{ display:block; }
+  body.mobile-show-2037  #project-2037,
+  body.mobile-show-2037  #project2037-section{ display:block; }
+
+  /* Estados visuales de los chips en el overlay (se respeta tu diseño) */
+  #index-floater .menu-item,
+  #index-floater .index-menu .menu-item,
+  #index-floater .index-menu button,
+  #index-floater .index-menu a{
+    transition: transform .18s ease, box-shadow .18s ease;
+    will-change: transform;
+  }
+  #index-floater .menu-item:active{ transform: scale(.98); }
+
+  /* Activo “Cartas a Altair” (rosa) y “2037” (verde)
+     Usa tus variables/colores si ya los tenías */
+  #index-floater .menu-item.is-active[data-project="altair"]{
+    background: #F28DB0; color:#fff; border-color:#F28DB0;
+    box-shadow: 0 6px 18px rgba(242,141,176,.35);
+  }
+  #index-floater .menu-item.is-active[data-project="2037"],
+  #index-floater .menu-item.is-active[data-project="project-2037"]{
+    background: #1E8F73; color:#fff; border-color:#1E8F73;
+    box-shadow: 0 6px 18px rgba(30,143,115,.35);
+  }
+
+  /* Submenús (segunda fila) sin cambios de look permanentes:
+     solo les damos un “tap feedback” corto si quieres */
+  #index-floater .menu-item.pulse{
+    animation: pulseTap .35s ease;
+  }
+  @keyframes pulseTap{
+    0%{ transform:scale(1); box-shadow:0 0 0 rgba(0,0,0,0); }
+    50%{ transform:scale(.98); box-shadow:0 0 0 rgba(0,0,0,0); }
+    100%{ transform:scale(1); }
   }
 }

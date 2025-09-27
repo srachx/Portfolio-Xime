@@ -13,6 +13,33 @@
 
 <body class="page-illustration">
 
+    <!-- MOBILE HEADER (solo se ve en ≤768px) -->
+  <header class="mobile-header" aria-label="Encabezado móvil">
+  <button class="hamburger" id="mh-open" aria-controls="mobile-drawer" aria-expanded="false" aria-label="Abrir menú">
+    <img src="images/menu.png" alt="" />
+  </button>
+
+    <a class="mh-logo" href="index.html" aria-label="Ir al inicio">
+      <img src="images/loguito-vertical.png" alt="Ximena">
+    </a>
+  </header>
+
+  <!-- DRAWER / MENÚ LATERAL -->
+  <nav id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="md-content">
+      <button class="md-close" id="mh-close" aria-label="Cerrar menú">×</button>
+      <ul class="md-list">
+        <li><button class="md-link" data-target="home" data-en="Home" data-es="Inicio">Inicio</button></li>
+        <span class="label lang-text" data-en="Portfolio" data-es="Portafolio">Portfolio</span>
+        <li><button class="md-link" data-target="illustrations" data-en="Illustration" data-es="Ilustración">Ilustración</button></li>
+        <li><button class="md-link" data-target="desinguxui" data-en="UX/UI Design" data-es="Diseño UX/UI">Diseño UX/UI</button></li>
+        <li><button class="md-link" data-target="designgraphic" data-en="Graphic Design" data-es="Diseño Gráfico">Diseño Gráfico</button></li>
+        <li><button class="md-link" data-target="gallerys" data-en="Gallery" data-es="Galería">Galería</button></li>
+      </ul>
+    </div>
+  </nav>
+
+
   <!-- Navbar -->
   <header class="navbar">
     <div class="navbar-section logo">
@@ -280,9 +307,6 @@
         <a href="mailto:pootgximena@gmail.com" class="contact-link"> 
           pootgximena@gmail.com
         </a>
-        <a href="tel:+529995535222" class="contact-link">
-          +52 99 95 53 52 22
-        </a>
       </div>
     </div>
 
@@ -306,6 +330,179 @@
       Designed, illustrated and developed by Ximena Poot © 2025
     </p>
   </footer>
+
+  <script>
+(() => {
+  if (!document.body.classList.contains('page-illustration')) return;
+
+  const mql = matchMedia('(max-width:480px)');
+  let cleanup = null;
+
+  // Anchors (ajusta si tus ids de anclas cambian)
+  const ANCHORS = {
+    // submenús de Altair
+    'character': '#altair-character',
+    'rol':       '#altair-role',
+    // podrías agregar más si los usas
+  };
+
+  // Helpers
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+  // Busca chips en el overlay
+  function getEls(){
+    const scope = $('#index-floater') || document;
+    const btnAltair = scope.querySelector('.menu-item[data-project="altair"]')
+                   || scope.querySelector('.menu-item.project[data-project="altair"]')
+                   || scope.querySelector('.menu-item.project[data-project="ALTAIR"]');
+    const btn2037  = scope.querySelector('.menu-item[data-project="2037"]')
+                   || scope.querySelector('.menu-item[data-project="project-2037"]')
+                   || scope.querySelector('.menu-item.project[data-project="2037"]');
+
+    // Submenús (segunda fila). Usa tus clases si son otras:
+    const subBtns = $$('.menu-item.subsection, .menu-item[data-target]', scope);
+
+    return { btnAltair, btn2037, subBtns };
+  }
+
+  function toggleProject(project, btn){
+    const body = document.body;
+    const cls = (project === 'altair') ? 'mobile-show-altair' : 'mobile-show-2037';
+
+    // Toggle independiente (pueden estar ambos activos)
+    const isActive = body.classList.toggle(cls);
+    btn?.classList.toggle('is-active', isActive);
+    btn?.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+    // Al activar, hacemos scroll suave al inicio de la sección
+    if (isActive) {
+      const targetId = (project === 'altair') ? '#altair-illustration'
+                     : (document.getElementById('project-2037') ? '#project-2037' : '#project2037-section');
+      const el = $(targetId);
+      if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  }
+
+  function onSubmenuClick(e){
+    const btn = e.currentTarget;
+    const key = (btn.dataset.target || btn.dataset.section || '').toLowerCase();
+
+    // Los submenús pertenecen a Altair; si Altair está oculto, actívalo
+    if (!document.body.classList.contains('mobile-show-altair')){
+      const { btnAltair } = getEls();
+      toggleProject('altair', btnAltair);
+    }
+
+    // Da feedback breve
+    btn.classList.add('pulse');
+    setTimeout(() => btn.classList.remove('pulse'), 350);
+
+    // Salta al ancla (o al inicio de Altair si no existe)
+    const sel = ANCHORS[key] || '#altair-illustration';
+    const el = $(sel);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function enableMobile(){
+    const { btnAltair, btn2037, subBtns } = getEls();
+    if (!btnAltair && !btn2037) return () => {};
+
+    const onAltair = () => toggleProject('altair', btnAltair);
+    const on2037   = () => toggleProject('2037', btn2037);
+
+    btnAltair?.addEventListener('click', onAltair);
+    btn2037?.addEventListener('click', on2037);
+    subBtns.forEach(b => b.addEventListener('click', onSubmenuClick));
+
+    // aria para accesibilidad
+    btnAltair?.setAttribute('role','button');
+    btn2037?.setAttribute('role','button');
+    btnAltair?.setAttribute('aria-pressed','false');
+    btn2037?.setAttribute('aria-pressed','false');
+
+    return () => {
+      btnAltair?.removeEventListener('click', onAltair);
+      btn2037?.removeEventListener('click', on2037);
+      subBtns.forEach(b => b.removeEventListener('click', onSubmenuClick));
+    };
+  }
+
+  function sync(e){
+    const mobile = (e?.matches ?? mql.matches);
+    cleanup?.(); cleanup = null;
+    if (mobile) cleanup = enableMobile();
+  }
+
+  sync();
+  mql.addEventListener('change', sync);
+})();
+</script>
+
+
+    <script>
+  (() => {
+    // Ejecuta SOLO en la página de Ilustración
+    if (!document.body.classList.contains('page-illustration')) return;
+
+    const mql = window.matchMedia('(max-width: 768px)');
+
+   // localiza hero y el grupo de chips
+  const hero  = document.getElementById('illustration-hero')
+             || document.querySelector('.illustration-hero, .hero');
+  const chips = document.querySelector('body.page-illustration .index-menu')
+             || document.querySelector('body.page-illustration .menu-top')
+             || document.querySelector('body.page-illustration .menu-group');
+  if (!hero || !chips) return;
+
+    // Guardamos su posición original para poder restaurar en desktop
+    const originalParent = chips.parentNode;
+    const originalNext   = chips.nextSibling; // puede ser null
+
+    // crea/consigue overlay dentro del hero
+  function ensureFloater(){
+    let floater = hero.querySelector('#index-floater');
+    if (!floater) {
+      floater = document.createElement('div');
+      floater.id = 'index-floater';
+      hero.appendChild(floater);
+    }
+    return floater;
+  }
+
+  function toMobile(){
+    const floater = ensureFloater();
+    floater.appendChild(chips);
+    // limpia estilos que lo fijaban fuera de sitio
+    chips.removeAttribute('style');
+  }
+
+  function toDesktop(){
+    if (next) parent.insertBefore(chips, next); else parent.appendChild(chips);
+    const floater = hero.querySelector('#index-floater');
+    if (floater && !floater.firstElementChild) floater.remove();
+  }
+
+  function sync(e){
+    const mobile = (e?.matches ?? mql.matches);
+    mobile ? toMobile() : toDesktop();
+  }
+
+  sync();
+  mql.addEventListener('change', sync);
+
+    function sync(e){
+      const mobile = e.matches !== undefined ? e.matches : mql.matches;
+      if (mobile) moveToMobile();
+      else moveBackToDesktop();
+    }
+
+    // correr ahora y también cuando cambie el tamaño
+    sync(mql);
+    mql.addEventListener('change', sync);
+  })();
+  </script>
+
 
   <script>
   document.addEventListener("DOMContentLoaded", function () {

@@ -751,3 +751,167 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
     }, 200);
   });
 })();
+
+
+
+(() => {
+  // Solo en la página de Illustration
+  if (!document.body.classList.contains('page-illustration')) return;
+
+  const mql = window.matchMedia('(max-width: 768px)');
+  let cleanupMobile = null; // para desenganchar en desktop
+
+  // ---------- Localizadores ----------
+  const hero  = document.querySelector('#illustration .hero') || document.querySelector('.hero');
+  const chips = document.querySelector(
+    'body.page-illustration .index-menu, ' +
+    'body.page-illustration .menu-top, '  +
+    'body.page-illustration .menu-group'
+  );
+
+  // Guarda posición original de los chips para restaurar
+  const originalParent = chips?.parentNode || null;
+  const originalNext   = chips?.nextSibling || null;
+
+  // Crea/obtiene overlay dentro del hero
+  function ensureFloater(){
+    if (!hero) return null;
+    let floater = hero.querySelector('#index-floater');
+    if (!floater) {
+      floater = document.createElement('div');
+      floater.id = 'index-floater';
+      // Posición por defecto (puedes cambiar estos valores desde CSS también)
+      floater.style.setProperty('--ix', '50%'); // X
+      floater.style.setProperty('--iy', '65%'); // Y
+      hero.appendChild(floater);
+    }
+    let stack = floater.querySelector('.index-stack');
+    if (!stack) {
+      stack = document.createElement('div');
+      stack.className = 'index-stack';
+      floater.appendChild(stack);
+    }
+    return stack;  
+  }
+
+  function toMobile(){
+  const stackParent = ensureFloater(); // devuelve el .index-stack dentro de #index-floater
+  if (!stackParent) return;
+
+  // Asegura la label "Contenido" arriba
+  let lbl = document.querySelector('body.page-illustration .menu-label');
+  if (!lbl) {
+    lbl = document.createElement('div');
+    lbl.className = 'menu-label';
+    lbl.textContent = 'Contenido';
+  }
+  stackParent.appendChild(lbl);
+
+  // Luego, los chips (Cartas a Altair / 2037)
+  stackParent.appendChild(chips);
+
+  // limpia estilos heredados
+  chips.removeAttribute('style');
+}
+
+
+  function toDesktop(){
+    // chips
+    if (chipsNext) chipsParent.insertBefore(chips, chipsNext); else chipsParent.appendChild(chips);
+    // label
+    if (label && labelParent) {
+      if (labelNext) labelParent.insertBefore(label, labelNext); else labelParent.appendChild(label);
+    }
+    // limpia overlay
+    hero.querySelector('#index-floater')?.remove();
+  }
+
+  function enableMobile(){
+    toMobile();
+    // si tienes menú móvil, aquí puedes llamar a tu enableMobileMenu()
+    document.body.classList.remove('no-scroll');
+    return () => { toDesktop(); };
+  }
+
+  function moveChipsToHero(){
+    if (!chips || !hero) return;
+    const floater = ensureFloater();
+    if (floater) floater.appendChild(chips);
+    chips.removeAttribute('style'); // limpia estilos heredados
+  }
+
+  function restoreChips(){
+    if (!chips || !originalParent) return;
+    if (originalNext) originalParent.insertBefore(chips, originalNext);
+    else originalParent.appendChild(chips);
+    const floater = hero?.querySelector('#index-floater');
+    if (floater && !floater.firstElementChild) floater.remove();
+  }
+
+  // ---------- Menú móvil (hamburguesa) ----------
+  function enableMobileMenu(){
+    const drawer  = document.getElementById('mobile-drawer');
+    const openBtn = document.getElementById('mh-open');
+    const closeBtn= document.getElementById('mh-close');
+    if (!drawer || !openBtn) return () => {};
+
+    const open  = () => {
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden','false');
+      openBtn.setAttribute('aria-expanded','true');
+      document.body.classList.add('menu-open');
+    };
+    const close = () => {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden','true');
+      openBtn.setAttribute('aria-expanded','false');
+      document.body.classList.remove('menu-open');
+    };
+
+    const onBackdrop = e => { if (e.target === drawer) close(); };
+    const onLink = e => {
+      const key = e.currentTarget.dataset.target; // "altair" o "project-2037"
+      document.querySelector(`.menu-item.project[data-project="${key}"]`)?.click();
+      close();
+      const sectionId = (key === 'altair') ? 'altair-illustration' : key;
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    openBtn.addEventListener('click', open);
+    closeBtn?.addEventListener('click', close);
+    drawer.addEventListener('click', onBackdrop);
+    drawer.querySelectorAll('.md-link').forEach(a => a.addEventListener('click', onLink));
+
+    // cleanup
+    return () => {
+      openBtn.removeEventListener('click', open);
+      closeBtn?.removeEventListener('click', close);
+      drawer.removeEventListener('click', onBackdrop);
+      drawer.querySelectorAll('.md-link').forEach(a => a.removeEventListener('click', onLink));
+      document.body.classList.remove('menu-open');
+    };
+  }
+
+  // ---------- Activación solo en móvil ----------
+  function enableMobile(){
+    const cleanups = [];
+    // colocar chips sobre el hero
+    moveChipsToHero();
+    // menú móvil, si existe en el DOM
+    cleanups.push(enableMobileMenu());
+    // aseguramos scroll del body
+    document.body.classList.remove('no-scroll');
+    return () => { cleanups.forEach(fn => fn && fn()); restoreChips(); };
+  }
+
+  function sync(e){
+    const mobile = (e?.matches ?? mql.matches);
+    // limpia estado anterior
+    cleanupMobile?.(); cleanupMobile = null;
+    if (mobile) cleanupMobile = enableMobile();
+  }
+
+  // run
+  sync();
+  mql.addEventListener('change', sync);
+})();

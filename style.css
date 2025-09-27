@@ -3204,92 +3204,6 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
   #mundo-mock .mundomaya-screens img.ss{ width: 92vw !important; max-width: 720px !important; }
 }
 
-/* === illustration.html: Responsive overrides (mobile + iPad) === */
-
-/* Aplica solo dentro de esta página */
-@media (max-width: 1024px) {
-  /* 1) Navbar deja de ser fijo */
-  body.page-illustration .navbar {
-    position: static !important;
-  }
-
-  /* 2) En móviles ocultamos submenús; dejamos solo los proyectos (Altair, 2037) */
-  body.page-illustration .index-menu .submenu,
-  body.page-illustration .menu-item.subsection {
-    display: none !important;
-  }
-
-  /* 3) El índice funciona como “acordeón” superior */
-  body.page-illustration .index-menu {
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 5;
-    background: #f6f6f6;
-    padding: 8px 12px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  body.page-illustration .menu-label {
-    order: 0;
-    width: 100%;
-    text-align: center;
-    color: #666;
-    margin-bottom: 4px;
-    font-size: 0.75rem;
-  }
-
-  body.page-illustration .menu-item.project {
-    font-size: 0.9rem;
-    padding: 8px 14px;
-    border-radius: 999px;
-    border: 1px solid #aaa;
-    background: #fff;
-    color: #444;
-    touch-action: manipulation;
-  }
-
-  /* 4) Por defecto, todo el contenido queda oculto (solo verán el índice).
-        Cuando se active un proyecto, JS pondrá .active y podrás scrollear */
-  body.page-illustration .content-section:not(.active) {
-    display: none !important;
-  }
-
-  /* 5) Bloquear scroll cuando no hay un proyecto abierto */
-  html, body {
-    height: 100%;
-  }
-  body.page-illustration.no-scroll {
-    overflow: hidden;
-    height: 100dvh;
-  }
-  body.page-illustration.scrollable {
-    overflow-y: auto;
-    height: auto;
-  }
-
-  /* 6) Ajustes suaves para hero cuando el navbar ya no es fijo */
-  body.page-illustration .hero {
-    padding-top: 16px;
-  }
-}
-
-/* Seguridad: en pantallas más grandes, nos aseguramos de no tocar desktop */
-@media (min-width: 1025px) {
-  body.page-illustration.no-scroll,
-  body.page-illustration.scrollable {
-    overflow: initial;
-    height: auto;
-  }
-}
-
-
-
 /* ===== MundoMaya → mundo-mock (izq grande | centro celular | der pines) ===== */
 #mundo-mock .mundomaya-container{
   display: grid;
@@ -3813,5 +3727,6 @@ body.page-illustration .project2037-section:has(.content-section.active){
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
+
 
 
