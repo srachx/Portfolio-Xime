@@ -46,18 +46,18 @@
 .hamburger{
   width:40px; height:40px; display:grid; place-items:center;
   background:whitesmoke; border:none; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.08);
-  transform: translate(20px, 40px);
+  transform: translate(20px, 20px);
 }
 
 .mh-logo{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%, 25px);   /* centro perfecto */
   }
 
 .hamburger img{ width:18px; height:18px; display:block;}
-.mh-logo img{ height:40px; display:block;}
+.mh-logo img{ height:20px; display:block;}
 
 .mobile-drawer{
   position:fixed; inset:0; z-index:1200; background:rgba(0,0,0,.45);
@@ -140,9 +140,9 @@
     transform: translate(-50%, -50%) !important;
 
     display: grid !important;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
-    gap: 10px 12px;
+    row-gap: 12px; column-gap: 12px;
     align-items: center;
     justify-items: center;
 
@@ -154,11 +154,31 @@
   /* La etiqueta “Contenido” va arriba (fila 1), centrada, ocupando las dos columnas */
   #index-floater .index-menu .menu-label{
     grid-column: 1 / -1 !important;
+    grid-row: 1;
     margin: 0 !important;
     opacity: .9;
     display: block !important;
     text-align: center;
   }
+
+  /* FILA 2: botones principales (se ubican en las col 1 y 2) */
+  /* Si usas data-project en esos chips, los fijamos a la fila 2 */
+  #index-floater .index-menu .menu-item[data-project]{
+    grid-row: 2;
+  }
+
+  #index-floater .index-menu .menu-item{
+    white-space: nowrap;
+    font-size: clamp(15px, 4.6vw, 17px);
+    padding: 10px 18px;
+    min-height: 40px;
+    border-radius: 999px;
+  }
+
+  /* Los propios botones de submenú a la fila 3 */
+  #index-floater .index-menu .menu-item.subsection,
+  #index-floater .index-menu [data-target]:not([data-project]){
+    grid-row: 3;
 
   /* Si tus dos chips viven dentro de .menu-group, dejamos pasar sus hijos a la grilla */
   #index-floater .index-menu .menu-group{
@@ -287,4 +307,5 @@
     50%{ transform:scale(.98); box-shadow:0 0 0 rgba(0,0,0,0); }
     100%{ transform:scale(1); }
   }
+}
 }
