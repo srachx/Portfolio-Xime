@@ -417,7 +417,7 @@ body.glow-bg {
 .about-btn {
   width: 90px;
   height: 90px;
-  background-color: #E58C94;
+  background-color: transparent;
   border-radius: 6px;
 }
 
