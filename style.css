@@ -1313,7 +1313,7 @@ body.glow-bg {
 
 .menu-item.project.active-project[data-project="romia"] {
   background-color: #3E2622;
-  color: whitesmoke;
+  color: #F2C0C1;
   border-color: #3E2622;
   font-weight: bold;
 }
