@@ -3749,3 +3749,40 @@ body.page-illustration .project2037-section:has(.content-section.active){
 
 
 
+.romia-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/logo-mundo\ Recurso 62.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.025;
+  z-index: 0;
+}
+
+.romia-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  max-width: 500px;
+  padding: 2rem;
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;   /* Centra verticalmente */
+}
+
+.romia-logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.romia-description {
+  max-width: 500px;
+  margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+}
