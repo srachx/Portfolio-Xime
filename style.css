@@ -1313,7 +1313,7 @@ body.glow-bg {
 
 .menu-item.project.active-project[data-project="romia"] {
   background-color: #3E2622;
-  color: #F2C0C1;
+  color: whitesmoke;
   border-color: #3E2622;
   font-weight: bold;
 }
@@ -1375,6 +1375,11 @@ body.glow-bg {
   color: #00443F;
 }
 
+.submenu[data-project="romia"] .menu-item.subsection {
+  border: 1px solid #3E2622;
+  color: #3E2622;
+}
+
 /* ----------- SUBTÍTULOS ACTIVOS ----------- */
 .submenu[data-project="altair"] .menu-item.subsection.active-sub {
   background-color: #1a1531;
@@ -1421,6 +1426,13 @@ body.glow-bg {
 .submenu[data-project="mundomaya"] .menu-item.subsection.active-sub {
   background-color: #00443F;
   color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.submenu[data-project="romia"] .menu-item.subsection.active-sub {
+  background-color: #3E2622;
+  color: #F2C0C1;
   border: none;
   font-weight: bold;
 }
