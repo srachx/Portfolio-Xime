@@ -3816,5 +3816,5 @@ body.page-illustration .project2037-section:has(.content-section.active){
 
 .back-to-top img {
     width: 50px;
-    height: auto;
+    transform: rotate(180deg);
 }
