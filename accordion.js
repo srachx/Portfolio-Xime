@@ -251,11 +251,24 @@ function scrollToHero() {
   }
 }
 
-// --- MENÚ LATERAL COMO ANCLAS ---
+// --- MENÚ LATERAL: DESPLIEGA SUBMENÚ + HACE SCROLL ---
 document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
   projectBtn.addEventListener('click', () => {
     const project = projectBtn.getAttribute('data-project');
+    const submenu = document.querySelector(`.submenu[data-project="${project}"]`);
     const target = document.getElementById(project);
+
+    const allProjects = document.querySelectorAll('.menu-item.project');
+    const allSubmenus = document.querySelectorAll('.submenu');
+
+    allProjects.forEach(btn => btn.classList.remove('active-project'));
+    allSubmenus.forEach(menu => menu.classList.remove('active'));
+
+    projectBtn.classList.add('active-project');
+
+    if (submenu) {
+      submenu.classList.add('active');
+    }
 
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -267,6 +280,11 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   subBtn.addEventListener('click', () => {
     const sectionId = subBtn.getAttribute('data-section');
     const target = document.getElementById(sectionId);
+
+    document.querySelectorAll('.menu-item.subsection')
+      .forEach(btn => btn.classList.remove('active-sub'));
+
+    subBtn.classList.add('active-sub');
 
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });

@@ -3003,28 +3003,12 @@ body.page-illustration .project2037-section:has(.content-section.active){
 
 
 /* Solo Graphic Design */
-bbody.page-graphicdesign .submenu {
-  display: flex !important;
+body.page-graphicdesign .content-section {
+  display: block !important;
 }
 
-body.page-graphicdesign .submenu {
-  display: flex !important;
-}
-
-.back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: none;
-  background-color: #e6612c;
-  color: white;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 9999;
-}
+body.page-graphicdesign .submenu { display: none !important; }
+body.page-graphicdesign .submenu.active { display: flex !important; }
 
 
 .mundomaya-section {
