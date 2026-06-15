@@ -3003,11 +3003,28 @@ body.page-illustration .project2037-section:has(.content-section.active){
 
 
 /* Solo Graphic Design */
-body.page-graphicdesign .content-section { display: none !important; }
-body.page-graphicdesign .content-section.active { display: block !important; }
+bbody.page-graphicdesign .submenu {
+  display: flex !important;
+}
 
-body.page-graphicdesign .submenu { display: none !important; }
-body.page-graphicdesign .submenu.active { display: flex !important; }
+body.page-graphicdesign .submenu {
+  display: flex !important;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background-color: #e6612c;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 9999;
+}
 
 
 .mundomaya-section {
@@ -3477,7 +3494,7 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 .romia-background {
   position: absolute;
   inset: 0;
-  background-image: url('images/ ROMIA_Cafe_S.png');
+  background-image: url('images/ROMIA_Cafe_S.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -3505,14 +3522,14 @@ body.page-graphicdesign .submenu.active { display: flex !important; }
 }
 
 .romia-description {
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto 1rem auto; /* Centrado horizontal y espacio inferior */
   line-height: 1.5;
   font-size: 1rem;
   color: #333;
 }
 
-.roia-project-type {
+.romia-project-type {
   font-size: 0.9rem;
   color: #777;
   margin-top: 0.5rem;

@@ -251,42 +251,25 @@ function scrollToHero() {
   }
 }
 
-// --- MENÚ LATERAL INTERACTIVO ---
+// --- MENÚ LATERAL COMO ANCLAS ---
 document.querySelectorAll('.menu-item.project').forEach(projectBtn => {
   projectBtn.addEventListener('click', () => {
     const project = projectBtn.getAttribute('data-project');
-    const submenu = document.querySelector(`.submenu[data-project="${project}"]`);
-    const generalSection = document.getElementById(project);
-    const allProjects = document.querySelectorAll('.menu-item.project');
-    const allSubmenus = document.querySelectorAll('.submenu');
-    const allSubs = document.querySelectorAll('.menu-item.subsection');
-    const allSections = document.querySelectorAll('.content-section');
+    const target = document.getElementById(project);
 
-    const isActive = projectBtn.classList.contains('active-project');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 
-    if (isActive) {
-      // Desactiva todo
-      allProjects.forEach(btn => btn.classList.remove('active-project'));
-      allSubmenus.forEach(menu => menu.classList.remove('active'));
-      allSubs.forEach(btn => btn.classList.remove('active-sub'));
-      allSections.forEach(section => section.classList.remove('active'));
+document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
+  subBtn.addEventListener('click', () => {
+    const sectionId = subBtn.getAttribute('data-section');
+    const target = document.getElementById(sectionId);
 
-      scrollToHero();
-    } else {
-      // Desactiva todo antes de activar el nuevo
-      allProjects.forEach(btn => btn.classList.remove('active-project'));
-      allSubmenus.forEach(menu => menu.classList.remove('active'));
-      allSubs.forEach(btn => btn.classList.remove('active-sub'));
-      allSections.forEach(section => section.classList.remove('active'));
-
-      // Activa el botón y menú
-      projectBtn.classList.add('active-project');
-      submenu.classList.add('active');
-
-      if (generalSection) {
-        generalSection.classList.add('active');
-        generalSection.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
@@ -915,3 +898,14 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   sync();
   mql.addEventListener('change', sync);
 })();
+
+const backToTop = document.getElementById('backToTop');
+
+if (backToTop) {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
