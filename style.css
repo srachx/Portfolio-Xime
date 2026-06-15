@@ -3805,16 +3805,16 @@ body.page-illustration .project2037-section:has(.content-section.active){
 
 
 .back-to-top {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: none;
-  background-color: #e6612c;
-  color: white;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 9999;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 99999;
+}
+
+.back-to-top img {
+    width: 50px;
+    height: auto;
 }
