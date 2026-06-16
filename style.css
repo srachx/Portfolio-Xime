@@ -3803,26 +3803,20 @@ body.page-illustration .project2037-section:has(.content-section.active){
 }
 
 
+html {
+  scroll-behavior: smooth;
+}
 
 .back-to-top {
   position: fixed !important;
   bottom: 30px !important;
   right: 30px !important;
-  width: 60px;
-  height: 60px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
   z-index: 2147483647 !important;
   display: block !important;
-  pointer-events: auto !important;
 }
 
 .back-to-top img {
   width: 50px;
-  height: auto;
   transform: rotate(180deg);
   display: block;
-    pointer-events: none;
-
 }

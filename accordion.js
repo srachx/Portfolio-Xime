@@ -888,14 +888,3 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
   mql.addEventListener('change', sync);
 })();
 
-window.addEventListener('DOMContentLoaded', () => {
-  const backToTop = document.getElementById('backToTop');
-
-  if (!backToTop) return;
-
-  backToTop.onclick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  };
-});
