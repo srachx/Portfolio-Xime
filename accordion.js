@@ -896,14 +896,20 @@ window.addEventListener('DOMContentLoaded', () => {
   backToTop.style.display = 'none';
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      backToTop.style.display = 'block';
-    } else {
-      backToTop.style.display = 'none';
-    }
+    backToTop.style.display = window.scrollY > 500 ? 'block' : 'none';
   });
 
   backToTop.addEventListener('click', () => {
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    document.body.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
