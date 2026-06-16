@@ -893,23 +893,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (!backToTop) return;
 
-  backToTop.style.display = 'none';
-
-  window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 500 ? 'block' : 'none';
-  });
-
   backToTop.addEventListener('click', () => {
-    document.documentElement.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
-    document.body.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

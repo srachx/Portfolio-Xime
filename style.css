@@ -3805,13 +3805,14 @@ body.page-illustration .project2037-section:has(.content-section.active){
 
 
 .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 99999;
+    z-index: 999999999 !important;
+    display: block !important;
 }
 
 .back-to-top img {
