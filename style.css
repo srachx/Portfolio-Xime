@@ -3820,3 +3820,7 @@ html {
   transform: rotate(180deg);
   display: block;
 }
+
+html {
+  scroll-behavior: smooth !important;
+}
