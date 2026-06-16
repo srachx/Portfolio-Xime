@@ -891,12 +891,14 @@ document.querySelectorAll('.menu-item.subsection').forEach(subBtn => {
 const backToTop = document.getElementById("backToTop");
 
 if (backToTop) {
-  backToTop.addEventListener("click", function(e) {
-    e.preventDefault();
+  backToTop.addEventListener("click", () => {
+    const topSection = document.getElementById("top");
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    if (topSection) {
+      topSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
   });
 }
